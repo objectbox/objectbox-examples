@@ -1,0 +1,3 @@
+include 'objectbox-example'
+include 'daocompat-example'
+include 'desktop-test-example'

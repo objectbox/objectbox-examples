@@ -1,0 +1,21 @@
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    package="io.objectbox.example.daocompat"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:name="io.objectbox.example.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name="io.objectbox.example.NoteActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

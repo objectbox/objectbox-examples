@@ -1,0 +1,30 @@
+// Repositories are defined in root build.gradle
+
+buildscript {
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'io.objectbox:objectbox-gradle-plugin:0.9.6'
+    }
+}
+
+apply plugin: 'io.objectbox'
+apply plugin: 'java'
+
+targetCompatibility = '1.7'
+sourceCompatibility = '1.7'
+
+dependencies {
+    compile 'io.objectbox:objectbox-java:0.9.6'
+    // Could also be Android dependency:
+    // compile 'io.objectbox:objectbox-android:0.9.5'
+
+    testCompile 'junit:junit:4.12'
+    def os = System.getProperty("os.name")
+    if(os.contains("Windows")) {
+        testCompile 'io.objectbox:objectbox-windows:0.9.6'
+    } else if(os.contains("Linux")) {
+        testCompile 'io.objectbox:objectbox-linux:0.9.6'
+    } else {
+        throw new RuntimeException("Unsupported OS: " + os);
+    }
+}

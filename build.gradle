@@ -1,0 +1,39 @@
+ext {
+    buildToolsVersion = '25.0.2'
+    compileSdkVersion = 25
+}
+
+allprojects {
+    buildscript {
+        repositories {
+            jcenter()
+            mavenCentral()
+            maven {
+                url "http://objectbox.net/beta-repo/"
+            }
+        }
+    }
+
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven {
+            url "http://objectbox.net/beta-repo/"
+        }
+    }
+}
+
+task zipAll(type: Zip) {
+    baseName "objectbox-examples"
+    from(rootDir) {
+        exclude '**/.idea/**'
+        exclude '**/build/**'
+        exclude '.gradle/**'
+        exclude '**/*.iml'
+        exclude '**/*.dll'
+        exclude '**/*.so'
+        exclude '**/local.properties'
+    }
+
+    destinationDir buildDir
+}
