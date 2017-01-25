@@ -1,3 +1,4 @@
 include 'objectbox-example'
 include 'daocompat-example'
-include 'desktop-test-example'
+// Enable this to see desktop unit tests in action (not yet supported on macOS yet - sorry)
+// include 'desktop-test-example'
