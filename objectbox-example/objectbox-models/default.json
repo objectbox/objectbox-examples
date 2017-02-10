@@ -4,39 +4,35 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": 1,
-      "lastPropertyId": 4,
+      "id": "1:6645479796472661392",
+      "lastPropertyId": "4:1260602348787983453",
       "name": "Note",
       "properties": [
         {
-          "id": 1,
-          "name": "id",
-          "refId": 2232956783172772889
+          "id": "1:9211738071025439652",
+          "name": "id"
         },
         {
-          "id": 2,
-          "name": "text",
-          "refId": 3412155594661555235
+          "id": "2:8804670454579230281",
+          "name": "text"
         },
         {
-          "id": 3,
-          "name": "comment",
-          "refId": 1032785455231800845
+          "id": "3:6707341922395832766",
+          "name": "comment"
         },
         {
-          "id": 4,
-          "name": "date",
-          "refId": 1241863686644787679
+          "id": "4:1260602348787983453",
+          "name": "date"
         }
-      ],
-      "refId": 6737595248315965895
+      ]
     }
   ],
-  "lastEntityId": 1,
-  "lastIndexId": 0,
-  "lastSequenceId": 0,
-  "metaVersion": 1,
-  "retiredEntityRefIds": [],
-  "retiredPropertyRefIds": [],
+  "lastEntityId": "1:6645479796472661392",
+  "lastIndexId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 2,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
   "version": 1
 }
