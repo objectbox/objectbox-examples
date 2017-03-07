@@ -26,8 +26,8 @@ android {
 }
 
 dependencies {
-    compile 'io.objectbox:objectbox-android:0.9.8'
-    compile 'io.objectbox:objectbox-daocompat:0.9.8'
+    compile 'io.objectbox:objectbox-android:0.9.9'
+    compile 'io.objectbox:objectbox-daocompat:0.9.9'
 }
 
 objectbox {
