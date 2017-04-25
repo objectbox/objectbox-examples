@@ -20,9 +20,13 @@ import java.util.Date;
 import java.util.List;
 
 import io.objectbox.Box;
+import io.objectbox.android.AndroidScheduler;
 import io.objectbox.query.Query;
+import io.objectbox.reactive.DataObserver;
+import io.objectbox.reactive.DataSubscription;
 
-public class NoteActivity extends Activity {
+/** An alternative to {@link NoteActivity} using a reactive query (without RxJava, just plain ObjectBox API). */
+public class ReactiveNoteActivity extends Activity {
 
     private EditText editText;
     private View addNoteButton;
@@ -30,6 +34,7 @@ public class NoteActivity extends Activity {
     private Box<Note> notesBox;
     private Query<Note> notesQuery;
     private NotesAdapter notesAdapter;
+    private DataSubscription subscription;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,13 +47,21 @@ public class NoteActivity extends Activity {
 
         // query all notes, sorted a-z by their text (http://greenrobot.org/objectbox/documentation/queries/)
         notesQuery = notesBox.query().order(Note_.text).build();
-        updateNotes();
+
+        // Reactive query (http://greenrobot.org/objectbox/documentation/data-observers-reactive-extensions/)
+        subscription = notesQuery.subscribe().on(AndroidScheduler.mainThread())
+                .observer(new DataObserver<List<Note>>() {
+                    @Override
+                    public void onData(List<Note> notes) {
+                        notesAdapter.setNotes(notes);
+                    }
+                });
     }
 
-    /** Manual trigger to re-query and update the UI. For a reactive alternative check {@link ReactiveNoteActivity}. */
-    private void updateNotes() {
-        List<Note> notes = notesQuery.find();
-        notesAdapter.setNotes(notes);
+    @Override
+    protected void onDestroy() {
+        subscription.cancel();
+        super.onDestroy();
     }
 
     protected void setUpViews() {
@@ -108,8 +121,6 @@ public class NoteActivity extends Activity {
         note.setDate(new Date());
         notesBox.put(note);
         Log.d(App.TAG, "Inserted new note, ID: " + note.getId());
-
-        updateNotes();
     }
 
     OnItemClickListener noteClickListener = new OnItemClickListener() {
@@ -118,8 +129,6 @@ public class NoteActivity extends Activity {
             Note note = notesAdapter.getItem(position);
             notesBox.remove(note);
             Log.d(App.TAG, "Deleted note, ID: " + note.getId());
-
-            updateNotes();
         }
     };
 }
