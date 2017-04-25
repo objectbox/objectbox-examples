@@ -102,7 +102,10 @@ public class NoteActivity extends Activity {
         final DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
         String comment = "Added on " + df.format(new Date());
 
-        Note note = new Note(0, noteText, comment, new Date());
+        Note note = new Note();
+        note.setText(noteText);
+        note.setComment(comment);
+        note.setDate(new Date());
         notesBox.put(note);
         Log.d(App.TAG, "Inserted new note, ID: " + note.getId());
 
