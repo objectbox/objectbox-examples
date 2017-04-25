@@ -10,12 +10,11 @@ import io.objectbox.annotation.Id;
 public class Note {
 
     @Id
-    private long id;
+    long id;
 
-    private String text;
-    private String comment;
-    private Date date;
-
+    String text;
+    String comment;
+    Date date;
 
     @Generated(hash = 1029219451)
     public Note(long id, String text, String comment, Date date) {
