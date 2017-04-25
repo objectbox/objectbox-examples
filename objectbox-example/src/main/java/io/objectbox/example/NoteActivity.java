@@ -38,10 +38,9 @@ public class NoteActivity extends Activity {
 
         setUpViews();
 
-        // get the note box
         notesBox = ((App) getApplication()).getBoxStore().boxFor(Note.class);
 
-        // query all notes, sorted a-z by their text
+        // query all notes, sorted a-z by their text (http://greenrobot.org/objectbox/documentation/queries/)
         notesQuery = notesBox.query().order(Note_.text).build();
         updateNotes();
     }
@@ -99,7 +98,7 @@ public class NoteActivity extends Activity {
         String noteText = editText.getText().toString();
         editText.setText("");
 
-        final DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
+        DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
         String comment = "Added on " + df.format(new Date());
 
         Note note = new Note();
@@ -116,10 +115,8 @@ public class NoteActivity extends Activity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Note note = notesAdapter.getItem(position);
-            Long noteId = note.getId();
-
             notesBox.remove(note);
-            Log.d(App.TAG, "Deleted note, ID: " + noteId);
+            Log.d(App.TAG, "Deleted note, ID: " + note.getId());
 
             updateNotes();
         }
