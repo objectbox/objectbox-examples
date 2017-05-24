@@ -1,16 +1,23 @@
 // Repositories are defined in root build.gradle
 
 buildscript {
+    ext.kotlin_version = '1.1.2-4'
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.2'
         classpath 'io.objectbox:objectbox-gradle-plugin:0.9.12'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'io.objectbox'
 
 uploadArchives.enabled = false
+
+// Until the ObjectBox Gradle plugin has better support for Kotlin, we must help it a bit:
+//task('compileKotlin').dependsOn objectbox
+android.sourceSets.main.java.srcDirs += 'build/generated/source/objectbox'
 
 android {
     compileSdkVersion 25
@@ -27,4 +34,5 @@ android {
 
 dependencies {
     compile 'io.objectbox:objectbox-android:0.9.12'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
