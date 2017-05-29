@@ -8,18 +8,14 @@ allprojects {
         repositories {
             jcenter()
             mavenCentral()
-            maven {
-                url "http://objectbox.net/beta-repo/"
-            }
+            maven { url "http://objectbox.net/beta-repo/" }
         }
     }
 
     repositories {
         jcenter()
         mavenCentral()
-        maven {
-            url "http://objectbox.net/beta-repo/"
-        }
+        maven { url "http://objectbox.net/beta-repo/" }
     }
 }
 
