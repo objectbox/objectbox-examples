@@ -10,7 +10,7 @@ import java.util.ArrayList
 
 class NotesAdapter : BaseAdapter() {
 
-    private var dataset: List<Note>? = null
+    private var dataset: List<Note> = ArrayList<Note>()
 
     private class NoteViewHolder(itemView: View) {
 
@@ -23,10 +23,6 @@ class NotesAdapter : BaseAdapter() {
         }
     }
 
-    init {
-        this.dataset = ArrayList<Note>()
-    }
-
     fun setNotes(notes: List<Note>) {
         dataset = notes
         notifyDataSetChanged()
@@ -36,8 +32,7 @@ class NotesAdapter : BaseAdapter() {
         var convertView = convertView
         val holder: NoteViewHolder
         if (convertView == null) {
-            convertView = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_note, parent, false)
+            convertView = LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false)
             holder = NoteViewHolder(convertView)
             convertView!!.tag = holder
         } else {
@@ -52,11 +47,11 @@ class NotesAdapter : BaseAdapter() {
     }
 
     override fun getCount(): Int {
-        return dataset!!.size
+        return dataset.size
     }
 
     override fun getItem(position: Int): Note {
-        return dataset!![position]
+        return dataset[position]
     }
 
     override fun getItemId(position: Int): Long {

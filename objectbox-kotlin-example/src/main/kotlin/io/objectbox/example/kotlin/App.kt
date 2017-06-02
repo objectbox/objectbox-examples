@@ -14,7 +14,7 @@ class App : Application() {
         const val EXTERNAL_DIR = false
     }
 
-    var boxStore: BoxStore? = null
+    lateinit var boxStore: BoxStore
         private set
 
     override fun onCreate() {
