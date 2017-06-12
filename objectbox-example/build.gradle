@@ -2,7 +2,7 @@
 
 buildscript {
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:2.3.3'
         classpath 'io.objectbox:objectbox-gradle-plugin:0.9.12'
     }
 }

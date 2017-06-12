@@ -2,28 +2,28 @@
 
 buildscript {
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
-        classpath 'io.objectbox:objectbox-gradle-plugin:0.9.10'
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'io.objectbox:objectbox-gradle-plugin:0.9.12'
     }
 }
 
-apply plugin: 'io.objectbox'
 apply plugin: 'java'
+apply plugin: 'io.objectbox'
 
 targetCompatibility = '1.7'
 sourceCompatibility = '1.7'
 
 dependencies {
-    compile 'io.objectbox:objectbox-java:0.9.10'
+    compile 'io.objectbox:objectbox-java:0.9.12'
     // Could also be Android dependency:
-    // compile 'io.objectbox:objectbox-android:0.9.10'
+    // compile 'io.objectbox:objectbox-android:0.9.12'
 
     testCompile 'junit:junit:4.12'
     def os = System.getProperty("os.name")
     if(os.contains("Windows")) {
-        testCompile 'io.objectbox:objectbox-windows:0.9.10'
+        testCompile 'io.objectbox:objectbox-windows:0.9.12'
     } else if(os.contains("Linux")) {
-        testCompile 'io.objectbox:objectbox-linux:0.9.10'
+        testCompile 'io.objectbox:objectbox-linux:0.9.12'
     } else {
         println("Unsupported OS: " + os);
     }
