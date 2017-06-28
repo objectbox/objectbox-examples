@@ -40,8 +40,8 @@ class NotesAdapter : BaseAdapter() {
         }
 
         val note = getItem(position)
-        holder.text.text = note.getText()
-        holder.comment.text = note.getComment()
+        holder.text.text = note.text
+        holder.comment.text = note.comment
 
         return convertView
     }

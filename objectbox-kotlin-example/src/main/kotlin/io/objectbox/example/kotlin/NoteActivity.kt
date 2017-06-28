@@ -91,12 +91,9 @@ class NoteActivity : Activity() {
         val df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM)
         val comment = "Added on " + df.format(Date())
 
-        val note = Note()
-        note.setText(noteText)
-        note.setComment(comment)
-        note.setDate(Date())
+        val note = Note(text = noteText, comment = comment, date = Date())
         notesBox.put(note)
-        Log.d(App.TAG, "Inserted new note, ID: " + note.getId())
+        Log.d(App.TAG, "Inserted new note, ID: " + note.id)
 
         updateNotes()
     }
@@ -104,7 +101,7 @@ class NoteActivity : Activity() {
     internal var noteClickListener: OnItemClickListener = OnItemClickListener { parent, view, position, id ->
         val note = notesAdapter.getItem(position)
         notesBox.remove(note)
-        Log.d(App.TAG, "Deleted note, ID: " + note.getId())
+        Log.d(App.TAG, "Deleted note, ID: " + note.id)
 
         updateNotes()
     }
