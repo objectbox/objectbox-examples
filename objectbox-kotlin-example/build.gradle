@@ -18,10 +18,6 @@ apply plugin: 'io.objectbox.android.transform'
 
 uploadArchives.enabled = false
 
-// Until the ObjectBox Gradle plugin has better support for Kotlin, we must help it a bit:
-//task('compileKotlin').dependsOn objectbox
-android.sourceSets.main.java.srcDirs += 'build/generated/source/objectbox'
-
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
