@@ -18,6 +18,9 @@ gradle.properties
 build.properties
 local.properties
 
+## ObjectBox
+default.json.bak
+
 ### CMake build files
 CMakeFiles/
 CMakeCache.txt
