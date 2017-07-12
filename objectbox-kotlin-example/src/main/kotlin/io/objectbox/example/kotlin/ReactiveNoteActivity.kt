@@ -57,7 +57,7 @@ class ReactiveNoteActivity : Activity() {
     }
 
     protected fun setUpViews() {
-        val listView = findViewById(R.id.listViewNotes) as ListView
+        val listView = findViewById<ListView>(R.id.listViewNotes)
         listView.onItemClickListener = noteClickListener
 
         notesAdapter = NotesAdapter()
@@ -66,7 +66,7 @@ class ReactiveNoteActivity : Activity() {
         addNoteButton = findViewById(R.id.buttonAdd)
         addNoteButton.isEnabled = false
 
-        editText = findViewById(R.id.editTextNote) as EditText
+        editText = findViewById<EditText>(R.id.editTextNote)
         editText.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 addNote()

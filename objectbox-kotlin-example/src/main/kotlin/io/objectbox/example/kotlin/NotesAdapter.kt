@@ -18,8 +18,8 @@ class NotesAdapter : BaseAdapter() {
         var comment: TextView
 
         init {
-            text = itemView.findViewById(R.id.textViewNoteText) as TextView
-            comment = itemView.findViewById(R.id.textViewNoteComment) as TextView
+            text = itemView.findViewById<TextView>(R.id.textViewNoteText)
+            comment = itemView.findViewById<TextView>(R.id.textViewNoteComment)
         }
     }
 
