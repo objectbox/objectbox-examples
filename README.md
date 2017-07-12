@@ -1,15 +1,17 @@
 # ObjectBoxExamples
-Examples for [ObjectBox](http://greenrobot.org/announcement/introducing-objectbox-beta/), the new superfast mobile database.
+Examples for [ObjectBox](http://objectbox.io), the new superfast mobile database.
 
-Details will follow, please check the [ObjectBox announcement](http://greenrobot.org/announcement/introducing-objectbox-beta/) and 
-[Documentation](http://greenrobot.org/objectbox/documentation/).
+Each of the examples is a simple note taking Android app. There are 3 different variations of this app:
+
+ * objectbox-example: Java based app
+ * objectbox-kotlin-example: Kotlin based app
+ * daocompat-example: DAO compat is a compatibility layer on top of ObjectBox emulating a greenDAO API
+
 
 Links
 -----
-[ObjectBox Features](http://greenrobot.org/objectbox/features/)
+[ObjectBox Features](http://objectbox.io/features/)
 
-[ObjectBox Documentation](http://greenrobot.org/objectbox/documentation/)
+[ObjectBox Documentation](http://objectbox.io/documentation/)
 
 [ObjectBox repo](https://github.com/greenrobot/ObjectBox) (to report issues)
-
-[ObjectBox License](http://greenrobot.org/objectbox/license/)
