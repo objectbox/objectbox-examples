@@ -3,7 +3,7 @@
 buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'io.objectbox:objectbox-gradle-plugin:0.9.12'
+        classpath 'io.objectbox:objectbox-gradle-plugin:0.9.13-RC3'
     }
 }
 
@@ -13,18 +13,18 @@ apply plugin: 'io.objectbox'
 uploadArchives.enabled = false
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
 
     defaultConfig {
         applicationId "io.objectbox.example"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
     }
 }
 
 dependencies {
-    compile 'io.objectbox:objectbox-android:0.9.12'
+    compile 'io.objectbox:objectbox-android:0.9.13-RC3'
 }
