@@ -1,7 +1,7 @@
 // Repositories are defined in root build.gradle
 
 buildscript {
-    ext.objectBoxVersion = "0.9.13-RC3"
+    ext.objectBoxVersion = "0.9.13"
 
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
