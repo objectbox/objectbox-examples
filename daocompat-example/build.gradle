@@ -1,9 +1,11 @@
 // Repositories are defined in root build.gradle
 
 buildscript {
+    ext.objectBoxVersion = "0.9.13-RC3"
+
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'io.objectbox:objectbox-gradle-plugin:0.9.13-RC3'
+        classpath "io.objectbox:objectbox-gradle-plugin:$objectBoxVersion"
     }
 }
 
@@ -26,8 +28,8 @@ android {
 }
 
 dependencies {
-    compile 'io.objectbox:objectbox-android:0.9.13-RC3'
-    compile 'io.objectbox:objectbox-daocompat:0.9.13-RC3'
+    compile "io.objectbox:objectbox-android:$objectBoxVersion"
+    compile "io.objectbox:objectbox-daocompat:$objectBoxVersion"
 }
 
 objectbox {
