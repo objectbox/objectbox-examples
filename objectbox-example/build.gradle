@@ -1,8 +1,6 @@
 // Repositories are defined in root build.gradle
 
 buildscript {
-    ext.objectBoxVersion = "0.9.13"
-
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
         classpath "io.objectbox:objectbox-gradle-plugin:$objectBoxVersion"
@@ -15,8 +13,8 @@ apply plugin: 'io.objectbox'
 uploadArchives.enabled = false
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    compileSdkVersion _compileSdkVersion
+    buildToolsVersion _buildToolsVersion
 
     defaultConfig {
         applicationId "io.objectbox.example"
