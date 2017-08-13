@@ -1,22 +1,22 @@
 ext {
     _buildToolsVersion = '26.0.1'
     _compileSdkVersion = 26
-    objectBoxVersion = '0.9.13'
+    objectBoxVersion = '0.9.14-RC'
 }
 
 allprojects {
     buildscript {
         repositories {
+            maven { url "http://objectbox.net/beta-repo/" }
             jcenter()
             mavenCentral()
-            maven { url "http://objectbox.net/beta-repo/" }
         }
     }
 
     repositories {
+        maven { url "http://objectbox.net/beta-repo/" }
         jcenter()
         mavenCentral()
-        maven { url "http://objectbox.net/beta-repo/" }
     }
 }
 

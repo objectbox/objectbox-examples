@@ -22,14 +22,16 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ['objectbox.daoCompat': 'true']
+            }
+        }
     }
 }
 
 dependencies {
     compile "io.objectbox:objectbox-android:$objectBoxVersion"
     compile "io.objectbox:objectbox-daocompat:$objectBoxVersion"
-}
-
-objectbox {
-    daoCompat true
 }

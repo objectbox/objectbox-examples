@@ -24,15 +24,18 @@
           "id": "4:1260602348787983453",
           "name": "date"
         }
-      ]
+      ],
+      "relations": []
     }
   ],
   "lastEntityId": "1:6645479796472661392",
   "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
-  "modelVersion": 2,
+  "modelVersion": 3,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
   "retiredPropertyUids": [],
+  "retiredRelationUids": [],
   "version": 1
 }
