@@ -28,9 +28,10 @@ cmake-build-debug/
 # used by build.sh script
 cbuild/
 
-# Native libs
+# ObjectBox: native libs, model backups
 objectbox*.dll
 libobjectbox*.so
+default.json.bak
 
 ### Build script
 /Release/
