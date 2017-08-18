@@ -34,3 +34,8 @@ task zipAll(type: Zip) {
 
     destinationDir buildDir
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.5'
+    distributionType = org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
+}
