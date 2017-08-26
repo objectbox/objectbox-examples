@@ -1,7 +1,7 @@
 ext {
     _buildToolsVersion = '26.0.1'
     _compileSdkVersion = 26
-    objectBoxVersion = '0.9.15'
+    objectBoxVersion = '0.9.16-RC'
 }
 
 allprojects {
