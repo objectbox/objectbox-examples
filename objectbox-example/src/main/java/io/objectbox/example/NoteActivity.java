@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ public class NoteActivity extends Activity {
 
     private EditText editText;
     private View addNoteButton;
+    private TextView textViewLog;
 
     private Box<Note> notesBox;
     private Query<Note> notesQuery;
@@ -52,7 +54,7 @@ public class NoteActivity extends Activity {
     }
 
     protected void setUpViews() {
-        ListView listView = (ListView) findViewById(R.id.listViewNotes);
+        ListView listView = findViewById(R.id.listViewNotes);
         listView.setOnItemClickListener(noteClickListener);
 
         notesAdapter = new NotesAdapter();
@@ -61,7 +63,7 @@ public class NoteActivity extends Activity {
         addNoteButton = findViewById(R.id.buttonAdd);
         addNoteButton.setEnabled(false);
 
-        editText = (EditText) findViewById(R.id.editTextNote);
+        editText = findViewById(R.id.editTextNote);
         editText.setOnEditorActionListener(new OnEditorActionListener() {
 
             @Override
@@ -89,9 +91,11 @@ public class NoteActivity extends Activity {
             public void afterTextChanged(Editable s) {
             }
         });
+
+        textViewLog = findViewById(R.id.textViewLog);
     }
 
-    public void onAddButtonClick(View view) {
+    public void onAddButtonClick(Button view) {
         addNote();
     }
 
@@ -107,7 +111,7 @@ public class NoteActivity extends Activity {
         note.setComment(comment);
         note.setDate(new Date());
         notesBox.put(note);
-        Log.d(App.TAG, "Inserted new note, ID: " + note.getId());
+        log("Inserted new note, ID: " + note.getId());
 
         updateNotes();
     }
@@ -117,9 +121,15 @@ public class NoteActivity extends Activity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Note note = notesAdapter.getItem(position);
             notesBox.remove(note);
-            Log.d(App.TAG, "Deleted note, ID: " + note.getId());
+            log("Deleted note, ID: " + note.getId());
 
             updateNotes();
         }
     };
+
+    private void log(String message) {
+        Log.d(App.TAG, message);
+        message = message + "\n" + textViewLog.getText();
+        textViewLog.setText(message);
+    }
 }
