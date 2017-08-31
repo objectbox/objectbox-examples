@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,12 +21,15 @@ import java.util.Date;
 import java.util.List;
 
 import io.objectbox.Box;
+import io.objectbox.BoxStore;
 import io.objectbox.query.Query;
+import io.objectbox.relation.ToMany;
 
 public class NoteActivity extends Activity {
 
     private EditText editText;
     private View addNoteButton;
+    private TextView textViewLog;
 
     private Box<Note> notesBox;
     private Query<Note> notesQuery;
@@ -38,11 +42,16 @@ public class NoteActivity extends Activity {
 
         setUpViews();
 
-        notesBox = ((App) getApplication()).getBoxStore().boxFor(Note.class);
+        BoxStore boxStore = ((App) getApplication()).getBoxStore();
+        notesBox = boxStore.boxFor(Note.class);
 
         // query all notes, sorted a-z by their text (http://greenrobot.org/objectbox/documentation/queries/)
         notesQuery = notesBox.query().order(Note_.text).build();
         updateNotes();
+
+        // relations example (http://objectbox.io/documentation/relations/)
+        ordersAndCustomers(boxStore);
+        studentsAndTeachers(boxStore);
     }
 
     /** Manual trigger to re-query and update the UI. For a reactive alternative check {@link ReactiveNoteActivity}. */
@@ -52,7 +61,7 @@ public class NoteActivity extends Activity {
     }
 
     protected void setUpViews() {
-        ListView listView = (ListView) findViewById(R.id.listViewNotes);
+        ListView listView = findViewById(R.id.listViewNotes);
         listView.setOnItemClickListener(noteClickListener);
 
         notesAdapter = new NotesAdapter();
@@ -61,7 +70,7 @@ public class NoteActivity extends Activity {
         addNoteButton = findViewById(R.id.buttonAdd);
         addNoteButton.setEnabled(false);
 
-        editText = (EditText) findViewById(R.id.editTextNote);
+        editText = findViewById(R.id.editTextNote);
         editText.setOnEditorActionListener(new OnEditorActionListener() {
 
             @Override
@@ -89,9 +98,11 @@ public class NoteActivity extends Activity {
             public void afterTextChanged(Editable s) {
             }
         });
+
+        textViewLog = findViewById(R.id.textViewLog);
     }
 
-    public void onAddButtonClick(View view) {
+    public void onAddButtonClick(Button view) {
         addNote();
     }
 
@@ -107,7 +118,7 @@ public class NoteActivity extends Activity {
         note.setComment(comment);
         note.setDate(new Date());
         notesBox.put(note);
-        Log.d(App.TAG, "Inserted new note, ID: " + note.getId());
+        log("Inserted new note, ID: " + note.getId());
 
         updateNotes();
     }
@@ -117,9 +128,97 @@ public class NoteActivity extends Activity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Note note = notesAdapter.getItem(position);
             notesBox.remove(note);
-            Log.d(App.TAG, "Deleted note, ID: " + note.getId());
+            log("Deleted note, ID: " + note.getId());
 
             updateNotes();
         }
     };
+
+    private void ordersAndCustomers(BoxStore boxStore) {
+        Box<Customer> customerBox = boxStore.boxFor(Customer.class);
+        Box<Order> orderBox = boxStore.boxFor(Order.class);
+        customerBox.removeAll();
+        orderBox.removeAll();
+
+        Customer customer = new Customer();
+
+        // add using to-one
+        Order order1 = new Order();
+        order1.customer.setTarget(customer);
+        orderBox.put(order1);
+
+        logOrders(orderBox, customer);
+
+        // add using to-many
+        customer.orders.add(new Order());
+        customer.orders.add(new Order());
+        customerBox.put(customer);
+
+        logOrders(orderBox, customer);
+
+        // remove using to-one
+        order1.customer.setTarget(null);
+        orderBox.put(order1);
+
+        // remove using to-many
+        customer.orders.reset();
+        customer.orders.remove(0);
+        customer.orders.remove(0);
+        customerBox.put(customer);
+
+        logOrders(orderBox, customer);
+    }
+
+    private void logOrders(Box<Order> orderBox, Customer customer) {
+        List<Order> ordersQueried = orderBox.query().equal(Order_.customerId, customer.id).build().find();
+        log("Customer " + customer.id + " has " + ordersQueried.size() + " orders");
+        for (Order order : ordersQueried) {
+            log("Order " + order.id + " related to customer " + order.customer.getTargetId());
+        }
+    }
+
+    private void studentsAndTeachers(BoxStore boxStore) {
+        Box<Student> studentBox = boxStore.boxFor(Student.class);
+        Box<Teacher> teacherBox = boxStore.boxFor(Teacher.class);
+        studentBox.removeAll();
+        teacherBox.removeAll();
+
+        // add
+        Teacher teacher1 = new Teacher();
+        Teacher teacher2 = new Teacher();
+
+        Student student1 = new Student();
+        student1.teachers.add(teacher1);
+        student1.teachers.add(teacher2);
+
+        Student student2 = new Student();
+        student2.teachers.add(teacher1);
+
+        studentBox.put(student1, student2);
+
+        logTeachers(studentBox, teacherBox);
+
+        // remove
+        student1.teachers.remove(teacher2);
+        studentBox.put(student1);
+
+        logTeachers(studentBox, teacherBox);
+    }
+
+    private void logTeachers(Box<Student> studentBox, Box<Teacher> teacherBox) {
+        log("There are " + teacherBox.count() + " teachers");
+        List<Student> students = studentBox.getAll();
+        for (Student student : students) {
+            ToMany<Teacher> teachersToMany = student.teachers;
+            for (Teacher teacher : teachersToMany) {
+                log("Student " + student.id + " is taught by teacher " + teacher.id);
+            }
+        }
+    }
+
+    private void log(String message) {
+        Log.d(App.TAG, message);
+        message = message + "\n" + textViewLog.getText();
+        textViewLog.setText(message);
+    }
 }
