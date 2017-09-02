@@ -1,17 +1,15 @@
-package io.objectbox.example;
+package io.objectbox.example.relation;
 
-import io.objectbox.annotation.Backlink;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
 import io.objectbox.relation.ToMany;
 
 @Entity
-public class Customer {
+public class Student {
 
     @Id
     public long id;
 
-    @Backlink
-    public ToMany<Order> orders;
+    public ToMany<Teacher> teachers;
 
 }

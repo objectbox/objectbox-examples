@@ -1,0 +1,75 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:6604073255104229198",
+      "lastPropertyId": "1:6765059211493279731",
+      "name": "Customer",
+      "properties": [
+        {
+          "id": "1:6765059211493279731",
+          "name": "id"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:1820497981542183301",
+      "lastPropertyId": "2:4197828868788551460",
+      "name": "Order",
+      "properties": [
+        {
+          "id": "1:3586064456049770904",
+          "name": "id"
+        },
+        {
+          "id": "2:4197828868788551460",
+          "indexId": "1:3976444895053443633",
+          "name": "customerId"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:7895360300128588958",
+      "lastPropertyId": "1:3749185124218009241",
+      "name": "Student",
+      "properties": [
+        {
+          "id": "1:3749185124218009241",
+          "name": "id"
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:226823656256666507",
+          "name": "teachers"
+        }
+      ]
+    },
+    {
+      "id": "4:7584798022982496514",
+      "lastPropertyId": "1:3206234163090773003",
+      "name": "Teacher",
+      "properties": [
+        {
+          "id": "1:3206234163090773003",
+          "name": "id"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "4:7584798022982496514",
+  "lastIndexId": "1:3976444895053443633",
+  "lastRelationId": "1:226823656256666507",
+  "lastSequenceId": "0:0",
+  "modelVersion": 3,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

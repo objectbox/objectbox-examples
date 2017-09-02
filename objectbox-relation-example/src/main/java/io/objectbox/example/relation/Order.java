@@ -1,4 +1,4 @@
-package io.objectbox.example;
+package io.objectbox.example.relation;
 
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
