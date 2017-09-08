@@ -95,7 +95,7 @@ public class NoteActivity extends Activity {
 
     }
 
-    public void onAddButtonClick(Button view) {
+    public void onAddButtonClick(View view) {
         addNote();
     }
 
