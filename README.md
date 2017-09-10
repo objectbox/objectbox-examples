@@ -11,6 +11,12 @@ And additionally:
 
  * objectbox-relation-example: Demonstrating relations (Java based app)
 
+MyObjectBox missing? Build the project!
+---------------------------------------
+When you open the project in an IDE like Android Studio for the first time, it will complain that it does not find the class `MyObjectBox`.
+This is expected because this class is generated during build time.
+Thus, once you build the project, everything should be fine.
+
 Links
 -----
 [ObjectBox Documentation](http://objectbox.io/documentation/)
