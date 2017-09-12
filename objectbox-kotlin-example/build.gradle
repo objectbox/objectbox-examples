@@ -5,7 +5,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath "io.objectbox:objectbox-gradle-plugin:$objectBoxVersion"
+        classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -39,8 +39,8 @@ android {
 }
 
 dependencies {
-    compile "io.objectbox:objectbox-android:$objectBoxVersion"
-    compile "io.objectbox:objectbox-kotlin:$objectBoxVersion"
-    kapt "io.objectbox:objectbox-processor:$objectBoxVersion"
+    compile "io.objectbox:objectbox-android:$objectboxVersion"
+    compile "io.objectbox:objectbox-kotlin:$objectboxVersion"
+    kapt "io.objectbox:objectbox-processor:$objectboxVersion"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
