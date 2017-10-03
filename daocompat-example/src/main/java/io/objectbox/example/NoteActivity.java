@@ -15,11 +15,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
+import org.greenrobot.daocompat.query.Query;
+
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 
-import io.objectbox.daocompat.query.Query;
 import io.objectbox.example.NoteDao.Properties;
 import io.objectbox.example.daocompat.R;
 
