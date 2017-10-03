@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <!-- For Object Browser -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="io.objectbox.example.App"
         android:allowBackup="true"

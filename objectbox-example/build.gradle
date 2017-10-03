@@ -8,6 +8,14 @@ buildscript {
 }
 
 apply plugin: 'com.android.application'
+
+// ObjectBox browser dependencies must be set before applying ObjectBox plugin so it does not add objectbox-android
+// (would result in two conflicting versions, e.g. "Duplicate files copied in APK lib/armeabi-v7a/libobjectbox.so").
+dependencies {
+    debugCompile "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
+    releaseCompile "io.objectbox:objectbox-android:$objectboxVersion"
+}
+
 apply plugin: 'io.objectbox'
 
 uploadArchives.enabled = false
