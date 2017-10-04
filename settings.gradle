@@ -3,4 +3,4 @@ include 'objectbox-kotlin-example'
 include 'objectbox-relation-example'
 include 'daocompat-example'
 // Enable this to see desktop unit tests in action (not yet supported on macOS yet - sorry)
-// include 'desktop-test-example'
+include 'desktop-test-example'

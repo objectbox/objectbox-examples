@@ -20,7 +20,6 @@ public class Note {
         this.id = id;
     }
 
-    @Generated(hash = 1029219451)
     public Note(long id, String text, String comment, Date date) {
         this.id = id;
         this.text = text;
@@ -28,7 +27,6 @@ public class Note {
         this.date = date;
     }
 
-    @Generated(hash = 1272611929)
     public Note() {
     }
 
