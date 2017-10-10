@@ -26,11 +26,69 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "2:6484276428558025165",
+      "lastPropertyId": "1:952586124457164070",
+      "name": "Customer",
+      "properties": [
+        {
+          "id": "1:952586124457164070",
+          "name": "id"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:7533143683844958985",
+      "lastPropertyId": "2:1197788777851434594",
+      "name": "Order",
+      "properties": [
+        {
+          "id": "1:6676927494711688478",
+          "name": "id"
+        },
+        {
+          "id": "2:1197788777851434594",
+          "indexId": "1:7549377217294631345",
+          "name": "customerId"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:5402278478819710099",
+      "lastPropertyId": "1:8711593035932601102",
+      "name": "Student",
+      "properties": [
+        {
+          "id": "1:8711593035932601102",
+          "name": "id"
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:4253503237559343063",
+          "name": "teachers"
+        }
+      ]
+    },
+    {
+      "id": "5:3539139879133829140",
+      "lastPropertyId": "1:3857234318981781464",
+      "name": "Teacher",
+      "properties": [
+        {
+          "id": "1:3857234318981781464",
+          "name": "id"
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "1:7803930932746315919",
-  "lastIndexId": "0:0",
-  "lastRelationId": "0:0",
+  "lastEntityId": "5:3539139879133829140",
+  "lastIndexId": "1:7549377217294631345",
+  "lastRelationId": "1:4253503237559343063",
   "lastSequenceId": "0:0",
   "modelVersion": 4,
   "modelVersionParserMinimum": 4,
