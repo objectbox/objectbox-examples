@@ -18,8 +18,6 @@ dependencies {
 
 apply plugin: 'io.objectbox'
 
-uploadArchives.enabled = false
-
 android {
     compileSdkVersion _compileSdkVersion
     buildToolsVersion _buildToolsVersion
