@@ -41,16 +41,16 @@ public class NoteActivity extends FragmentActivity {
 
         setUpViews();
 
+        BoxStore boxStore = ((App) getApplication()).getBoxStore();
+        notesBox = boxStore.boxFor(Note.class);
+
         NoteViewModel model = ViewModelProviders.of(this).get(NoteViewModel.class);
-        model.getNoteLiveData().observe(this, new Observer<List<Note>>() {
+        model.getNoteLiveData(notesBox).observe(this, new Observer<List<Note>>() {
             @Override
             public void onChanged(@Nullable List<Note> notes) {
                 notesAdapter.setNotes(notes);
             }
         });
-
-        BoxStore boxStore = ((App) getApplication()).getBoxStore();
-        notesBox = boxStore.boxFor(Note.class);
     }
 
     protected void setUpViews() {
