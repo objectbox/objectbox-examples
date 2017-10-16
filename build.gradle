@@ -17,6 +17,7 @@ allprojects {
         maven { url "http://objectbox.net/beta-repo/" }
         jcenter()
         mavenCentral()
+        google()
     }
 }
 

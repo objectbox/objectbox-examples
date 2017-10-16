@@ -1,0 +1,29 @@
+// Repositories are defined in root build.gradle
+
+buildscript {
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'io.objectbox'
+
+android {
+    compileSdkVersion _compileSdkVersion
+    buildToolsVersion _buildToolsVersion
+
+    defaultConfig {
+        applicationId "io.objectbox.example.arch"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+dependencies {
+    compile "com.android.support:support-fragment:26.1.0"
+    compile "android.arch.lifecycle:extensions:1.0.0-beta2"
+}
