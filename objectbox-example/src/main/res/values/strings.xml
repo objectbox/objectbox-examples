@@ -1,7 +1,7 @@
 <resources>
 
-    <string name="app_name">Note Example</string>
-    <string name="app_name_reactive">Reactive Note Example</string>
+    <string name="app_name">OB Example</string>
+    <string name="app_name_reactive">OB Reactive Example</string>
 
     <string name="enter_new_note">Enter new note</string>
     <string name="add">Add</string>
