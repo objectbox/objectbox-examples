@@ -23,7 +23,7 @@ import io.objectbox.Box;
 import io.objectbox.android.AndroidScheduler;
 import io.objectbox.query.Query;
 import io.objectbox.reactive.DataObserver;
-import io.objectbox.reactive.DataSubscription;
+import io.objectbox.reactive.DataSubscriptionList;
 
 /** An alternative to {@link NoteActivity} using a reactive query (without RxJava, just plain ObjectBox API). */
 public class ReactiveNoteActivity extends Activity {
@@ -34,7 +34,7 @@ public class ReactiveNoteActivity extends Activity {
     private Box<Note> notesBox;
     private Query<Note> notesQuery;
     private NotesAdapter notesAdapter;
-    private DataSubscription subscription;
+    private DataSubscriptionList subscriptions = new DataSubscriptionList();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class ReactiveNoteActivity extends Activity {
         notesQuery = notesBox.query().order(Note_.text).build();
 
         // Reactive query (http://greenrobot.org/objectbox/documentation/data-observers-reactive-extensions/)
-        subscription = notesQuery.subscribe().on(AndroidScheduler.mainThread())
+        notesQuery.subscribe(subscriptions).on(AndroidScheduler.mainThread())
                 .observer(new DataObserver<List<Note>>() {
                     @Override
                     public void onData(List<Note> notes) {
@@ -60,7 +60,7 @@ public class ReactiveNoteActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        subscription.cancel();
+        subscriptions.cancel();
         super.onDestroy();
     }
 
