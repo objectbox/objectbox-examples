@@ -24,7 +24,7 @@ public class NoteTest extends AbstractObjectBoxTest {
     }
 
     @Test
-    public void testParent() {
+    public void testParentAndChildren() {
         Box<Note> box = store.boxFor(Note.class);
         Note parent = new Note();
         parent.setText("Parent");
@@ -32,12 +32,17 @@ public class NoteTest extends AbstractObjectBoxTest {
         Note note = new Note();
         note.setText("Child");
         note.setParent(parent);
-        long id = box.put(note);
+        long childId = box.put(note);
 
-        assertTrue(note.getParent().getId() > 0);
+        long parentId = note.getParent().getId();
+        assertTrue(parentId > 0);
 
-        Note noteFromBox = box.get(id);
+        Note noteFromBox = box.get(childId);
         assertEquals("Child", noteFromBox.getText());
         assertEquals("Parent", noteFromBox.getParent().getText());
+
+        Note parentNoteFromBox = box.get(parentId);
+        assertEquals(1, parentNoteFromBox.getChildren().size());
+        assertEquals(childId, parentNoteFromBox.getChildren().get(0).getId());
     }
 }

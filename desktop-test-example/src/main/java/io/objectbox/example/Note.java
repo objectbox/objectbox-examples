@@ -2,8 +2,10 @@ package io.objectbox.example;
 
 import java.util.Date;
 
+import io.objectbox.annotation.Backlink;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
+import io.objectbox.relation.ToMany;
 import io.objectbox.relation.ToOne;
 
 @Entity
@@ -16,6 +18,9 @@ public class Note {
     String comment;
     Date date;
     ToOne<Note> parent;
+
+    @Backlink
+    ToMany<Note> children;
 
     public Note(Long id) {
         this.id = id;
@@ -31,12 +36,8 @@ public class Note {
     public Note() {
     }
 
-    public Long getId() {
+    public long getId() {
         return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getText() {
@@ -73,5 +74,9 @@ public class Note {
 
     public void setParent(Note parent) {
         this.parent.setTarget(parent);
+    }
+
+    public ToMany<Note> getChildren() {
+        return children;
     }
 }
