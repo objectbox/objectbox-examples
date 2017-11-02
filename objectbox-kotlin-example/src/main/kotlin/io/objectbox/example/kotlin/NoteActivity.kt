@@ -19,6 +19,7 @@ import java.text.DateFormat
 import java.util.Date
 
 import io.objectbox.Box
+import io.objectbox.kotlin.boxFor
 import io.objectbox.query.Query
 
 class NoteActivity : Activity() {
@@ -36,7 +37,7 @@ class NoteActivity : Activity() {
 
         setUpViews()
 
-        notesBox = (application as App).boxStore.boxFor(Note::class.java)
+        notesBox = (application as App).boxStore.boxFor<Note>()
 
         // query all notes, sorted a-z by their text (http://greenrobot.org/objectbox/documentation/queries/)
         notesQuery = notesBox.query().order(Note_.text).build()
