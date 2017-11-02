@@ -3,18 +3,19 @@ package io.objectbox.example;
 import java.util.Date;
 
 import io.objectbox.annotation.Entity;
-import io.objectbox.annotation.Generated;
 import io.objectbox.annotation.Id;
+import io.objectbox.relation.ToOne;
 
 @Entity
 public class Note {
 
     @Id
-    private long id;
+    long id;
 
-    private String text;
-    private String comment;
-    private Date date;
+    String text;
+    String comment;
+    Date date;
+    ToOne<Note> parent;
 
     public Note(Long id) {
         this.id = id;
@@ -66,4 +67,11 @@ public class Note {
         this.id = id;
     }
 
+    public Note getParent() {
+        return parent.getTarget();
+    }
+
+    public void setParent(Note parent) {
+        this.parent.setTarget(parent);
+    }
 }
