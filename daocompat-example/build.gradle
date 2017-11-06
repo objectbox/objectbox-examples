@@ -30,6 +30,5 @@ android {
 }
 
 dependencies {
-    compile "io.objectbox:objectbox-android:$objectboxVersion"
-    compile "org.greenrobot:objectbox-daocompat:1.0.0"
+    compile "org.greenrobot:objectbox-daocompat:1.1.0"
 }
