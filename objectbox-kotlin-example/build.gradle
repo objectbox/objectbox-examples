@@ -15,10 +15,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'io.objectbox'
 
-// Until the ObjectBox Gradle plugin has better support for Kotlin, we must help it a bit:
-//task('compileKotlin').dependsOn objectbox
-android.sourceSets.main.java.srcDirs += 'build/generated/source/objectbox'
-
 android {
     compileSdkVersion _compileSdkVersion
     buildToolsVersion _buildToolsVersion
