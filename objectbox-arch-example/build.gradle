@@ -25,5 +25,5 @@ android {
 
 dependencies {
     compile "com.android.support:support-fragment:26.1.0"
-    compile "android.arch.lifecycle:extensions:1.0.0-beta2"
+    compile "android.arch.lifecycle:extensions:1.0.0"
 }
