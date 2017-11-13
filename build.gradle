@@ -37,6 +37,7 @@ task zipAll(type: Zip) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.1'
-    distributionType = org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
+    group 'build setup'
+    gradleVersion '4.3'
+    distributionType Wrapper.DistributionType.ALL
 }
