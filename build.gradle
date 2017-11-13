@@ -1,5 +1,5 @@
 ext {
-    _buildToolsVersion = '26.0.1'
+    _buildToolsVersion = '26.0.3'
     _compileSdkVersion = 26
     objectboxVersion = '1.2.1'
 }
@@ -37,6 +37,6 @@ task zipAll(type: Zip) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.1'
+    gradleVersion = '4.3.1'
     distributionType = org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 }
