@@ -10,6 +10,10 @@ buildscript {
         // https://developer.android.com/studio/build/gradle-plugin-3-0-0.html#known_issues
         classpath 'com.android.tools.build:gradle:3.0.0'
     }
+
+    repositories {
+        google()
+    }
 }
 
 allprojects {
