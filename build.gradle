@@ -1,7 +1,7 @@
 ext {
     _buildToolsVersion = '27.0.1'
     _compileSdkVersion = 26
-    objectboxVersion = '1.2.1'
+    objectboxVersion = '1.2.2-beta'
 }
 
 buildscript {
@@ -47,6 +47,6 @@ task zipAll(type: Zip) {
 
 task wrapper(type: Wrapper) {
     group 'build setup'
-    gradleVersion '4.3'
+    gradleVersion '4.3.1'
     distributionType Wrapper.DistributionType.ALL
 }
