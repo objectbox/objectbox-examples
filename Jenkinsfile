@@ -34,6 +34,7 @@ pipeline {
     post {
         always {
             junit '**/build/test-results/**/TEST-*.xml'
+            archive '**/build/reports/lint-results.html'
         }
 
         changed {
