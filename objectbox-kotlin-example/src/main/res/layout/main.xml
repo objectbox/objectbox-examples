@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:onClick="onAddButtonClick"
-        android:text="@string/add"/>
+        android:text="@string/add"
+        tools:ignore="OnClick"/> <!-- Lint false positive on CI -->
 
     <EditText
         android:id="@+id/editTextNote"
