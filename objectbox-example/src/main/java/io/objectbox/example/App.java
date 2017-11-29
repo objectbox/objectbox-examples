@@ -1,7 +1,9 @@
 package io.objectbox.example;
 
 import android.app.Application;
+import android.util.Log;
 
+import io.objectbox.Box;
 import io.objectbox.BoxStore;
 import io.objectbox.android.AndroidObjectBrowser;
 
@@ -19,6 +21,8 @@ public class App extends Application {
         if (BuildConfig.DEBUG) {
             new AndroidObjectBrowser(boxStore).start(this);
         }
+
+        Log.d("App", "Using ObjectBox " + BoxStore.getVersion() + " (" + BoxStore.getVersionNative() + ")");
     }
 
     public BoxStore getBoxStore() {
