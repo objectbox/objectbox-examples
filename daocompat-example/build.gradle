@@ -16,7 +16,7 @@ android {
     defaultConfig {
         applicationId "io.objectbox.example.daocompat"
         minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
 
@@ -29,5 +29,5 @@ android {
 }
 
 dependencies {
-    implementation "org.greenrobot:objectbox-daocompat:1.1.0"
+    implementation "org.greenrobot:objectbox-daocompat:1.4.2"
 }
