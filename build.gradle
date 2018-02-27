@@ -20,7 +20,6 @@ buildscript {
 allprojects {
     buildscript {
         repositories {
-            maven { url "http://objectbox.net/beta-repo/" }
             jcenter()
             mavenCentral()
             google()
@@ -28,7 +27,6 @@ allprojects {
     }
 
     repositories {
-        maven { url "http://objectbox.net/beta-repo/" }
         jcenter()
         mavenCentral()
         google()
