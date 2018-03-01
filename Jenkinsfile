@@ -29,6 +29,12 @@ pipeline {
                 sh './gradlew --stacktrace clean build'
             }
         }
+
+        stage('run-plain-java-example') {
+            steps {
+                sh './gradlew desktop-test-example:run'
+            }
+        }
     }
 
     post {
