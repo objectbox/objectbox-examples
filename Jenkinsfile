@@ -32,6 +32,10 @@ pipeline {
 
         stage('run-plain-java-example') {
             steps {
+                dir('desktop-test-example/objectbox-notes-db') {
+                    deleteDir()
+                }
+                sh './gradlew desktop-test-example:run'
                 sh './gradlew desktop-test-example:run'
             }
         }
