@@ -36,6 +36,11 @@ public class Note {
     public Note() {
     }
 
+    public Note(String text) {
+        this.text = text;
+        date = new Date();
+    }
+
     public long getId() {
         return this.id;
     }
@@ -78,5 +83,10 @@ public class Note {
 
     public ToMany<Note> getChildren() {
         return children;
+    }
+
+    @Override
+    public String toString() {
+        return "Note \"" + text + "\" on " + date;
     }
 }
