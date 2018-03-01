@@ -1,15 +1,6 @@
 // Repositories are defined in root build.gradle
 
 buildscript {
-    ext {
-        osName = System.getProperty("os.name").toLowerCase()
-        isLinux = osName.contains("linux")
-        isWindows = osName.contains("windows")
-        is64 = System.getProperty("sun.arch.data.model") == "64"
-        isLinux64 = isLinux && is64
-        isWindows64 = isWindows && is64
-    }
-
     repositories {
         maven { url "https://plugins.gradle.org/m2/" }
     }
@@ -28,15 +19,13 @@ targetCompatibility = '1.7'
 sourceCompatibility = '1.7'
 
 dependencies {
-    compile "io.objectbox:objectbox-java:$objectboxVersion"
-    // Could also be Android dependency:
-    // compile "io.objectbox:objectbox-android:$objectboxVersion"
+    // Dynamic platform dependency; alternatively, you could just list all platforms (e.g. to package all platforms)
+    def osName = System.getProperty("os.name").toLowerCase()
+    def objectboxPlatform = osName.contains("linux") ? 'linux' : osName.contains("windows") ? 'windows' :
+            osName.contains("mac") ? 'macos' : 'unsupported-patform'
 
-    if (isLinux64) {
-        compile "io.objectbox:objectbox-linux:$objectboxVersion"
-    } else if (isWindows64) {
-        compile "io.objectbox:objectbox-windows:$objectboxVersion"
-    } else println("Native dependency could not be set up for unsupported OS: " + osName)
+    compile "io.objectbox:objectbox-java:$objectboxVersion"
+    compile "io.objectbox:objectbox-$objectboxPlatform:$objectboxVersion"
 
     testCompile 'junit:junit:4.12'
 }
