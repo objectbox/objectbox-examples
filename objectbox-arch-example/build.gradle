@@ -16,13 +16,13 @@ android {
     defaultConfig {
         applicationId "io.objectbox.example.arch"
         minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
 }
 
 dependencies {
-    implementation "com.android.support:support-fragment:27.0.1"
-    implementation "android.arch.lifecycle:extensions:1.0.0"
+    implementation "com.android.support:support-fragment:27.0.2"
+    implementation "android.arch.lifecycle:extensions:1.1.0"
 }
