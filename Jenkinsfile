@@ -15,6 +15,7 @@
  */
 
 // https://jenkins.io/doc/book/pipeline/syntax/
+def COLOR_MAP = ['SUCCESS': 'good', 'FAILURE': 'danger', 'UNSTABLE': 'danger', 'ABORTED': 'danger']
 pipeline {
     agent any
 
@@ -48,7 +49,7 @@ pipeline {
         }
 
         changed {
-            slackSend color: "good",
+            slackSend color: COLOR_MAP[currentBuild.currentResult],
                     message: "Changed to ${currentBuild.currentResult}: ${currentBuild.fullDisplayName}\n${env.BUILD_URL}"
         }
 
