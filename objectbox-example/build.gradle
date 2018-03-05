@@ -13,6 +13,13 @@ apply plugin: 'com.android.application'
 dependencies {
     debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
     releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
+
+    // Required -- JUnit 4 framework
+    testImplementation 'junit:junit:4.12'
+    // Required -- native ObjectBox library for your operating system, pick from:
+    testImplementation "io.objectbox:objectbox-linux:$objectboxVersion"
+    testImplementation "io.objectbox:objectbox-macos:$objectboxVersion"
+    testImplementation "io.objectbox:objectbox-windows:$objectboxVersion"
 }
 
 apply plugin: 'io.objectbox'
