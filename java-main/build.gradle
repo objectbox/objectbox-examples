@@ -22,13 +22,13 @@ sourceCompatibility = '1.7'
 mainClassName = "io.objectbox.example.Main"
 
 dependencies {
-    // Dynamic platform dependency; alternatively, you could just list all platforms (e.g. to package all platforms)
-    def osName = System.getProperty("os.name").toLowerCase()
-    def objectboxPlatform = osName.contains("linux") ? 'linux' : osName.contains("windows") ? 'windows' :
-            osName.contains("mac") ? 'macos' : 'unsupported-patform'
-
     implementation "io.objectbox:objectbox-java:$objectboxVersion"
-    implementation "io.objectbox:objectbox-$objectboxPlatform:$objectboxVersion"
+
+    // Optional: include all native libraries for distribution
+    // (only the one for the current platform is added automatically)
+    implementation "io.objectbox:objectbox-linux:$objectboxVersion"
+    implementation "io.objectbox:objectbox-macos:$objectboxVersion"
+    implementation "io.objectbox:objectbox-windows:$objectboxVersion"
 
     testCompile 'junit:junit:4.12'
 }
