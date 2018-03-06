@@ -13,7 +13,9 @@ public abstract class AbstractObjectBoxTest {
 
     @Before
     public void setUp() throws IOException {
+        // store the database in the systems temporary files folder
         File tempFile = File.createTempFile("object-store-test", "");
+        // ensure file does not exist so builder creates a directory instead
         tempFile.delete();
         boxStoreDir = tempFile;
         store = MyObjectBox.builder().directory(boxStoreDir).build();
