@@ -1,7 +1,7 @@
 ext {
     _buildToolsVersion = '27.0.3'
     _compileSdkVersion = 27
-    objectboxVersion = '1.4.3'
+    objectboxVersion = '1.4.5'
 }
 
 buildscript {
