@@ -1,14 +1,14 @@
 ext {
     _buildToolsVersion = '27.0.3'
     _compileSdkVersion = 27
-    objectboxVersion = '1.4.5'
+    objectboxVersion = '1.5.0-RC'
 }
 
 buildscript {
     dependencies {
         // need to include in top build file
         // https://developer.android.com/studio/build/gradle-plugin-3-0-0.html#known_issues
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.1.1'
     }
 
     repositories {
