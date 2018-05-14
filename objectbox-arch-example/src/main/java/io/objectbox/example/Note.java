@@ -3,9 +3,7 @@ package io.objectbox.example;
 import java.util.Date;
 
 import io.objectbox.annotation.Entity;
-import io.objectbox.annotation.Generated;
 import io.objectbox.annotation.Id;
-import io.objectbox.annotation.apihint.Internal;
 
 @Entity
 public class Note {
