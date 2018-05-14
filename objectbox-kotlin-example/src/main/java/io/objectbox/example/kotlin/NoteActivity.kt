@@ -5,22 +5,17 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.TextView
-import android.widget.TextView.OnEditorActionListener
-
-import java.text.DateFormat
-import java.util.Date
-
 import io.objectbox.Box
 import io.objectbox.kotlin.boxFor
 import io.objectbox.query.Query
+import java.text.DateFormat
+import java.util.*
 
 class NoteActivity : Activity() {
 
@@ -37,7 +32,7 @@ class NoteActivity : Activity() {
 
         setUpViews()
 
-        notesBox = (application as App).boxStore.boxFor<Note>()
+        notesBox = ObjectBox.boxStore.boxFor()
 
         // query all notes, sorted a-z by their text (http://greenrobot.org/objectbox/documentation/queries/)
         notesQuery = notesBox.query().order(Note_.text).build()
@@ -50,37 +45,26 @@ class NoteActivity : Activity() {
         notesAdapter.setNotes(notes)
     }
 
-    protected fun setUpViews() {
-        val listView = findViewById<ListView>(R.id.listViewNotes)
-        listView.onItemClickListener = noteClickListener
-
+    private fun setUpViews() {
         notesAdapter = NotesAdapter()
-        listView.adapter = notesAdapter
 
-        addNoteButton = findViewById(R.id.buttonAdd)
-        addNoteButton.isEnabled = false
+        findViewById<ListView>(R.id.listViewNotes).apply {
+            adapter = notesAdapter
+            onItemClickListener = noteClickListener
+        }
 
-        editText = findViewById<EditText>(R.id.editTextNote)
-        editText.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                addNote()
-                return@OnEditorActionListener true
-            }
-            false
-        })
-        editText.addTextChangedListener(object : TextWatcher {
+        addNoteButton = findViewById<View>(R.id.buttonAdd).apply {
+            isEnabled = false
+        }
 
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                val enable = s.length != 0
-                addNoteButton.isEnabled = enable
-            }
-
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-
-            override fun afterTextChanged(s: Editable) {}
-        })
+        editText = findViewById<EditText>(R.id.editTextNote).apply {
+            setOnEditorActionListener(editorActionListener)
+            addTextChangedListener(textChangedListener)
+        }
     }
 
+    // Linked from main.xml
+    @Suppress("UNUSED_PARAMETER")
     fun onAddButtonClick(view: View) {
         addNote()
     }
@@ -99,11 +83,32 @@ class NoteActivity : Activity() {
         updateNotes()
     }
 
-    internal var noteClickListener: OnItemClickListener = OnItemClickListener { parent, view, position, id ->
-        val note = notesAdapter.getItem(position)
-        notesBox.remove(note)
-        Log.d(App.TAG, "Deleted note, ID: " + note.id)
-
+    private val noteClickListener = OnItemClickListener { _, _, position, _ ->
+        notesAdapter.getItem(position)?.also {
+            notesBox.remove(it)
+            Log.d(App.TAG, "Deleted note, ID: " + it.id)
+        }
         updateNotes()
+    }
+
+    private val editorActionListener = TextView.OnEditorActionListener { _, actionId, _ ->
+        if (actionId == EditorInfo.IME_ACTION_DONE) {
+            addNote()
+            true
+        } else {
+            false
+        }
+    }
+
+    private val textChangedListener = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+        }
+
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            addNoteButton.isEnabled = s.isNotEmpty()
+        }
+
+        override fun afterTextChanged(s: Editable) {
+        }
     }
 }
