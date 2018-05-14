@@ -25,10 +25,6 @@ android {
         versionCode 1
         versionName "1.0"
     }
-
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
 }
 
 dependencies {
