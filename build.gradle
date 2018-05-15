@@ -50,6 +50,6 @@ task zipAll(type: Zip) {
 
 task wrapper(type: Wrapper) {
     group 'build setup'
-    gradleVersion '4.5.1'
+    gradleVersion '4.7'
     distributionType Wrapper.DistributionType.ALL
 }
