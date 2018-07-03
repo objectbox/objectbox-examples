@@ -13,6 +13,8 @@ import android.widget.ListView
 import android.widget.TextView
 import io.objectbox.Box
 import io.objectbox.android.AndroidScheduler
+import io.objectbox.kotlin.boxFor
+import io.objectbox.kotlin.query
 import io.objectbox.query.Query
 import io.objectbox.reactive.DataSubscription
 import java.text.DateFormat
@@ -35,12 +37,15 @@ class ReactiveNoteActivity : Activity() {
 
         setUpViews()
 
-        notesBox = ObjectBox.boxStore.boxFor(Note::class.java)
+        // using ObjectBox Kotlin extension functions (https://docs.objectbox.io/kotlin-support)
+        notesBox = ObjectBox.boxStore.boxFor()
 
-        // query all notes, sorted a-z by their text (http://greenrobot.org/objectbox/documentation/queries/)
-        notesQuery = notesBox.query().order(Note_.text).build()
+        // query all notes, sorted a-z by their text (https://docs.objectbox.io/queries)
+        notesQuery = notesBox.query {
+            order(Note_.text)
+        }
 
-        // Reactive query (http://greenrobot.org/objectbox/documentation/data-observers-reactive-extensions/)
+        // Reactive query (https://docs.objectbox.io/data-observers-and-rx)
         subscription = notesQuery.subscribe().on(AndroidScheduler.mainThread())
                 .observer { notes -> notesAdapter.setNotes(notes) }
     }

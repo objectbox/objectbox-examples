@@ -13,6 +13,7 @@ import android.widget.ListView
 import android.widget.TextView
 import io.objectbox.Box
 import io.objectbox.kotlin.boxFor
+import io.objectbox.kotlin.query
 import io.objectbox.query.Query
 import java.text.DateFormat
 import java.util.*
@@ -32,10 +33,13 @@ class NoteActivity : Activity() {
 
         setUpViews()
 
+        // using ObjectBox Kotlin extension functions (https://docs.objectbox.io/kotlin-support)
         notesBox = ObjectBox.boxStore.boxFor()
 
-        // query all notes, sorted a-z by their text (http://greenrobot.org/objectbox/documentation/queries/)
-        notesQuery = notesBox.query().order(Note_.text).build()
+        // query all notes, sorted a-z by their text (https://docs.objectbox.io/queries)
+        notesQuery = notesBox.query {
+            order(Note_.text)
+        }
         updateNotes()
     }
 
