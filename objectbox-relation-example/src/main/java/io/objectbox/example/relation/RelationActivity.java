@@ -15,7 +15,7 @@ import io.objectbox.Box;
 import io.objectbox.BoxStore;
 import io.objectbox.relation.ToMany;
 
-/** ObjectBox relations example (http://objectbox.io/documentation/relations/) */
+/** ObjectBox relations example (https://docs.objectbox.io/relations) */
 public class RelationActivity extends Activity {
 
     private TextView textViewLog;

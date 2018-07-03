@@ -11,7 +11,7 @@ public class NoteViewModel extends ViewModel {
 
     public ObjectBoxLiveData<Note> getNoteLiveData(Box<Note> notesBox) {
         if (noteLiveData == null) {
-            // query all notes, sorted a-z by their text (http://greenrobot.org/objectbox/documentation/queries/)
+            // query all notes, sorted a-z by their text (https://docs.objectbox.io/queries)
             noteLiveData = new ObjectBoxLiveData<>(notesBox.query().order(Note_.text).build());
         }
         return noteLiveData;

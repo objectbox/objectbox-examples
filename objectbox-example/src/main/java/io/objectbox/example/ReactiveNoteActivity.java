@@ -45,10 +45,10 @@ public class ReactiveNoteActivity extends Activity {
 
         notesBox = ((App) getApplication()).getBoxStore().boxFor(Note.class);
 
-        // query all notes, sorted a-z by their text (http://greenrobot.org/objectbox/documentation/queries/)
+        // query all notes, sorted a-z by their text (https://docs.objectbox.io/queries)
         notesQuery = notesBox.query().order(Note_.text).build();
 
-        // Reactive query (http://greenrobot.org/objectbox/documentation/data-observers-reactive-extensions/)
+        // Reactive query (https://docs.objectbox.io/data-observers-and-rx)
         notesQuery.subscribe(subscriptions).on(AndroidScheduler.mainThread())
                 .observer(new DataObserver<List<Note>>() {
                     @Override

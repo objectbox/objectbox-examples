@@ -43,7 +43,7 @@ public class NoteActivity extends Activity {
         BoxStore boxStore = ((App) getApplication()).getBoxStore();
         notesBox = boxStore.boxFor(Note.class);
 
-        // query all notes, sorted a-z by their text (http://greenrobot.org/objectbox/documentation/queries/)
+        // query all notes, sorted a-z by their text (https://docs.objectbox.io/queries)
         notesQuery = notesBox.query().order(Note_.text).build();
         updateNotes();
     }

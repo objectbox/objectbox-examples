@@ -15,7 +15,7 @@ public class NotePagedViewModel extends ViewModel {
 
     public LiveData<PagedList<Note>> getNoteLiveDataPaged(Box<Note> notesBox) {
         if (noteLiveDataPaged == null) {
-            // query all notes, sorted a-z by their text (http://greenrobot.org/objectbox/documentation/queries/)
+            // query all notes, sorted a-z by their text (https://docs.objectbox.io/queries)
             Query<Note> query = notesBox.query().order(Note_.text).build();
             noteLiveDataPaged = new LivePagedListBuilder<>(
                     new ObjectBoxDataSource.Factory<>(query),

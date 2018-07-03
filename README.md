@@ -1,5 +1,5 @@
 # ObjectBoxExamples
-Examples for [ObjectBox](http://objectbox.io), the new superfast object-oriented database.
+Examples for [ObjectBox](https://objectbox.io), the new superfast object-oriented database.
 
 The basic example is a minimal note taking Android app. There are 3 different variations of this app:
 
@@ -19,8 +19,8 @@ Thus, once you build the project, everything should be fine.
 
 Links
 -----
-[ObjectBox Documentation](http://objectbox.io/documentation/)
+[ObjectBox Documentation](https://docs.objectbox.io)
 
-[ObjectBox Features](http://objectbox.io/features/)
+[ObjectBox Features](https://objectbox.io/features/)
 
-[ObjectBox repo](https://github.com/greenrobot/ObjectBox) (to report issues)
+[ObjectBox repo](https://github.com/objectbox/objectbox-java) (to report issues)

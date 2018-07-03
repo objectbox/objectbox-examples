@@ -8,6 +8,9 @@ import java.io.File;
 import io.objectbox.BoxStore;
 import io.objectbox.DebugFlags;
 
+/**
+ * Android Local Unit test example (https://docs.objectbox.io/android-local-unit-tests)
+ */
 public class AbstractObjectBoxTest {
 
     private static final File TEST_DIRECTORY = new File("objectbox-example/test-db");
