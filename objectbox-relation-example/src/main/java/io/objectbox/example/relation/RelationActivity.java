@@ -110,6 +110,11 @@ public class RelationActivity extends Activity {
         student1.teachers.remove(teacher1);
         student1.teachers.applyChangesToDb(); // more efficient than studentBox.put(student1);
         logTeachers(studentBox, teacherBox);
+
+        logTitle("Remove student of second teacher using backlink");
+        teacher2.students.clear();
+        teacher2.students.applyChangesToDb();
+        logTeachers(studentBox, teacherBox);
     }
 
     private void logTeachers(Box<Student> studentBox, Box<Teacher> teacherBox) {
