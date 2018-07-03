@@ -1,6 +1,6 @@
-<manifest xmlns:tools="http://schemas.android.com/tools"
-    package="io.objectbox.example.kotlin"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="io.objectbox.example.kotlin">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -11,10 +11,16 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <!-- uncomment and remove line below to use reactive example activity -->
-        <!--<activity android:name=".ReactiveNoteActivity">-->
         <activity android:name=".NoteActivity">
-        <intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ReactiveNoteActivity"
+            android:label="@string/app_name_reactive">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
