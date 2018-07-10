@@ -11,7 +11,8 @@ public class Teacher {
     @Id
     public long id;
 
-    @Backlink
+    // 'to' is optional if only one relation matches
+    @Backlink(to = "teachers")
     public ToMany<Student> students;
 
 }

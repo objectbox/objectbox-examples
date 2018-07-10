@@ -11,7 +11,8 @@ public class Customer {
     @Id
     public long id;
 
-    @Backlink
+    // 'to' is optional if only one relation matches
+    @Backlink(to = "customer")
     public ToMany<Order> orders;
 
 }
