@@ -13,6 +13,7 @@ import java.util.List;
 
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
+import io.objectbox.query.QueryBuilder;
 import io.objectbox.relation.ToMany;
 
 /** ObjectBox relations example (https://docs.objectbox.io/relations) */
@@ -96,24 +97,33 @@ public class RelationActivity extends Activity {
         teacherBox.removeAll();
 
         logTitle("Add two students and two teachers; first student has two teachers, second student has one teacher");
-        Teacher teacher1 = new Teacher();
-        Teacher teacher2 = new Teacher();
-        Student student1 = new Student();
-        student1.teachers.add(teacher1);
-        student1.teachers.add(teacher2);
-        Student student2 = new Student();
-        student2.teachers.add(teacher1);
-        studentBox.put(student1, student2);
+        Teacher obiWan = new Teacher("Obi-Wan Kenobi");
+        Teacher yoda = new Teacher("Yoda");
+        Student luke = new Student("Luke Skywalker");
+        luke.teachers.add(obiWan);
+        luke.teachers.add(yoda);
+        Student anakin = new Student("Anakin Skywalker");
+        anakin.teachers.add(obiWan);
+        studentBox.put(luke, anakin);
         logTeachers(studentBox, teacherBox);
 
+        // https://docs.objectbox.io/queries
+        logTitle("Query for all students named \"Skywalker\" taught by \"Yoda\"");
+        QueryBuilder<Student> builder = studentBox.query().contains(Student_.name, "Skywalker");
+        builder.link(Student_.teachers).equal(Teacher_.name, yoda.name);
+        List<Student> studentsTaughtByYoda = builder.build().find();
+        log("There is " + studentsTaughtByYoda.size() + " student taught by Yoda: "
+                + studentsTaughtByYoda.get(0).name);
+        log("");
+
         logTitle("Remove first teacher from first student");
-        student1.teachers.remove(teacher1);
-        student1.teachers.applyChangesToDb(); // more efficient than studentBox.put(student1);
+        luke.teachers.remove(obiWan);
+        luke.teachers.applyChangesToDb(); // more efficient than studentBox.put(student1);
         logTeachers(studentBox, teacherBox);
 
         logTitle("Remove student of second teacher using backlink");
-        teacher2.students.clear();
-        teacher2.students.applyChangesToDb();
+        yoda.students.clear();
+        yoda.students.applyChangesToDb();
         logTeachers(studentBox, teacherBox);
     }
 
