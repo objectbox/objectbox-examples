@@ -8,7 +8,7 @@ buildscript {
     dependencies {
         // need to include in top build file
         // https://developer.android.com/studio/build/gradle-plugin-3-0-0.html#known_issues
-        classpath 'com.android.tools.build:gradle:3.1.2'
+        classpath 'com.android.tools.build:gradle:3.1.2' // Don't use 3.1.3 - it's broken; see GitHub issue 465
     }
 
     repositories {
