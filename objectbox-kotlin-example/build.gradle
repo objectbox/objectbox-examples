@@ -1,7 +1,7 @@
 // Repositories are defined in root build.gradle
 
 buildscript {
-    ext.kotlin_version = '1.2.41'
+    ext.kotlin_version = '1.2.60'
 
     dependencies {
         classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
@@ -21,7 +21,7 @@ android {
     defaultConfig {
         applicationId "io.objectbox.example.kotlin"
         minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion _targetSdkVersion
         versionCode 1
         versionName "1.0"
     }
