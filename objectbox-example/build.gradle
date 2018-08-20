@@ -19,7 +19,6 @@ apply plugin: 'io.objectbox'
 
 android {
     compileSdkVersion _compileSdkVersion
-    buildToolsVersion _buildToolsVersion
 
     defaultConfig {
         applicationId "io.objectbox.example"

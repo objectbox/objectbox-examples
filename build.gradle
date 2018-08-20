@@ -1,5 +1,4 @@
 ext {
-    _buildToolsVersion = '28.0.2'
     _compileSdkVersion = 28
     _targetSdkVersion = 28
     objectboxVersion = '2.1.0'
