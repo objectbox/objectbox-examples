@@ -6,17 +6,6 @@ buildscript {
 
 apply plugin: 'com.android.application'
 
-// ObjectBox browser dependencies must be set before applying ObjectBox plugin so it does not add objectbox-android
-// (would result in two conflicting versions, e.g. "Duplicate files copied in APK lib/armeabi-v7a/libobjectbox.so").
-dependencies {
-    debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
-    releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
-
-    testImplementation 'junit:junit:4.12'
-}
-
-apply plugin: 'io.objectbox'
-
 android {
     compileSdkVersion _compileSdkVersion
 
@@ -28,3 +17,14 @@ android {
         versionName "1.0"
     }
 }
+
+dependencies {
+    debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
+    releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
+
+    testImplementation 'junit:junit:4.12'
+}
+
+// apply the plugin after the dependencies block so it does not automatically add objectbox-android
+// which would conflict with objectbox-android-objectbrowser on debug builds
+apply plugin: 'io.objectbox'
