@@ -19,6 +19,14 @@ def COLOR_MAP = ['SUCCESS': 'good', 'FAILURE': 'danger', 'UNSTABLE': 'danger', '
 pipeline {
     agent any
 
+    environment {
+        GITLAB_URL = credentials('gitlab_url')
+    }
+
+    options {
+        gitLabConnection("${env.GITLAB_URL}")
+    }
+
     triggers {
         upstream(upstreamProjects: "objectbox-java/${env.BRANCH_NAME.replaceAll("/", "%2F")}",
                 threshold: hudson.model.Result.FAILURE)
@@ -56,6 +64,11 @@ pipeline {
         failure {
             slackSend color: "danger",
                     message: "Failed: ${currentBuild.fullDisplayName}\n${env.BUILD_URL}"
+            updateGitlabCommitStatus name: 'build', state: 'failed'
+        }
+
+        success {
+            updateGitlabCommitStatus name: 'build', state: 'success'
         }
     }
 }
