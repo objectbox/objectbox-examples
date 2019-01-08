@@ -1,7 +1,7 @@
 ext {
     _compileSdkVersion = 28
     _targetSdkVersion = 28
-    objectboxVersion = '2.3.0'
+    objectboxVersion = '2.3.1'
 }
 
 buildscript {
