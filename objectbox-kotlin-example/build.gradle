@@ -1,7 +1,7 @@
 // Repositories are defined in root build.gradle
 
 buildscript {
-    ext.kotlin_version = '1.2.71'
+    ext.kotlin_version = '1.3.11'
 
     dependencies {
         classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
