@@ -7,7 +7,7 @@ buildscript {
 
     dependencies {
         classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
-        classpath "net.ltgt.gradle:gradle-apt-plugin:0.15"
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.20"
     }
 }
 
