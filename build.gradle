@@ -46,6 +46,6 @@ task zipAll(type: Zip) {
     destinationDir buildDir
 }
 
-task wrapper(type: Wrapper) {
+wrapper {
     distributionType Wrapper.DistributionType.ALL
 }
