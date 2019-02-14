@@ -1,12 +1,12 @@
 ext {
     _compileSdkVersion = 28
     _targetSdkVersion = 28
-    objectboxVersion = '2.3.2'
+    objectboxVersion = '2.3.3'
 }
 
 buildscript {
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0'
+        classpath 'com.android.tools.build:gradle:3.3.1'
     }
 
     repositories {
