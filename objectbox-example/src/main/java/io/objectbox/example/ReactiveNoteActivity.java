@@ -5,24 +5,19 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
 
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.List;
 
 import io.objectbox.Box;
 import io.objectbox.android.AndroidScheduler;
 import io.objectbox.query.Query;
-import io.objectbox.reactive.DataObserver;
 import io.objectbox.reactive.DataSubscriptionList;
 
 /** An alternative to {@link NoteActivity} using a reactive query (without RxJava, just plain ObjectBox API). */
@@ -43,19 +38,14 @@ public class ReactiveNoteActivity extends Activity {
 
         setUpViews();
 
-        notesBox = ((App) getApplication()).getBoxStore().boxFor(Note.class);
+        notesBox = ObjectBox.get().boxFor(Note.class);
 
         // query all notes, sorted a-z by their text (https://docs.objectbox.io/queries)
         notesQuery = notesBox.query().order(Note_.text).build();
 
         // Reactive query (https://docs.objectbox.io/data-observers-and-rx)
         notesQuery.subscribe(subscriptions).on(AndroidScheduler.mainThread())
-                .observer(new DataObserver<List<Note>>() {
-                    @Override
-                    public void onData(List<Note> notes) {
-                        notesAdapter.setNotes(notes);
-                    }
-                });
+                .observer(notes -> notesAdapter.setNotes(notes));
     }
 
     @Override
@@ -65,7 +55,7 @@ public class ReactiveNoteActivity extends Activity {
     }
 
     protected void setUpViews() {
-        ListView listView = (ListView) findViewById(R.id.listViewNotes);
+        ListView listView = findViewById(R.id.listViewNotes);
         listView.setOnItemClickListener(noteClickListener);
 
         notesAdapter = new NotesAdapter();
@@ -74,17 +64,13 @@ public class ReactiveNoteActivity extends Activity {
         addNoteButton = findViewById(R.id.buttonAdd);
         addNoteButton.setEnabled(false);
 
-        editText = (EditText) findViewById(R.id.editTextNote);
-        editText.setOnEditorActionListener(new OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    addNote();
-                    return true;
-                }
-                return false;
+        editText = findViewById(R.id.editTextNote);
+        editText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                addNote();
+                return true;
             }
+            return false;
         });
         editText.addTextChangedListener(new TextWatcher() {
 

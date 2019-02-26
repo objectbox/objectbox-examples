@@ -5,23 +5,18 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
 
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 
 import io.objectbox.Box;
-import io.objectbox.BoxStore;
 import io.objectbox.query.Query;
 
 public class NoteActivity extends Activity {
@@ -40,8 +35,7 @@ public class NoteActivity extends Activity {
 
         setUpViews();
 
-        BoxStore boxStore = ((App) getApplication()).getBoxStore();
-        notesBox = boxStore.boxFor(Note.class);
+        notesBox = ObjectBox.get().boxFor(Note.class);
 
         // query all notes, sorted a-z by their text (https://docs.objectbox.io/queries)
         notesQuery = notesBox.query().order(Note_.text).build();
@@ -65,16 +59,12 @@ public class NoteActivity extends Activity {
         addNoteButton.setEnabled(false);
 
         editText = findViewById(R.id.editTextNote);
-        editText.setOnEditorActionListener(new OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    addNote();
-                    return true;
-                }
-                return false;
+        editText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                addNote();
+                return true;
             }
+            return false;
         });
         editText.addTextChangedListener(new TextWatcher() {
 

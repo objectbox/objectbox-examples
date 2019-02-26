@@ -21,8 +21,8 @@ public class NotesAdapter extends BaseAdapter {
         public TextView comment;
 
         public NoteViewHolder(View itemView) {
-            text = (TextView) itemView.findViewById(R.id.textViewNoteText);
-            comment = (TextView) itemView.findViewById(R.id.textViewNoteComment);
+            text = itemView.findViewById(R.id.textViewNoteText);
+            comment = itemView.findViewById(R.id.textViewNoteComment);
         }
     }
 

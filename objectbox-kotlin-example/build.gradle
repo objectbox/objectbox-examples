@@ -27,8 +27,6 @@ android {
 }
 
 dependencies {
-    implementation "io.objectbox:objectbox-android:$objectboxVersion"
-    implementation "io.objectbox:objectbox-kotlin:$objectboxVersion"
-    kapt "io.objectbox:objectbox-processor:$objectboxVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "io.objectbox:objectbox-kotlin:$objectboxVersion"
 }

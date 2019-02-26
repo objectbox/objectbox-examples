@@ -5,15 +5,12 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
 
 import org.greenrobot.daocompat.query.Query;
 
@@ -41,8 +38,7 @@ public class NoteActivity extends Activity {
         setUpViews();
 
         // get the note DAO
-        DaoSession daoSession = ((App) getApplication()).getDaoSession();
-        noteDao = daoSession.getNoteDao();
+        noteDao = ObjectBox.getDaoSession().getNoteDao();
 
         // query all notes
         notesQuery = noteDao.queryBuilder().orderAsc(Properties.Text).build();
@@ -55,7 +51,7 @@ public class NoteActivity extends Activity {
     }
 
     protected void setUpViews() {
-        ListView listView = (ListView) findViewById(R.id.listViewNotes);
+        ListView listView = findViewById(R.id.listViewNotes);
         listView.setOnItemClickListener(noteClickListener);
 
         notesAdapter = new NotesAdapter();
@@ -64,17 +60,13 @@ public class NoteActivity extends Activity {
         addNoteButton = findViewById(R.id.buttonAdd);
         addNoteButton.setEnabled(false);
 
-        editText = (EditText) findViewById(R.id.editTextNote);
-        editText.setOnEditorActionListener(new OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    addNote();
-                    return true;
-                }
-                return false;
+        editText = findViewById(R.id.editTextNote);
+        editText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                addNote();
+                return true;
             }
+            return false;
         });
         editText.addTextChangedListener(new TextWatcher() {
 

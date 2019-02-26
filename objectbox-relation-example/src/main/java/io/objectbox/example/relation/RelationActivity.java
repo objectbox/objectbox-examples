@@ -12,7 +12,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import io.objectbox.Box;
-import io.objectbox.BoxStore;
 import io.objectbox.query.QueryBuilder;
 import io.objectbox.relation.ToMany;
 
@@ -20,7 +19,6 @@ import io.objectbox.relation.ToMany;
 public class RelationActivity extends Activity {
 
     private TextView textViewLog;
-    private BoxStore store;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +27,6 @@ public class RelationActivity extends Activity {
 
         textViewLog = findViewById(R.id.textViewLog);
 
-        store = ((App) getApplication()).getBoxStore();
         long start = System.currentTimeMillis();
         ordersAndCustomers();
         studentsAndTeachers();
@@ -43,8 +40,8 @@ public class RelationActivity extends Activity {
      * Customer has a to-many backlink to Order.
      */
     private void ordersAndCustomers() {
-        Box<Customer> customerBox = store.boxFor(Customer.class);
-        Box<Order> orderBox = store.boxFor(Order.class);
+        Box<Customer> customerBox = ObjectBox.get().boxFor(Customer.class);
+        Box<Order> orderBox = ObjectBox.get().boxFor(Order.class);
 
         // Remove all previous object to have clear start for simplicity's sake
         customerBox.removeAll();
@@ -89,8 +86,8 @@ public class RelationActivity extends Activity {
      * Student has a to-many to Teacher.
      */
     private void studentsAndTeachers() {
-        Box<Student> studentBox = store.boxFor(Student.class);
-        Box<Teacher> teacherBox = store.boxFor(Teacher.class);
+        Box<Student> studentBox = ObjectBox.get().boxFor(Student.class);
+        Box<Teacher> teacherBox = ObjectBox.get().boxFor(Teacher.class);
 
         // Remove all previous object to have clear start for simplicity's sake
         studentBox.removeAll();

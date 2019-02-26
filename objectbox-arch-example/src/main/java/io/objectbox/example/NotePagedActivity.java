@@ -1,28 +1,22 @@
 package io.objectbox.example;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
-import android.arch.paging.PagedList;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
 
 import java.text.DateFormat;
 import java.util.Date;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import io.objectbox.Box;
-import io.objectbox.BoxStore;
 import io.objectbox.example.arch.R;
 
 /**
@@ -44,16 +38,10 @@ public class NotePagedActivity extends FragmentActivity {
 
         setUpViews();
 
-        BoxStore boxStore = ((App) getApplication()).getBoxStore();
-        notesBox = boxStore.boxFor(Note.class);
+        notesBox = ObjectBox.get().boxFor(Note.class);
 
         NotePagedViewModel model = ViewModelProviders.of(this).get(NotePagedViewModel.class);
-        model.getNoteLiveDataPaged(notesBox).observe(this, new Observer<PagedList<Note>>() {
-            @Override
-            public void onChanged(@Nullable PagedList<Note> notes) {
-                notesAdapter.submitList(notes);
-            }
-        });
+        model.getNoteLiveDataPaged(notesBox).observe(this, notes -> notesAdapter.submitList(notes));
     }
 
     protected void setUpViews() {
@@ -68,16 +56,12 @@ public class NotePagedActivity extends FragmentActivity {
         addNoteButton.setEnabled(false);
 
         editText = findViewById(R.id.editTextNote);
-        editText.setOnEditorActionListener(new OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    addNote();
-                    return true;
-                }
-                return false;
+        editText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                addNote();
+                return true;
             }
+            return false;
         });
         editText.addTextChangedListener(new TextWatcher() {
 

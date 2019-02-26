@@ -12,6 +12,11 @@ apply plugin: 'io.objectbox'
 android {
     compileSdkVersion _compileSdkVersion
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         applicationId "io.objectbox.example.arch"
         minSdkVersion 15
@@ -22,8 +27,8 @@ android {
 }
 
 dependencies {
-    implementation "com.android.support:support-fragment:28.0.0"
-    implementation "com.android.support:recyclerview-v7:28.0.0"
-    implementation "android.arch.lifecycle:extensions:1.1.1"
-    implementation "android.arch.paging:runtime:1.0.1"
+    implementation 'androidx.fragment:fragment:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.paging:paging-runtime:2.1.0'
 }
