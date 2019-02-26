@@ -4,23 +4,17 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
 
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.List;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import io.objectbox.Box;
 import io.objectbox.example.arch.R;
@@ -43,12 +37,7 @@ public class NoteActivity extends FragmentActivity {
         notesBox = ObjectBox.get().boxFor(Note.class);
 
         NoteViewModel model = ViewModelProviders.of(this).get(NoteViewModel.class);
-        model.getNoteLiveData(notesBox).observe(this, new Observer<List<Note>>() {
-            @Override
-            public void onChanged(@Nullable List<Note> notes) {
-                notesAdapter.setNotes(notes);
-            }
-        });
+        model.getNoteLiveData(notesBox).observe(this, notes -> notesAdapter.setNotes(notes));
     }
 
     protected void setUpViews() {
@@ -62,16 +51,12 @@ public class NoteActivity extends FragmentActivity {
         addNoteButton.setEnabled(false);
 
         editText = findViewById(R.id.editTextNote);
-        editText.setOnEditorActionListener(new OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    addNote();
-                    return true;
-                }
-                return false;
+        editText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                addNote();
+                return true;
             }
+            return false;
         });
         editText.addTextChangedListener(new TextWatcher() {
 

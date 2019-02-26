@@ -51,12 +51,7 @@ public class NotesPagedAdapter extends PagedListAdapter<Note, NotesPagedAdapter.
 
         public NoteViewHolder(View itemView, final NoteClickListener noteClickListener) {
             super(itemView);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    noteClickListener.onNoteClick(note);
-                }
-            });
+            itemView.setOnClickListener(v -> noteClickListener.onNoteClick(note));
             text = itemView.findViewById(R.id.textViewNoteText);
             comment = itemView.findViewById(R.id.textViewNoteComment);
         }
