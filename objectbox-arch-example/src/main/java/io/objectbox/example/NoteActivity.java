@@ -23,7 +23,6 @@ import java.util.Date;
 import java.util.List;
 
 import io.objectbox.Box;
-import io.objectbox.BoxStore;
 import io.objectbox.example.arch.R;
 
 public class NoteActivity extends FragmentActivity {
@@ -41,8 +40,7 @@ public class NoteActivity extends FragmentActivity {
 
         setUpViews();
 
-        BoxStore boxStore = ((App) getApplication()).getBoxStore();
-        notesBox = boxStore.boxFor(Note.class);
+        notesBox = ObjectBox.get().boxFor(Note.class);
 
         NoteViewModel model = ViewModelProviders.of(this).get(NoteViewModel.class);
         model.getNoteLiveData(notesBox).observe(this, new Observer<List<Note>>() {

@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,7 +20,6 @@ import java.util.Date;
 import java.util.List;
 
 import io.objectbox.Box;
-import io.objectbox.BoxStore;
 import io.objectbox.query.Query;
 
 public class NoteActivity extends Activity {
@@ -40,8 +38,7 @@ public class NoteActivity extends Activity {
 
         setUpViews();
 
-        BoxStore boxStore = ((App) getApplication()).getBoxStore();
-        notesBox = boxStore.boxFor(Note.class);
+        notesBox = ObjectBox.get().boxFor(Note.class);
 
         // query all notes, sorted a-z by their text (https://docs.objectbox.io/queries)
         notesQuery = notesBox.query().order(Note_.text).build();

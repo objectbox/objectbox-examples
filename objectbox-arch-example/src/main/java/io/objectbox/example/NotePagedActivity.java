@@ -22,7 +22,6 @@ import java.text.DateFormat;
 import java.util.Date;
 
 import io.objectbox.Box;
-import io.objectbox.BoxStore;
 import io.objectbox.example.arch.R;
 
 /**
@@ -44,8 +43,7 @@ public class NotePagedActivity extends FragmentActivity {
 
         setUpViews();
 
-        BoxStore boxStore = ((App) getApplication()).getBoxStore();
-        notesBox = boxStore.boxFor(Note.class);
+        notesBox = ObjectBox.get().boxFor(Note.class);
 
         NotePagedViewModel model = ViewModelProviders.of(this).get(NotePagedViewModel.class);
         model.getNoteLiveDataPaged(notesBox).observe(this, new Observer<PagedList<Note>>() {

@@ -43,7 +43,7 @@ public class ReactiveNoteActivity extends Activity {
 
         setUpViews();
 
-        notesBox = ((App) getApplication()).getBoxStore().boxFor(Note.class);
+        notesBox = ObjectBox.get().boxFor(Note.class);
 
         // query all notes, sorted a-z by their text (https://docs.objectbox.io/queries)
         notesQuery = notesBox.query().order(Note_.text).build();

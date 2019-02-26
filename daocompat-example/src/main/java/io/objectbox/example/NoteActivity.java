@@ -41,8 +41,7 @@ public class NoteActivity extends Activity {
         setUpViews();
 
         // get the note DAO
-        DaoSession daoSession = ((App) getApplication()).getDaoSession();
-        noteDao = daoSession.getNoteDao();
+        noteDao = ObjectBox.getDaoSession().getNoteDao();
 
         // query all notes
         notesQuery = noteDao.queryBuilder().orderAsc(Properties.Text).build();
