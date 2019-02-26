@@ -65,7 +65,7 @@ public class ReactiveNoteActivity extends Activity {
     }
 
     protected void setUpViews() {
-        ListView listView = (ListView) findViewById(R.id.listViewNotes);
+        ListView listView = findViewById(R.id.listViewNotes);
         listView.setOnItemClickListener(noteClickListener);
 
         notesAdapter = new NotesAdapter();
@@ -74,7 +74,7 @@ public class ReactiveNoteActivity extends Activity {
         addNoteButton = findViewById(R.id.buttonAdd);
         addNoteButton.setEnabled(false);
 
-        editText = (EditText) findViewById(R.id.editTextNote);
+        editText = findViewById(R.id.editTextNote);
         editText.setOnEditorActionListener(new OnEditorActionListener() {
 
             @Override
