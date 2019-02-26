@@ -1,15 +1,15 @@
 package io.objectbox.example;
 
-import android.arch.paging.PagedListAdapter;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.util.DiffUtil;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.paging.PagedListAdapter;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.RecyclerView;
 import io.objectbox.example.arch.R;
 
 public class NotesPagedAdapter extends PagedListAdapter<Note, NotesPagedAdapter.NoteViewHolder> {
@@ -81,7 +81,7 @@ public class NotesPagedAdapter extends PagedListAdapter<Note, NotesPagedAdapter.
         }
 
         @Override
-        public boolean areContentsTheSame(Note oldItem, Note newItem) {
+        public boolean areContentsTheSame(@NonNull Note oldItem, @NonNull Note newItem) {
             return oldItem == newItem;
         }
     };

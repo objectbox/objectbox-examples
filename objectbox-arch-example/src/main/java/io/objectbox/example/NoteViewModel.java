@@ -1,6 +1,6 @@
 package io.objectbox.example;
 
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel;
 
 import io.objectbox.Box;
 import io.objectbox.android.ObjectBoxLiveData;
