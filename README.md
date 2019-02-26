@@ -10,6 +10,7 @@ The basic example is a minimal note taking Android app. There are 3 different va
 And additionally:
 
  * objectbox-relation-example: Demonstrating relations (Java based app)
+ * java-main: using ObjectBox in a Java desktop application
 
 MyObjectBox missing? Build the project!
 ---------------------------------------
