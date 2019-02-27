@@ -9,4 +9,4 @@ This example shows how to use and test ObjectBox in an Android app written in Ja
 
 [How to annotate entity classes](https://docs.objectbox.io/entity-annotations)
 
-[Building Android local unit tests with ObjectBox](https://docs.objectbox.io/android-local-unit-tests)
+[Building Android local unit tests with ObjectBox](https://docs.objectbox.io/android/android-local-unit-tests)
