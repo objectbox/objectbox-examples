@@ -22,6 +22,13 @@
             <version>${objectboxVersion}</version>
         </dependency>
 
+        <!-- Includes the ObjectBox byte-code transformer -->
+        <dependency>
+            <groupId>io.objectbox</groupId>
+            <artifactId>objectbox-gradle-plugin</artifactId>
+            <version>${objectboxVersion}</version>
+        </dependency>
+
         <!-- Native libraries, you can remove the ones for systems you do not support -->
         <dependency>
             <groupId>io.objectbox</groupId>
@@ -74,7 +81,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Runs the ObjectBox byte-code transformer -->
+            <!-- Runs the ObjectBox byte-code transformer after Maven finishes compiling -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -83,16 +90,12 @@
                     <execution>
                         <phase>compile</phase>
                         <goals>
-                            <goal>exec</goal>
+                            <goal>java</goal>
                         </goals>
                     </execution>
                 </executions>
                 <configuration>
-                    <!-- Change to gradlew on Linux and MacOS -->
-                    <executable>gradlew.bat</executable>
-                    <arguments>
-                        <argument>objectboxJavaTransform</argument>
-                    </arguments>
+                    <mainClass>io.objectbox.maven.Transformer</mainClass>
                 </configuration>
             </plugin>
 
