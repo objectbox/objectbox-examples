@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>objectbox-maven</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <objectboxVersion>2.3.4</objectboxVersion>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.objectbox</groupId>
+            <artifactId>objectbox-java</artifactId>
+            <version>${objectboxVersion}</version>
+        </dependency>
+
+        <!-- Native libraries, you can remove the ones for systems you do not support -->
+        <dependency>
+            <groupId>io.objectbox</groupId>
+            <artifactId>objectbox-linux</artifactId>
+            <version>${objectboxVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.objectbox</groupId>
+            <artifactId>objectbox-macos</artifactId>
+            <version>${objectboxVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.objectbox</groupId>
+            <artifactId>objectbox-windows</artifactId>
+            <version>${objectboxVersion}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- ObjectBox artifacts are available on jCenter -->
+    <repositories>
+        <repository>
+            <id>jcenter</id>
+            <url>https://jcenter.bintray.com/</url>
+        </repository>
+    </repositories>
+
+    <build>
+
+        <plugins>
+
+            <!-- Adds the ObjectBox annotation processor to enable code generation -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>io.objectbox</groupId>
+                            <artifactId>objectbox-processor</artifactId>
+                            <version>${objectboxVersion}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                    <annotationProcessors>
+                        <annotationProcessor>io.objectbox.processor.ObjectBoxProcessorShim</annotationProcessor>
+                    </annotationProcessors>
+                    <compilerArgs>
+                        <arg>-Aobjectbox.modelPath=${project.basedir}/objectbox-models/default.json</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+
+            <!-- Runs the ObjectBox byte-code transformer -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- Change to gradlew on Linux and MacOS -->
+                    <executable>gradlew.bat</executable>
+                    <arguments>
+                        <argument>objectboxJavaTransform</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
