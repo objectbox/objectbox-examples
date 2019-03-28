@@ -1,16 +1,18 @@
 # ObjectBoxExamples
-Examples for [ObjectBox](https://objectbox.io), the new superfast object-oriented database.
+Java and Kotlin examples for [ObjectBox](https://objectbox.io), the superfast object-oriented database.
+The basic example is a minimal note taking app.
 
-The basic example is a minimal note taking Android app. There are 3 different variations of this app:
+For **Android**, there are 3 different variations:
 
  * objectbox-example: Java based app
  * objectbox-kotlin-example: Kotlin based app
  * daocompat-example: DAO compat is a compatibility layer on top of ObjectBox emulating a greenDAO API
 
-And additionally:
+For **plain Java**, you'll find those:
 
+ * java-main: using ObjectBox in a Java application
  * objectbox-relation-example: Demonstrating relations (Java based app)
- * java-main: using ObjectBox in a Java desktop application
+ * java-main-maven: while the primary build system for ObjectBox is Gradle, you can also use Maven 
 
 MyObjectBox missing? Build the project!
 ---------------------------------------

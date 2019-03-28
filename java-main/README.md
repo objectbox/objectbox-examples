@@ -1,4 +1,4 @@
-This example shows how to use ObjectBox in a Java desktop application.
+This example shows how to use ObjectBox in a Java application (e.g. desktop or server applications).
 
 ### Docs links
-[ObjectBox Java Desktop Apps](https://docs.objectbox.io/java-desktop-apps)
+[ObjectBox Java Apps](https://docs.objectbox.io/java-desktop-apps)
