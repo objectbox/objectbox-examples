@@ -4,10 +4,10 @@ The basic example is a minimal note taking app.
 
 For **Android**, there are:
 
- * objectbox-example: Java based note taking app
- * objectbox-kotlin-example: Kotlin based note taking app
- * objectbox-relation-example: Demonstrating relations (Java based app)
- * daocompat-example: DAO compat is a compatibility layer on top of ObjectBox emulating a greenDAO API
+ * android-app: Java based note taking app
+ * android-app-kotlin: Kotlin based note taking app
+ * android-app-relations: Demonstrating relations (Java based app)
+ * android-app-daocompat: DAO compat is a compatibility layer on top of ObjectBox emulating a greenDAO API
 
 For **plain Java**, you'll find those:
 
