@@ -1,6 +1,6 @@
 include 'android-app'
 include 'android-app-arch'
+include 'android-app-daocompat'
 include 'android-app-kotlin'
 include 'objectbox-relation-example'
-include 'daocompat-example'
 include 'java-main'
