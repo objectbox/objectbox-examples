@@ -1,4 +1,4 @@
-include 'objectbox-example'
+include 'android-app'
 include 'objectbox-arch-example'
 include 'objectbox-kotlin-example'
 include 'objectbox-relation-example'
