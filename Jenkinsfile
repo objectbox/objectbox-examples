@@ -56,14 +56,7 @@ pipeline {
             archiveArtifacts artifacts: '**/build/reports/lint-results.html'
         }
 
-        changed {
-            slackSend color: COLOR_MAP[currentBuild.currentResult],
-                    message: "Changed to ${currentBuild.currentResult}: ${currentBuild.fullDisplayName}\n${env.BUILD_URL}"
-        }
-
         failure {
-            slackSend color: "danger",
-                    message: "Failed: ${currentBuild.fullDisplayName}\n${env.BUILD_URL}"
             updateGitlabCommitStatus name: 'build', state: 'failed'
         }
 
