@@ -24,13 +24,6 @@
             <version>${objectboxVersion}</version>
         </dependency>
 
-        <!-- Includes the ObjectBox byte-code transformer -->
-        <dependency>
-            <groupId>io.objectbox</groupId>
-            <artifactId>objectbox-gradle-plugin</artifactId>
-            <version>${objectboxVersion}</version>
-        </dependency>
-
         <!-- Native libraries, you can remove the ones for systems you do not support -->
         <dependency>
             <groupId>io.objectbox</groupId>
