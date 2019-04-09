@@ -57,6 +57,15 @@
         </repository>
     </repositories>
 
+    <!-- TODO remove and probably replace with jcenter once plugin synced to jcenter -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>bintray-objectbox-objectbox</id>
+            <name>bintray-plugins</name>
+            <url>https://dl.bintray.com/objectbox/objectbox</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <build>
 
         <plugins>
@@ -85,19 +94,18 @@
 
             <!-- Runs the ObjectBox byte-code transformer after Maven finishes compiling -->
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
+                <groupId>io.objectbox</groupId>
+                <artifactId>objectbox-maven-plugin</artifactId>
+                <version>1.0.0</version>
                 <executions>
                     <execution>
-                        <phase>compile</phase>
                         <goals>
-                            <goal>java</goal>
+                            <goal>transform</goal>
                         </goals>
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>io.objectbox.maven.Transformer</mainClass>
+                    <debug>true</debug>
                 </configuration>
             </plugin>
 
