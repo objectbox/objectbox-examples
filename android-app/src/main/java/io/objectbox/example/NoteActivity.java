@@ -1,6 +1,7 @@
 package io.objectbox.example;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -31,6 +32,13 @@ public class NoteActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (ObjectBox.get() == null) {
+            startActivity(new Intent(this, ErrorActivity.class));
+            finish();
+            return;
+        }
+
         setContentView(R.layout.main);
 
         setUpViews();
