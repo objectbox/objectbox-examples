@@ -32,7 +32,7 @@ allprojects {
 }
 
 task zipAll(type: Zip) {
-    baseName "objectbox-examples"
+    archiveBaseName = "objectbox-examples"
     from(rootDir) {
         exclude '**/.idea/**'
         exclude '**/build/**'
@@ -43,7 +43,7 @@ task zipAll(type: Zip) {
         exclude '**/local.properties'
     }
 
-    destinationDir buildDir
+    destinationDirectory = buildDir
 }
 
 wrapper {
