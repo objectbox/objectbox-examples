@@ -16,8 +16,8 @@ apply plugin: 'application'
 apply plugin: 'net.ltgt.apt-idea'
 apply plugin: 'io.objectbox'
 
-targetCompatibility = '1.7'
-sourceCompatibility = '1.7'
+targetCompatibility = '1.8'
+sourceCompatibility = '1.8'
 
 mainClassName = "io.objectbox.example.Main"
 
@@ -30,5 +30,5 @@ dependencies {
     implementation "io.objectbox:objectbox-macos:$objectboxVersion"
     implementation "io.objectbox:objectbox-windows:$objectboxVersion"
 
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 }
