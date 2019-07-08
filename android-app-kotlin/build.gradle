@@ -12,7 +12,6 @@ buildscript {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'io.objectbox'
 
 android {
     compileSdkVersion _compileSdkVersion
@@ -28,4 +27,11 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
+    releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
 }
+
+// apply the plugin after the dependencies block so it does not automatically add objectbox-android
+// which would conflict with objectbox-android-objectbrowser on debug builds
+apply plugin: 'io.objectbox'

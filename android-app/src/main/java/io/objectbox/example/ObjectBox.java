@@ -16,9 +16,9 @@ public class ObjectBox {
                 .build();
 
         if (BuildConfig.DEBUG) {
-            new AndroidObjectBrowser(boxStore).start(context.getApplicationContext());
             Log.d(App.TAG, String.format("Using ObjectBox %s (%s)",
                     BoxStore.getVersion(), BoxStore.getVersionNative()));
+            new AndroidObjectBrowser(boxStore).start(context.getApplicationContext());
         }
     }
 
