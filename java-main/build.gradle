@@ -7,13 +7,11 @@ buildscript {
 
     dependencies {
         classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
-        classpath "net.ltgt.gradle:gradle-apt-plugin:0.20"
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'application'
-apply plugin: 'net.ltgt.apt-idea'
 apply plugin: 'io.objectbox'
 
 targetCompatibility = '1.8'
