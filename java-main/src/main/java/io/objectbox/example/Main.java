@@ -20,10 +20,10 @@ import io.objectbox.Box;
 import io.objectbox.BoxStore;
 
 /**
- * Note: Android Studio does run plain Java projects correctly.
- * Run with from terminal instead, e.g.:
+ * Note: Android Studio does not run plain Java projects correctly.
+ * Open in IntelliJ IDEA or run with Gradle from a terminal instead, e.g.:
  * <p>
- * ./gradlew desktop-test-example:run
+ * ./gradlew java-main:run --args="This is my note text."
  */
 public class Main {
     public static void main(String[] args) {
