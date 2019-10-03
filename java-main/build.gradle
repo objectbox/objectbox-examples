@@ -24,9 +24,9 @@ dependencies {
 
     // Optional: include all native libraries for distribution
     // (only the one for the current platform is added automatically)
-    implementation "io.objectbox:objectbox-linux:$objectboxVersion"
-    implementation "io.objectbox:objectbox-macos:$objectboxVersion"
-    implementation "io.objectbox:objectbox-windows:$objectboxVersion"
+    //implementation "io.objectbox:objectbox-linux:$objectboxVersion"
+    //implementation "io.objectbox:objectbox-macos:$objectboxVersion"
+    //implementation "io.objectbox:objectbox-windows:$objectboxVersion"
 
     testImplementation 'junit:junit:4.12'
 }
