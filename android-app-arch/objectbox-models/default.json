@@ -10,19 +10,24 @@
       "properties": [
         {
           "id": "1:909467878163989846",
-          "name": "id"
+          "name": "id",
+          "type": 6,
+          "flags": 1
         },
         {
           "id": "2:8367394479144570554",
-          "name": "text"
+          "name": "text",
+          "type": 9
         },
         {
           "id": "3:8900933410885667866",
-          "name": "comment"
+          "name": "comment",
+          "type": 9
         },
         {
           "id": "4:6923114721930671415",
-          "name": "date"
+          "name": "date",
+          "type": 10
         }
       ],
       "relations": []
@@ -32,8 +37,8 @@
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
-  "modelVersion": 4,
-  "modelVersionParserMinimum": 4,
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
   "retiredPropertyUids": [],

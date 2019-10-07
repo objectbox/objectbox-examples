@@ -10,19 +10,24 @@
       "properties": [
         {
           "id": "1:8593323585746626424",
-          "name": "id"
+          "name": "id",
+          "type": 6,
+          "flags": 1
         },
         {
           "id": "2:623966032411846350",
-          "name": "text"
+          "name": "text",
+          "type": 9
         },
         {
           "id": "3:8812576090470392497",
-          "name": "comment"
+          "name": "comment",
+          "type": 9
         },
         {
           "id": "4:1924336567525146288",
-          "name": "date"
+          "name": "date",
+          "type": 10
         }
       ],
       "relations": []
@@ -34,7 +39,9 @@
       "properties": [
         {
           "id": "1:952586124457164070",
-          "name": "id"
+          "name": "id",
+          "type": 6,
+          "flags": 1
         }
       ],
       "relations": []
@@ -46,12 +53,17 @@
       "properties": [
         {
           "id": "1:6676927494711688478",
-          "name": "id"
+          "name": "id",
+          "type": 6,
+          "flags": 1
         },
         {
           "id": "2:1197788777851434594",
+          "name": "customerId",
           "indexId": "1:7549377217294631345",
-          "name": "customerId"
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Customer"
         }
       ],
       "relations": []
@@ -63,13 +75,16 @@
       "properties": [
         {
           "id": "1:8711593035932601102",
-          "name": "id"
+          "name": "id",
+          "type": 6,
+          "flags": 1
         }
       ],
       "relations": [
         {
           "id": "1:4253503237559343063",
-          "name": "teachers"
+          "name": "teachers",
+          "targetId": "5:3539139879133829140"
         }
       ]
     },
@@ -80,7 +95,9 @@
       "properties": [
         {
           "id": "1:3857234318981781464",
-          "name": "id"
+          "name": "id",
+          "type": 6,
+          "flags": 1
         }
       ],
       "relations": []
@@ -90,8 +107,8 @@
   "lastIndexId": "1:7549377217294631345",
   "lastRelationId": "1:4253503237559343063",
   "lastSequenceId": "0:0",
-  "modelVersion": 4,
-  "modelVersionParserMinimum": 4,
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
   "retiredPropertyUids": [],
