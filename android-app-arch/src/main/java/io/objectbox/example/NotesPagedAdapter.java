@@ -77,7 +77,17 @@ public class NotesPagedAdapter extends PagedListAdapter<Note, NotesPagedAdapter.
 
         @Override
         public boolean areContentsTheSame(@NonNull Note oldItem, @NonNull Note newItem) {
-            return oldItem == newItem;
+            return isEqualSafe(oldItem.text, newItem.text)
+                    && isEqualSafe(oldItem.date, newItem.date)
+                    && isEqualSafe(oldItem.comment, newItem.comment);
+        }
+
+        private boolean isEqualSafe(Object oldString, Object newString) {
+            if (oldString == null) {
+                return newString == null;
+            } else {
+                return oldString.equals(newString);
+            }
         }
     };
 
