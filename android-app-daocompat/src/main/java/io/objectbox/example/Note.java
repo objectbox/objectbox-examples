@@ -25,14 +25,6 @@ public class Note {
     public Note() {
     }
 
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getText() {
         return this.text;
     }
@@ -55,6 +47,10 @@ public class Note {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public void setId(long id) {
