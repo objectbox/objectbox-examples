@@ -63,6 +63,12 @@
 
         <plugins>
 
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.7</version>
+            </plugin>
+
             <!-- Adds the ObjectBox annotation processor to enable code generation -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
