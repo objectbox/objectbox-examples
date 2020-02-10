@@ -28,5 +28,5 @@ dependencies {
     implementation "io.objectbox:objectbox-macos:$objectboxVersion"
     implementation "io.objectbox:objectbox-windows:$objectboxVersion"
 
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
 }
