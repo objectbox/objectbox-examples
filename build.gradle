@@ -1,6 +1,6 @@
 ext {
     _compileSdkVersion = 29 /* Android 10 (Q) */
-    _targetSdkVersion = 28 /* Android 9 (P) */
+    _targetSdkVersion = 29 /* Android 10 (Q) */
     objectboxVersion = '2.5.1'
 }
 
