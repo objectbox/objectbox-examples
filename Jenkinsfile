@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
+// Turn off daemon to free memory faster after builds.
+String gradleArgs = "-Dorg.gradle.daemon=false --stacktrace"
+
 // https://jenkins.io/doc/book/pipeline/syntax/
-def COLOR_MAP = ['SUCCESS': 'good', 'FAILURE': 'danger', 'UNSTABLE': 'danger', 'ABORTED': 'danger']
 pipeline {
     agent any
 
@@ -33,9 +35,16 @@ pipeline {
     }
 
     stages {
+        stage('init') {
+            steps {
+                sh 'chmod +x gradlew'
+                sh './gradlew -version'
+            }
+        }
+
         stage('build-java') {
             steps {
-                sh './gradlew --stacktrace clean build'
+                sh "./gradlew $gradleArgs clean build"
             }
         }
 
@@ -44,8 +53,8 @@ pipeline {
                 dir('java-main/objectbox-notes-db') {
                     deleteDir()
                 }
-                sh './gradlew java-main:run'
-                sh './gradlew java-main:run'
+                sh "./gradlew $gradleArgs java-main:run"
+                sh "./gradlew $gradleArgs java-main:run"
             }
         }
     }
