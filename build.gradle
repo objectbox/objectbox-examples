@@ -1,12 +1,12 @@
 ext {
     _compileSdkVersion = 29 /* Android 10 (Q) */
     _targetSdkVersion = 29 /* Android 10 (Q) */
-    objectboxVersion = '2.5.1'
+    objectboxVersion = '2.6.0-RC'
 }
 
 buildscript {
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.1'
+        classpath 'com.android.tools.build:gradle:3.6.3'
     }
 
     repositories {

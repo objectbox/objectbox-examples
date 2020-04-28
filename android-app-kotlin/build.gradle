@@ -1,7 +1,7 @@
 // Repositories are defined in root build.gradle
 
 buildscript {
-    ext.kotlin_version = '1.3.61'
+    ext.kotlin_version = '1.3.72'
 
     dependencies {
         classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
@@ -47,7 +47,7 @@ dependencies {
     releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
 
     // Optional: if you distribute your app as App Bundle, see the App class for details.
-    implementation 'com.google.android.play:core:1.6.1'
+    implementation 'com.google.android.play:core:1.7.2'
 }
 
 // apply the plugin after the dependencies block so it does not automatically add objectbox-android
