@@ -1,9 +1,9 @@
-package com.example.android_app_multiprocess
+package io.objectbox.example.android_app_multiprocess
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.android_app_multiprocess.databinding.ActivityReadProcessBinding
+import io.objectbox.example.android_app_multiprocess.databinding.ActivityReadProcessBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

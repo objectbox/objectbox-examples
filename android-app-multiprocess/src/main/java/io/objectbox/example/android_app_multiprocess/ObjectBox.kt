@@ -1,4 +1,4 @@
-package com.example.android_app_multiprocess
+package io.objectbox.example.android_app_multiprocess
 
 import android.app.Application
 import android.content.Context

@@ -22,7 +22,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.android_app_multiprocess"
+        applicationId "io.objectbox.example.android_app_multiprocess"
         minSdkVersion 21
         targetSdkVersion _targetSdkVersion
         versionCode 1
