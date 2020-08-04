@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Bug report or feature request
+    url: https://github.com/objectbox/objectbox-java/issues
+    about: Submit issues at the objectbox-java repository.
+  - name: Question
+    url: https://stackoverflow.com/questions/tagged/objectbox
+    about: Ask how to do something, or why it isn't working on Stack Overflow.
