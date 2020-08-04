@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import io.objectbox.example.android_app_multiprocess.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -14,6 +15,8 @@ import kotlinx.coroutines.withContext
  * Runs on the main process, allows putting some text into the database.
  */
 class MainActivity : AppCompatActivity() {
+
+    private var textEntityId: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,18 +37,19 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            GlobalScope.launch(Dispatchers.IO) {
+            lifecycleScope.launch(Dispatchers.IO) {
                 val box = ObjectBox.get(context).boxFor(TextEntity::class.java)
                 box.removeAll()
-                box.put(TextEntity(text = text))
+                val id = box.put(TextEntity(text = text))
                 withContext(Dispatchers.Main) {
+                    textEntityId = id
                     Toast.makeText(context, "Put value $text", Toast.LENGTH_SHORT).show()
                 }
             }
         }
 
         binding.buttonRead.setOnClickListener {
-            startActivity(Intent(this, ReadProcessActivity::class.java))
+            startActivity(ReadProcessActivity.intent(this, textEntityId))
         }
     }
 }
