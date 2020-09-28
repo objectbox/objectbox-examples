@@ -2,12 +2,18 @@ package io.objectbox.example.kotlin
 
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
-import java.util.Date
+import io.objectbox.annotation.Index
+import io.objectbox.relation.ToOne
+import java.util.*
 
 @Entity
 data class Note(
-        @Id var id: Long = 0,
+        @Id // Every @Entity requires a Long ID property.
+        var id: Long = 0,
         var text: String? = null,
         var comment: String? = null,
+        @Index // Improves query performance at the cost of storage space.
         var date: Date? = null
-)
+) {
+    lateinit var author: ToOne<Author>
+}
