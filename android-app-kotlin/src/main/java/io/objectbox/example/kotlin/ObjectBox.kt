@@ -20,6 +20,22 @@ object ObjectBox {
             Log.d(App.TAG, "Using ObjectBox ${BoxStore.getVersion()} (${BoxStore.getVersionNative()})")
             AndroidObjectBrowser(boxStore).start(context.applicationContext)
         }
+
+        if (boxStore.boxFor(Note::class.java).isEmpty
+                && boxStore.boxFor(Author::class.java).isEmpty) {
+            replaceWithDemoData()
+        }
+    }
+
+    fun replaceWithDemoData() {
+        val author1 = Author(name = "Alice")
+        val author2 = Author(name = "Bob")
+
+        val note1 = author1.writeNote("This is a note for Bob")
+        val note2 = author1.writeNote("Write a demo app for ObjectBox")
+        val note3 = author2.writeNote("Thanks for your note, Alice")
+
+        boxStore.boxFor(Note::class.java).put(note1, note2, note3)
     }
 
 }
