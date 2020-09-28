@@ -11,7 +11,6 @@ data class Note(
         @Id // Every @Entity requires a Long ID property.
         var id: Long = 0,
         var text: String? = null,
-        var comment: String? = null,
         @Index // Improves query performance at the cost of storage space.
         var date: Date? = null
 ) {

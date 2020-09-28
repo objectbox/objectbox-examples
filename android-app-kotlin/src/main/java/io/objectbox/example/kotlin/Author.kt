@@ -16,10 +16,8 @@ data class Author(
     lateinit var notes: ToMany<Note>
 
     fun writeNote(text: String): Note {
-        val df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM)
-        val comment = "Added on " + df.format(Date())
-
-        return Note(text = text, date = Date(), comment = comment)
-                .apply { author.target = this@Author }
+        return Note(text = text, date = Date()).apply {
+            author.target = this@Author
+        }
     }
 }
