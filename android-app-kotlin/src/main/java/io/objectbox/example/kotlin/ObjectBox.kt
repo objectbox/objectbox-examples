@@ -4,23 +4,48 @@ import android.content.Context
 import android.util.Log
 import io.objectbox.BoxStore
 import io.objectbox.android.AndroidObjectBrowser
+import io.objectbox.android.ObjectBoxLiveData
 
 /**
- * Singleton to keep BoxStore reference.
+ * Singleton to keep BoxStore reference and provide current list of Notes Objects.
+ * Inserts demo data if no Objects are stored.
  */
 object ObjectBox {
 
     lateinit var boxStore: BoxStore
         private set
 
+    lateinit var notesLiveData: ObjectBoxLiveData<Note>
+        private set
+
     fun init(context: Context) {
-        boxStore = MyObjectBox.builder().androidContext(context.applicationContext).build()
+        // On Android make sure to pass a Context when building the Store.
+        boxStore = MyObjectBox.builder()
+                .androidContext(context.applicationContext)
+                .build()
 
         if (BuildConfig.DEBUG) {
             Log.d(App.TAG, "Using ObjectBox ${BoxStore.getVersion()} (${BoxStore.getVersionNative()})")
             AndroidObjectBrowser(boxStore).start(context.applicationContext)
         }
 
+        // Prepare a Query for all notes, sorted by their date.
+        // The Query is not run until find() is called or
+        // it is subscribed to (like ObjectBoxLiveData below does).
+        // https://docs.objectbox.io/queries
+        val notesQuery = boxStore.boxFor(Note::class.java).query()
+                // Sort notes by most recent first.
+                .orderDesc(Note_.date)
+                // ToOne/ToMany by default is loaded on access,
+                // so pre-fetch the ToOne to avoid this happening while view binding.
+                .eager(Note_.author)
+                .build()
+
+        // Wrap Query in a LiveData that subscribes to it only when there are active observers.
+        // If only used by a single activity or fragment, maybe keep this in their ViewModel.
+        notesLiveData = ObjectBoxLiveData(notesQuery)
+
+        // Add some demo data if the Boxes are empty.
         if (boxStore.boxFor(Note::class.java).isEmpty
                 && boxStore.boxFor(Author::class.java).isEmpty) {
             replaceWithDemoData()

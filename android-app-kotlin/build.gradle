@@ -27,16 +27,29 @@ android {
 
     defaultConfig {
         applicationId "io.objectbox.example.kotlin"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion _targetSdkVersion
         versionCode 1
         versionName "1.0"
+    }
+
+    buildFeatures {
+        viewBinding true
     }
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.activity:activity-ktx:1.1.0"
+    implementation "androidx.appcompat:appcompat:1.2.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.0.1"
+    def lifecycle_version = "2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "com.google.android.material:material:1.2.1"
 
+    // ObjectBox with Data Browser for debug builds, without for release builds.
+    // https://docs.objectbox.io/data-browser
     debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
     releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
 

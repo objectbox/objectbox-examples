@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="obx_green">#FF1FA8A7</color>
+    <color name="obx_green_dark">#FF007878</color>
+    <color name="obx_green_light">#FF62DAD8</color>
+    <color name="obx_pink">#FFE61955</color>
+    <color name="obx_pink_dark">#FFAD002D</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
