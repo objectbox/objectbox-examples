@@ -1,7 +1,9 @@
 package io.objectbox.example.android_app_multiprocess
 
+import android.annotation.TargetApi
 import android.app.Application
 import android.content.Context
+import android.os.Build
 import android.util.Log
 import io.objectbox.BoxStore
 
@@ -30,7 +32,9 @@ abstract class ObjectBoxSingleton {
                 existingInLock
             } else {
                 if (BuildConfig.DEBUG) {
-                    Log.d(Constants.TAG, "On process ${Application.getProcessName()}")
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                        Log.d(Constants.TAG, "On process ${Application.getProcessName()}")
+                    }
                     Log.d(Constants.TAG, "Using ObjectBox ${BoxStore.getVersion()} (${BoxStore.getVersionNative()})")
                 }
 
