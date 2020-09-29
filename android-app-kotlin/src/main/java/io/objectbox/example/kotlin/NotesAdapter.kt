@@ -5,8 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import java.text.DateFormat
 
 class NotesAdapter : BaseAdapter() {
+
+    private val dateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM)
 
     private val dataset: MutableList<Note> = mutableListOf()
 
@@ -33,7 +36,11 @@ class NotesAdapter : BaseAdapter() {
         val note = getItem(position)
         if (note != null) {
             holder.text.text = note.text
-            holder.comment.text = note.comment
+            holder.comment.text = parent.context.getString(
+                    R.string.note_meta_format,
+                    note.date?.let { dateFormat.format(it) } ?: "",
+                    note.author.target.name
+            )
         } else {
             holder.text.text = ""
             holder.comment.text = ""

@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:6645479796472661392",
-      "lastPropertyId": "4:1260602348787983453",
+      "lastPropertyId": "5:8452815412120793251",
       "name": "Note",
       "properties": [
         {
@@ -20,21 +20,45 @@
           "type": 9
         },
         {
-          "id": "3:6707341922395832766",
-          "name": "comment",
-          "type": 9
-        },
-        {
           "id": "4:1260602348787983453",
           "name": "date",
-          "type": 10
+          "indexId": "1:9194998581973594219",
+          "type": 10,
+          "flags": 8
+        },
+        {
+          "id": "5:8452815412120793251",
+          "name": "authorId",
+          "indexId": "2:5206397068544851461",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Author"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:8096888707432154961",
+      "lastPropertyId": "2:388290850215565763",
+      "name": "Author",
+      "properties": [
+        {
+          "id": "1:2456363380762264329",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:388290850215565763",
+          "name": "name",
+          "type": 9
         }
       ],
       "relations": []
     }
   ],
-  "lastEntityId": "1:6645479796472661392",
-  "lastIndexId": "0:0",
+  "lastEntityId": "2:8096888707432154961",
+  "lastIndexId": "2:5206397068544851461",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
