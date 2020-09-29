@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">OB Kotlin Example</string>
+    <string name="app_name">ObjectBox Demo</string>
 
     <string name="hint_note">Note</string>
     <string name="hint_author">Author</string>
