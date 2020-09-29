@@ -10,6 +10,7 @@ import io.objectbox.example.kotlin.databinding.ActivityAddNoteBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class EditNoteActivity : AppCompatActivity() {
 
@@ -74,19 +75,23 @@ class EditNoteActivity : AppCompatActivity() {
     }
 
     private suspend fun putNote(
-            text: String,
+            noteText: String,
             selectedAuthor: Author,
             existingNote: Note?
     ) = withContext(Dispatchers.IO) {
         val note = if (existingNote != null) {
             // Update existing Note Object.
-            existingNote.also {
-                it.text = text
-                it.author.target = selectedAuthor
+            existingNote.apply {
+                text = noteText
+                author.target = selectedAuthor
             }
         } else {
             // Create new Note Object.
-            selectedAuthor.writeNote(text)
+            // Keep the default value for `id` (0) to signal this is a new Object.
+            // After put the `id` has changed to the Object ID of the stored Note.
+            Note(text = noteText, date = Date()).apply {
+                author.target = selectedAuthor
+            }
         }
         // Just put to persist new or updated Note Object.
         ObjectBox.boxStore.boxFor(Note::class.java).put(note)

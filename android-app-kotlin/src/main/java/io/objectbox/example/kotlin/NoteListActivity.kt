@@ -30,6 +30,8 @@ class NoteListActivity : AppCompatActivity() {
         // Using ObjectBox Kotlin extension functions (https://docs.objectbox.io/kotlin-support)
         notesBox = ObjectBox.boxStore.boxFor()
 
+        // See [ObjectBox] on how the Query for this is built.
+        // Any changes to an Object in the Note Box will trigger delivery of latest results.
         ObjectBox.notesLiveData.observe(this, Observer {
             notesAdapter.setNotes(it)
         })

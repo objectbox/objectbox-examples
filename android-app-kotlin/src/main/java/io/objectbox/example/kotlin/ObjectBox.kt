@@ -5,6 +5,7 @@ import android.util.Log
 import io.objectbox.BoxStore
 import io.objectbox.android.AndroidObjectBrowser
 import io.objectbox.android.ObjectBoxLiveData
+import java.util.*
 
 /**
  * Singleton to keep BoxStore reference and provide current list of Notes Objects.
@@ -60,7 +61,18 @@ object ObjectBox {
         val note2 = author1.writeNote("Write a demo app for ObjectBox")
         val note3 = author2.writeNote("Thanks for your note, Alice")
 
+        // See that each Note above has a new Author set in its ToOne?
+        // When the Note is put, its Author will automatically be put into the Author Box.
+        // Both ToOne and ToMany automatically put new Objects when the Object owning them is put.
+        // But what if the Author is in the Box already?
+        // Then just the relation (Object ID) is updated.
         boxStore.boxFor(Note::class.java).put(note1, note2, note3)
+    }
+
+    private fun Author.writeNote(text: String): Note {
+        return Note(text = text, date = Date()).also {
+            it.author.target = this
+        }
     }
 
 }

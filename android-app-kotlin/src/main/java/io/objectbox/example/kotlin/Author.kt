@@ -12,12 +12,8 @@ data class Author(
         @Id var id: Long = 0,
         var name: String? = null
 ) {
-    @Backlink(to = "author") // 'to' is optional if only one relation matches.
+    // Auto-creates a one-to-many relation based on the ToOne in Note.
+    // https://docs.objectbox.io/relations#to-many-relations
+    @Backlink(to = "author")
     lateinit var notes: ToMany<Note>
-
-    fun writeNote(text: String): Note {
-        return Note(text = text, date = Date()).apply {
-            author.target = this@Author
-        }
-    }
 }
