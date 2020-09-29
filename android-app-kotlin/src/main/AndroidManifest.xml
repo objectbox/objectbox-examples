@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".EditNoteActivity"></activity>
+        <activity android:name=".CreateAuthorActivity"></activity>
     </application>
 
 </manifest>

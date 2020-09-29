@@ -46,8 +46,12 @@ class NoteListActivity : AppCompatActivity() {
             onItemLongClickListener = noteRemoveListener
         }
 
-        binding.buttonAdd.setOnClickListener {
-            startActivity(Intent(this@NoteListActivity, EditNoteActivity::class.java))
+        binding.buttonAddNote.setOnClickListener {
+            startActivity(Intent(this, EditNoteActivity::class.java))
+        }
+
+        binding.buttonAddAuthor.setOnClickListener {
+            startActivity(Intent(this, CreateAuthorActivity::class.java))
         }
     }
 

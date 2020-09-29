@@ -4,7 +4,8 @@
 
     <string name="hint_note">Note</string>
     <string name="hint_author">Author</string>
-    <string name="add">Add</string>
+    <string name="action_add_note">Add note</string>
+    <string name="action_add_author">Add author</string>
     <string name="click_to_remove">Tap and hold a note to remove it</string>
     <string name="action_save">Save</string>
     <string name="note_meta_format">Added on %s by %s</string>
