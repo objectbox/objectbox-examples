@@ -24,6 +24,8 @@ android {
 }
 
 dependencies {
+    // ObjectBox with Data Browser for debug builds, without for release builds.
+    // https://docs.objectbox.io/data-browser
     debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
     releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
 

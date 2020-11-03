@@ -27,6 +27,8 @@ public class ObjectBox {
         if (BuildConfig.DEBUG) {
             Log.d(App.TAG, String.format("Using ObjectBox %s (%s)",
                     BoxStore.getVersion(), BoxStore.getVersionNative()));
+            // Enable Data Browser on debug builds.
+            // https://docs.objectbox.io/data-browser
             new AndroidObjectBrowser(boxStore).start(context.getApplicationContext());
         }
     }

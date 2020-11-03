@@ -10,7 +10,8 @@ You can see how to
 - create, update and put Objects in a Box (`EditNoteActivity.kt`),
 - query for Objects (`ObjectBox.kt`) and always display the latest results (`NoteListActivity.kt`).
 - create a relation between Entities (`Note.kt`, `Author.kt`),
-- use an index to speed up Queries for an Entity property (`Note.kt`).
+- use an index to speed up Queries for an Entity property (`Note.kt`),
+- integrate the Data Browser for debug builds (`build.gradle`, `ObjectBox.kt`).
 
 ## Docs links
 - [Getting Started with ObjectBox](https://docs.objectbox.io/getting-started)
