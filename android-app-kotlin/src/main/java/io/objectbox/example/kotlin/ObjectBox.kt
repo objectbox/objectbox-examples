@@ -5,6 +5,7 @@ import android.util.Log
 import io.objectbox.BoxStore
 import io.objectbox.android.AndroidObjectBrowser
 import io.objectbox.android.ObjectBoxLiveData
+import io.objectbox.sync.Sync
 import java.util.*
 
 /**
@@ -26,7 +27,9 @@ object ObjectBox {
                 .build()
 
         if (BuildConfig.DEBUG) {
-            Log.d(App.TAG, "Using ObjectBox ${BoxStore.getVersion()} (${BoxStore.getVersionNative()})")
+            var syncAvailable = if (Sync.isAvailable()) "available" else "unavailable"
+            Log.d(App.TAG,
+                    "Using ObjectBox ${BoxStore.getVersion()} (${BoxStore.getVersionNative()}, sync $syncAvailable)")
             // Enable Data Browser on debug builds.
             // https://docs.objectbox.io/data-browser
             AndroidObjectBrowser(boxStore).start(context.applicationContext)
