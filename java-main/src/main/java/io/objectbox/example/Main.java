@@ -18,6 +18,7 @@ package io.objectbox.example;
 
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
+import io.objectbox.sync.Sync;
 
 /**
  * Note: Android Studio does not run plain Java projects correctly.
@@ -27,6 +28,9 @@ import io.objectbox.BoxStore;
  */
 public class Main {
     public static void main(String[] args) {
+        System.out.println("Using ObjectBox " + BoxStore.getVersion() + " (" + BoxStore.getVersionNative() + ")");
+        System.out.println("ObjectBox Sync is " + (Sync.isAvailable() ? "available" : "unavailable"));
+
         BoxStore store = MyObjectBox.builder().name("objectbox-notes-db").build();
         Box<Note> box = store.boxFor(Note.class);
 
