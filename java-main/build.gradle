@@ -31,4 +31,4 @@ dependencies {
 }
 
 // Apply plugin after dependencies block so they are not overwritten.
-apply plugin: 'io.objectbox.sync'
+apply plugin: 'io.objectbox'
