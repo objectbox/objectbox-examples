@@ -12,7 +12,6 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'application'
-apply plugin: 'io.objectbox'
 
 targetCompatibility = '1.8'
 sourceCompatibility = '1.8'
@@ -30,3 +29,6 @@ dependencies {
 
     testImplementation 'junit:junit:4.13'
 }
+
+// Apply plugin after dependencies block so they are not overwritten.
+apply plugin: 'io.objectbox.sync'
