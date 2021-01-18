@@ -21,12 +21,8 @@ String gradleArgs = "-Dorg.gradle.daemon=false --stacktrace"
 pipeline {
     agent any
 
-    environment {
-        GITLAB_URL = credentials('gitlab_url')
-    }
-
     options {
-        gitLabConnection("${env.GITLAB_URL}")
+        gitLabConnection('objectbox-gitlab-connection')
     }
 
     triggers {
