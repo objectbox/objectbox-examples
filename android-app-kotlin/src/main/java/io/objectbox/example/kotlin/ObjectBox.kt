@@ -3,10 +3,16 @@ package io.objectbox.example.kotlin
 import android.content.Context
 import android.util.Log
 import io.objectbox.BoxStore
+import io.objectbox.BoxStoreBuilder
 import io.objectbox.android.AndroidObjectBrowser
 import io.objectbox.android.ObjectBoxLiveData
+import io.objectbox.exception.DbException
+import io.objectbox.exception.FileCorruptException
+import io.objectbox.exception.PagesCorruptException
 import io.objectbox.sync.Sync
+import java.io.File
 import java.util.*
+import java.util.zip.GZIPOutputStream
 
 /**
  * Singleton to keep BoxStore reference and provide current list of Notes Objects.
@@ -17,14 +23,32 @@ object ObjectBox {
     lateinit var boxStore: BoxStore
         private set
 
+    /**
+     * If building the [boxStore] failed, contains the thrown error message.
+     */
+    var dbExceptionMessage: String? = null
+        private set
+
     lateinit var notesLiveData: ObjectBoxLiveData<Note>
         private set
 
     fun init(context: Context) {
         // On Android make sure to pass a Context when building the Store.
-        boxStore = MyObjectBox.builder()
-                .androidContext(context.applicationContext)
-                .build()
+        boxStore = try {
+            MyObjectBox.builder()
+                    .androidContext(context.applicationContext)
+                    .build()
+        } catch (e: DbException) {
+            if (e.javaClass.equals(DbException::class.java) || e is FileCorruptException) {
+                // Failed to build BoxStore due to database file issue, store message;
+                // checked in NoteListActivity to notify user.
+                dbExceptionMessage = e.toString()
+                return
+            } else {
+                // Failed to build BoxStore due to developer error.
+                throw e
+            }
+        }
 
         if (BuildConfig.DEBUG) {
             var syncAvailable = if (Sync.isAvailable()) "available" else "unavailable"
@@ -58,7 +82,7 @@ object ObjectBox {
         }
     }
 
-    fun replaceWithDemoData() {
+    private fun replaceWithDemoData() {
         val author1 = Author(name = "Alice")
         val author2 = Author(name = "Bob")
 
@@ -78,6 +102,29 @@ object ObjectBox {
         return Note(text = text, date = Date()).also {
             it.author.target = this
         }
+    }
+
+    /**
+     * If the database file is not in use, compresses (GZIP) and copies it to the given [target].
+     */
+    fun copyAndGzipDatabaseFileTo(target: File, context: Context): Boolean {
+        if (BoxStore.isDatabaseOpen(context, null)) {
+            // Do not copy if database file is still in use.
+            // If it would be open, the copy will likely get corrupted
+            // as BoxStore may currently write data to the file.
+            Log.e(App.TAG, "Database file is still in use, can not copy.")
+            return false
+        }
+
+        // If a name was given when building BoxStore use that instead of the default below.
+        val dbName = BoxStoreBuilder.DEFAULT_NAME
+        File(context.filesDir, "objectbox/$dbName/data.mdb").inputStream().use { input ->
+            target.parentFile?.mkdirs()
+            GZIPOutputStream(target.outputStream()).use { output ->
+                input.copyTo(output, DEFAULT_BUFFER_SIZE)
+            }
+        }
+        return true
     }
 
 }

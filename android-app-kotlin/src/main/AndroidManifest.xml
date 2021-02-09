@@ -18,8 +18,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditNoteActivity"></activity>
-        <activity android:name=".CreateAuthorActivity"></activity>
+        <activity android:name=".EditNoteActivity" />
+        <activity android:name=".CreateAuthorActivity" />
+
+        <!-- To share a corrupted database file via email, see DbErrorActivity. -->
+        <activity android:name=".DbErrorActivity"></activity>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="io.objectbox.example.kotlin.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

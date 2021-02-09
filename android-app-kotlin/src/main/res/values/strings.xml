@@ -10,4 +10,8 @@
     <string name="action_save">Save</string>
     <string name="note_meta_format">Added on %s by %s</string>
 
+    <string name="db_error_text_title">Sorry, it appears the database was corrupted</string>
+    <string name="db_error_text_description">Please send us the database file for analysis. Then uninstall and install this app again, or clear data for this app in your device settings.</string>
+    <string name="db_error_send">Send email to developer</string>
+
 </resources>

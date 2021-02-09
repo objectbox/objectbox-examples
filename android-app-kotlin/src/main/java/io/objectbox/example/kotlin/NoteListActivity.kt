@@ -22,6 +22,14 @@ class NoteListActivity : AppCompatActivity() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // If failed to build BoxStore, notify user.
+        if (ObjectBox.dbExceptionMessage != null) {
+            startActivity(Intent(this, DbErrorActivity::class.java))
+            finish()
+            return
+        }
+
         binding = ActivityNoteListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
