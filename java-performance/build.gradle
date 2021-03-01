@@ -1,0 +1,28 @@
+// Repositories are defined in root build.gradle
+
+buildscript {
+    repositories {
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+
+    dependencies {
+        classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+targetCompatibility = '1.8'
+sourceCompatibility = '1.8'
+
+mainClassName = "io.objectbox.example.Main"
+
+dependencies {
+    implementation "io.objectbox:objectbox-java:$objectboxVersion"
+    implementation "org.greenrobot:essentials:3.1.0"
+    implementation "com.beust:jcommander:1.71"
+}
+
+// Apply plugin after dependencies block so they are not overwritten.
+apply plugin: 'io.objectbox'

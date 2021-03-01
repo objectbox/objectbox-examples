@@ -1,0 +1,153 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:4288372873984784057",
+      "lastPropertyId": "10:8597618659567032026",
+      "name": "SimpleEntity",
+      "properties": [
+        {
+          "id": "1:967573855286974449",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8588208172034165981",
+          "name": "simpleBoolean",
+          "type": 1,
+          "flags": 4
+        },
+        {
+          "id": "3:3479369881201235996",
+          "name": "simpleByte",
+          "type": 2,
+          "flags": 4
+        },
+        {
+          "id": "4:6810318672311508032",
+          "name": "simpleShort",
+          "type": 3,
+          "flags": 4
+        },
+        {
+          "id": "5:7027253877049482700",
+          "name": "simpleInt",
+          "type": 5,
+          "flags": 4
+        },
+        {
+          "id": "6:8517533150210231428",
+          "name": "simpleLong",
+          "type": 6,
+          "flags": 4
+        },
+        {
+          "id": "7:5511104108872092274",
+          "name": "simpleFloat",
+          "type": 7,
+          "flags": 4
+        },
+        {
+          "id": "8:3894795050473143240",
+          "name": "simpleDouble",
+          "type": 8,
+          "flags": 4
+        },
+        {
+          "id": "9:4914539334162641556",
+          "name": "simpleString",
+          "type": 9
+        },
+        {
+          "id": "10:8597618659567032026",
+          "name": "simpleByteArray",
+          "type": 23
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:8097802744603934556",
+      "lastPropertyId": "10:4331891518409391973",
+      "name": "SimpleEntityIndexed",
+      "properties": [
+        {
+          "id": "1:9122966861006182732",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4791626390390290275",
+          "name": "simpleBoolean",
+          "type": 1,
+          "flags": 4
+        },
+        {
+          "id": "3:8657301258588426925",
+          "name": "simpleByte",
+          "type": 2,
+          "flags": 4
+        },
+        {
+          "id": "4:5652789684812735047",
+          "name": "simpleShort",
+          "type": 3,
+          "flags": 4
+        },
+        {
+          "id": "5:6880851029887313435",
+          "name": "simpleInt",
+          "indexId": "1:2612263623290716257",
+          "type": 5,
+          "flags": 12
+        },
+        {
+          "id": "6:7741176148957980842",
+          "name": "simpleLong",
+          "type": 6,
+          "flags": 4
+        },
+        {
+          "id": "7:4845965558001748671",
+          "name": "simpleFloat",
+          "type": 7,
+          "flags": 4
+        },
+        {
+          "id": "8:2122234183006138645",
+          "name": "simpleDouble",
+          "type": 8,
+          "flags": 4
+        },
+        {
+          "id": "9:8673908725980279595",
+          "name": "simpleString",
+          "indexId": "2:3303868836537534499",
+          "type": 9,
+          "flags": 2048
+        },
+        {
+          "id": "10:4331891518409391973",
+          "name": "simpleByteArray",
+          "type": 23
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "2:8097802744603934556",
+  "lastIndexId": "2:3303868836537534499",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
