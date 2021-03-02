@@ -12,7 +12,8 @@ For **Android**, there are:
 For **plain Java**, you'll find those:
 
  * java-main: using ObjectBox in a Java application
- * java-main-maven: while the primary build system for ObjectBox is Gradle, you can also use Maven 
+ * java-main-maven: while the primary build system for ObjectBox is Gradle, you can also use Maven
+ * java-performance: a command-line application that runs performance tests with ObjectBox.
 
 MyObjectBox missing? Build the project!
 ---------------------------------------
