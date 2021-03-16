@@ -27,7 +27,7 @@ dependencies {
     implementation "io.objectbox:objectbox-macos:$objectboxVersion"
     implementation "io.objectbox:objectbox-windows:$objectboxVersion"
 
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.2'
 }
 
 // Apply plugin after dependencies block so they are not overwritten.

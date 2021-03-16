@@ -15,7 +15,7 @@ import java.text.DateFormat;
 import java.util.Date;
 
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import io.objectbox.Box;
 import io.objectbox.example.arch.R;
 
@@ -36,7 +36,7 @@ public class NoteActivity extends FragmentActivity {
 
         notesBox = ObjectBox.get().boxFor(Note.class);
 
-        NoteViewModel model = ViewModelProviders.of(this).get(NoteViewModel.class);
+        NoteViewModel model = new ViewModelProvider(this).get(NoteViewModel.class);
         model.getNoteLiveData(notesBox).observe(this, notes -> notesAdapter.setNotes(notes));
     }
 

@@ -13,7 +13,7 @@ import java.util.Date;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import io.objectbox.Box;
@@ -40,7 +40,7 @@ public class NotePagedActivity extends FragmentActivity {
 
         notesBox = ObjectBox.get().boxFor(Note.class);
 
-        NotePagedViewModel model = ViewModelProviders.of(this).get(NotePagedViewModel.class);
+        NotePagedViewModel model = new ViewModelProvider(this).get(NotePagedViewModel.class);
         model.getNoteLiveDataPaged(notesBox).observe(this, notes -> notesAdapter.submitList(notes));
     }
 
