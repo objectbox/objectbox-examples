@@ -1,7 +1,7 @@
 ext {
     _compileSdkVersion = 30 /* Android 11 (R) */
     _targetSdkVersion = 30 /* Android 11 (R) */
-    objectboxVersion = '2.9.0'
+    objectboxVersion = '2.9.1'
 }
 
 buildscript {
@@ -10,6 +10,7 @@ buildscript {
     }
 
     repositories {
+        mavenCentral()
         google()
         jcenter()
     }
@@ -18,16 +19,16 @@ buildscript {
 allprojects {
     buildscript {
         repositories {
-            jcenter()
             mavenCentral()
             google()
+            jcenter()
         }
     }
 
     repositories {
-        jcenter()
         mavenCentral()
         google()
+        jcenter()
     }
 }
 
