@@ -1,18 +1,17 @@
 ext {
     _compileSdkVersion = 30 /* Android 11 (R) */
     _targetSdkVersion = 30 /* Android 11 (R) */
-    objectboxVersion = '2.9.1'
+    objectboxVersion = '2.9.2-RC'
 }
 
 buildscript {
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath 'com.android.tools.build:gradle:4.2.0'
     }
 
     repositories {
         mavenCentral()
         google()
-        jcenter()
     }
 }
 
@@ -21,14 +20,13 @@ allprojects {
         repositories {
             mavenCentral()
             google()
-            jcenter()
         }
     }
 
     repositories {
         mavenCentral()
         google()
-        jcenter()
+        jcenter() // DAOCompat
     }
 }
 
