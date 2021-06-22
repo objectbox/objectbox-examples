@@ -1,7 +1,7 @@
 ext {
     _compileSdkVersion = 30 /* Android 11 (R) */
     _targetSdkVersion = 30 /* Android 11 (R) */
-    objectboxVersion = '2.9.2-RC'
+    objectboxVersion = '2.9.2-RC2'
 }
 
 buildscript {
@@ -26,7 +26,6 @@ allprojects {
     repositories {
         mavenCentral()
         google()
-        jcenter() // DAOCompat
     }
 }
 

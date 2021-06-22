@@ -33,6 +33,5 @@ android {
 }
 
 dependencies {
-    // No 2.9.1 release for now.
-    implementation "org.greenrobot:objectbox-daocompat:2.9.0"
+    implementation "org.greenrobot:objectbox-daocompat:$objectboxVersion"
 }
