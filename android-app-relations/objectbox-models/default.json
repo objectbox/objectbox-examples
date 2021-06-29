@@ -33,7 +33,7 @@
           "name": "customerId",
           "indexId": "1:3976444895053443633",
           "type": 11,
-          "flags": 1548,
+          "flags": 520,
           "relationTarget": "Customer"
         }
       ],

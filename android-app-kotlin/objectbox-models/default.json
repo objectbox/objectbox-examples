@@ -31,7 +31,7 @@
           "name": "authorId",
           "indexId": "2:5206397068544851461",
           "type": 11,
-          "flags": 1548,
+          "flags": 520,
           "relationTarget": "Author"
         }
       ],
