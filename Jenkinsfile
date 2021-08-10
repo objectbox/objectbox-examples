@@ -58,7 +58,7 @@ pipeline {
     post {
         always {
             junit '**/build/test-results/**/TEST-*.xml'
-            archiveArtifacts artifacts: '**/build/reports/lint-results.html'
+            archiveArtifacts artifacts: '**/build/reports/lint-results-debug.html'
         }
 
         failure {
