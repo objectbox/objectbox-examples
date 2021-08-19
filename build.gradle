@@ -1,7 +1,7 @@
 ext {
     _compileSdkVersion = 30 /* Android 11 (R) */
     _targetSdkVersion = 30 /* Android 11 (R) */
-    objectboxVersion = '2.9.2-RC3'
+    objectboxVersion = '2.9.2-RC4'
 }
 
 buildscript {
