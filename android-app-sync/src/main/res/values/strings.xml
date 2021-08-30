@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="app_name">OBX Sync Example</string>
+
+    <string name="add_hint">Enter new task</string>
+    <string name="add">Add</string>
+    <string name="remove">Remove</string>
+    <string name="tab_all">All</string>
+    <string name="tab_open">Open</string>
+    <string name="tab_done">Done</string>
+
+</resources>
