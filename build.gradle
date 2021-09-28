@@ -1,49 +1,50 @@
-ext {
-    _compileSdkVersion = 30 /* Android 11 (R) */
-    _targetSdkVersion = 30 /* Android 11 (R) */
-    objectboxVersion = '2.9.2-RC4'
-}
-
 buildscript {
+    ext {
+        objectboxVersion = "2.9.2-RC4"
+
+        // For Android projects
+        _compileSdkVersion = 30 /* Android 11 (R) */
+        _targetSdkVersion = 30 /* Android 11 (R) */
+
+        // For Kotlin projects
+        kotlinVersion = "1.5.21"
+    }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0'
+        classpath("com.android.tools.build:gradle:7.0.0") // For Android projects
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion") // For Kotlin projects
+        classpath("io.objectbox:objectbox-gradle-plugin:$objectboxVersion")
     }
 
     repositories {
-        mavenCentral()
-        google()
+        mavenCentral() // ObjectBox artifacts are available on Maven Central.
+        google() // For Android projects
     }
 }
 
 allprojects {
-    buildscript {
-        repositories {
-            mavenCentral()
-            google()
-        }
-    }
-
     repositories {
-        mavenCentral()
-        google()
+        mavenCentral() // ObjectBox artifacts are available on Maven Central.
+        google() // For Android projects
     }
 }
 
+// Helper task for us to quickly compress the example files into a ZIP file.
 task zipAll(type: Zip) {
     archiveBaseName = "objectbox-examples"
     from(rootDir) {
-        exclude '**/.idea/**'
-        exclude '**/build/**'
-        exclude '.gradle/**'
-        exclude '**/*.iml'
-        exclude '**/*.dll'
-        exclude '**/*.so'
-        exclude '**/local.properties'
+        exclude "**/.idea/**"
+        exclude "**/build/**"
+        exclude ".gradle/**"
+        exclude "**/*.iml"
+        exclude "**/*.dll"
+        exclude "**/*.so"
+        exclude "**/local.properties"
     }
 
     destinationDirectory = buildDir
 }
 
 wrapper {
-    distributionType Wrapper.DistributionType.ALL
+    distributionType = Wrapper.DistributionType.ALL
 }
