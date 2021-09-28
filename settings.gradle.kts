@@ -1,0 +1,8 @@
+include("android-app")
+include("android-app-arch")
+include("android-app-daocompat")
+include("android-app-kotlin")
+include("android-app-multiprocess")
+include("android-app-relations")
+include("java-main")
+include("java-performance")

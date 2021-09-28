@@ -1,14 +1,12 @@
 buildscript {
-    ext {
-        objectboxVersion = "2.9.2-RC4"
+    val objectboxVersion by extra("2.9.2-RC4")
 
-        // For Android projects
-        _compileSdkVersion = 30 /* Android 11 (R) */
-        _targetSdkVersion = 30 /* Android 11 (R) */
+    // For Android projects
+    val _compileSdkVersion by extra(30) /* Android 11 (R) */
+    val _targetSdkVersion by extra(30) /* Android 11 (R) */
 
-        // For Kotlin projects
-        kotlinVersion = "1.5.31"
-    }
+    // For Kotlin projects
+    val kotlinVersion by extra("1.5.31")
 
     dependencies {
         classpath("com.android.tools.build:gradle:7.0.2") // For Android projects
@@ -30,21 +28,21 @@ allprojects {
 }
 
 // Helper task for us to quickly compress the example files into a ZIP file.
-task zipAll(type: Zip) {
-    archiveBaseName = "objectbox-examples"
+tasks.register<Zip>("zipAll") {
+    archiveBaseName.set("objectbox-examples")
     from(rootDir) {
-        exclude "**/.idea/**"
-        exclude "**/build/**"
-        exclude ".gradle/**"
-        exclude "**/*.iml"
-        exclude "**/*.dll"
-        exclude "**/*.so"
-        exclude "**/local.properties"
+        exclude("**/.idea/**")
+        exclude("**/build/**")
+        exclude(".gradle/**")
+        exclude("**/*.iml")
+        exclude("**/*.dll")
+        exclude("**/*.so")
+        exclude("**/local.properties")
     }
 
-    destinationDirectory = buildDir
+    destinationDirectory.set(buildDir)
 }
 
-wrapper {
+tasks.wrapper {
     distributionType = Wrapper.DistributionType.ALL
 }
