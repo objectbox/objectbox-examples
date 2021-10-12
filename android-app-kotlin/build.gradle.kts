@@ -50,9 +50,6 @@ dependencies {
     // https://docs.objectbox.io/data-browser
     debugImplementation("io.objectbox:objectbox-android-objectbrowser:$objectboxVersion")
     releaseImplementation("io.objectbox:objectbox-android:$objectboxVersion")
-
-    // Optional: if you distribute your app as App Bundle, see the App class for details.
-    implementation("com.google.android.play:core:1.10.0")
 }
 
 // apply the plugin after the dependencies block so it does not automatically add objectbox-android
