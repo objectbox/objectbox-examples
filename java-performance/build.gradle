@@ -1,7 +1,9 @@
 // See the root build.gradle file on how to add plugins and repositories.
 
-apply plugin: 'java'
-apply plugin: 'application'
+plugins {
+    id("java")
+    id("application")
+}
 
 targetCompatibility = '1.8'
 sourceCompatibility = '1.8'

@@ -1,7 +1,9 @@
 // See the root build.gradle file on how to add plugins and repositories.
 
-apply plugin: 'com.android.application'
-apply plugin: 'io.objectbox'
+plugins {
+    id("com.android.application")
+    id("io.objectbox")
+}
 
 android {
     compileSdkVersion _compileSdkVersion

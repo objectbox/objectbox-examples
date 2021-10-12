@@ -1,8 +1,10 @@
 // See the root build.gradle file on how to add plugins and repositories.
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
+plugins {
+    id("com.android.application")
+    id("kotlin-android")
+    id("kotlin-kapt")
+}
 
 android {
     compileSdkVersion _compileSdkVersion

@@ -1,9 +1,11 @@
 // See the root build.gradle file on how to add plugins and repositories.
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'io.objectbox'
+plugins {
+    id("com.android.application")
+    id("kotlin-android")
+    id("kotlin-kapt")
+    id("io.objectbox")
+}
 
 android {
     compileSdkVersion _compileSdkVersion

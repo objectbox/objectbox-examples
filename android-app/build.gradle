@@ -1,6 +1,8 @@
 // See the root build.gradle file on how to add plugins and repositories.
 
-apply plugin: 'com.android.application'
+plugins {
+    id("com.android.application")
+}
 
 android {
     compileSdkVersion _compileSdkVersion
