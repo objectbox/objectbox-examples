@@ -16,6 +16,10 @@ public class Customer {
     @Backlink
     private ToMany<Order> orders;
 
+    // For ObjectBox
+    public Customer() {
+    }
+
     public Customer(Long id) {
         this.id = id;
     }

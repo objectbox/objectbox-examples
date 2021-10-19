@@ -12,6 +12,10 @@ public class Order {
 
     private ToOne<Customer> customer;
 
+    // For ObjectBox
+    public Order() {
+    }
+
     public Order(Long id, long customerId) {
         this.id = id;
         this.customer.setTargetId(customerId);

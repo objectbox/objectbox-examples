@@ -1,5 +1,5 @@
 buildscript {
-    val objectboxVersion by extra("2.9.2-RC4")
+    val objectboxVersion by extra("3.0.0")
 
     // For Android projects
     val _compileSdkVersion by extra(30) /* Android 11 (R) */
