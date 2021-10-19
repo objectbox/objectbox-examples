@@ -12,11 +12,8 @@ public class Order {
 
     private ToOne<Customer> customer;
 
-    // For ObjectBox
-    public Order() {
-    }
-
-    public Order(Long id, long customerId) {
+    // All properties constructor for ObjectBox
+    public Order(long id, long customerId) {
         this.id = id;
         this.customer.setTargetId(customerId);
     }
