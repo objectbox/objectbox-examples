@@ -11,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ObxKotlin"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".NoteListActivity">
+        <activity
+            android:name=".NoteListActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

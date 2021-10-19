@@ -10,7 +10,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name="io.objectbox.example.NoteActivity">
+        <activity
+            android:name="io.objectbox.example.NoteActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -18,6 +20,7 @@
         </activity>
         <activity
             android:name="io.objectbox.example.NotePagedActivity"
+            android:exported="true"
             android:label="@string/app_name_paging">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

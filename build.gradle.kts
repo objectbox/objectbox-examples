@@ -2,14 +2,14 @@ buildscript {
     val objectboxVersion by extra("3.0.0")
 
     // For Android projects
-    val _compileSdkVersion by extra(30) /* Android 11 (R) */
-    val _targetSdkVersion by extra(30) /* Android 11 (R) */
+    val _compileSdkVersion by extra(31) /* Android 12 (S) */
+    val _targetSdkVersion by extra(31) /* Android 12 (S) */
 
     // For Kotlin projects
     val kotlinVersion by extra("1.5.31")
 
     dependencies {
-        classpath("com.android.tools.build:gradle:7.0.2") // For Android projects
+        classpath("com.android.tools.build:gradle:7.0.3") // For Android projects
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion") // For Kotlin projects
         classpath("io.objectbox:objectbox-gradle-plugin:$objectboxVersion")
     }
