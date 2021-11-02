@@ -34,6 +34,19 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = true
+            isShrinkResources = true
+            // R8/ProGuard rules for ObjectBox are included in the Java and Android dependencies,
+            // no additional configuration is required.
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
 }
 
 dependencies {
