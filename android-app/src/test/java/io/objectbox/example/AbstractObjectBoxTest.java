@@ -9,7 +9,7 @@ import io.objectbox.BoxStore;
 import io.objectbox.DebugFlags;
 
 /**
- * Android Local Unit test example (https://docs.objectbox.io/android-local-unit-tests)
+ * Android Local Unit test example (https://docs.objectbox.io/android/android-local-unit-tests)
  */
 public class AbstractObjectBoxTest {
 
@@ -19,12 +19,12 @@ public class AbstractObjectBoxTest {
 
     @Before
     public void setUp() throws Exception {
-        // delete database files before each test to start with a clean database
+        // Delete any files in the test directory before each test to start with a clean database.
         BoxStore.deleteAllFiles(TEST_DIRECTORY);
         store = MyObjectBox.builder()
-                // add directory flag to change where ObjectBox puts its database files
+                // Use a custom directory to store the database files in.
                 .directory(TEST_DIRECTORY)
-                // optional: add debug flags for more detailed ObjectBox log output
+                // Optional: add debug flags for more detailed ObjectBox log output.
                 .debugFlags(DebugFlags.LOG_QUERIES | DebugFlags.LOG_QUERY_PARAMETERS)
                 .build();
     }

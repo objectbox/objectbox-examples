@@ -20,7 +20,7 @@ public class NoteTestExample extends AbstractObjectBoxTest {
 
     @Test
     public void exampleTest() {
-        // get a box and use ObjectBox as usual
+        // Get a box and use ObjectBox as usual
         Box<Note> noteBox = store.boxFor(Note.class);
 
         noteBox.put(NOTE);
