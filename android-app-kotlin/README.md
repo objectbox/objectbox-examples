@@ -11,7 +11,8 @@ You can see how to
 - query for Objects ([ObjectBox.kt](src/main/java/io/objectbox/example/kotlin/ObjectBox.kt)) and always display the latest results ([NoteListActivity.kt](src/main/java/io/objectbox/example/kotlin/NoteListActivity.kt)).
 - create a relation between Entities ([Note.kt](src/main/java/io/objectbox/example/kotlin/Note.kt), [Author.kt](src/main/java/io/objectbox/example/kotlin/Author.kt)),
 - use an index to speed up Queries for an Entity property ([Note.kt](src/main/java/io/objectbox/example/kotlin/Note.kt)),
-- integrate the Data Browser for debug builds (`build.gradle`, [ObjectBox.kt](src/main/java/io/objectbox/example/kotlin/ObjectBox.kt)).
+- integrate the Data Browser for debug builds (`build.gradle`, [ObjectBox.kt](src/main/java/io/objectbox/example/kotlin/ObjectBox.kt)),
+- write unit tests that run on your machine ([NoteTestExample.kt](src/test/java/io/objectbox/example/kotlin/NoteTestExample.kt)).
 
 ## Docs links
 - [Getting Started with ObjectBox](https://docs.objectbox.io/getting-started)
