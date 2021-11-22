@@ -18,7 +18,6 @@ open class AbstractObjectBoxTest {
         get() = _store!!
 
     @Before
-    @Throws(Exception::class)
     fun setUp() {
         // Delete any files in the test directory before each test to start with a clean database.
         BoxStore.deleteAllFiles(TEST_DIRECTORY)
@@ -31,7 +30,6 @@ open class AbstractObjectBoxTest {
     }
 
     @After
-    @Throws(Exception::class)
     fun tearDown() {
         _store?.close()
         _store = null
