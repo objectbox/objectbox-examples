@@ -8,6 +8,8 @@ For **Android**, there are:
  * android-app-kotlin: Kotlin based note taking app
  * android-app-relations: Demonstrating relations (Java based app)
  * android-app-daocompat: DAO compat is a compatibility layer on top of ObjectBox emulating a greenDAO API
+ * android-app-sync: a Java task list app integrated with ObjectBox Sync.
+ * android-app-sync-kotlin: a Kotlin task list app integrated with ObjectBox Sync.
 
 For **plain Java**, you'll find those:
 

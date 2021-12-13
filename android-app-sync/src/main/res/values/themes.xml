@@ -1,0 +1,7 @@
+<resources>
+
+    <style name="Theme.ObjectBoxExample" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+    </style>
+
+</resources>
