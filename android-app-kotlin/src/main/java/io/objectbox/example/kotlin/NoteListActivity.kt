@@ -7,6 +7,7 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import io.objectbox.Box
 import io.objectbox.example.kotlin.databinding.ActivityNoteListBinding
 import io.objectbox.kotlin.boxFor
@@ -65,7 +66,7 @@ class NoteListActivity : AppCompatActivity() {
 
     private val noteRemoveListener = AdapterView.OnItemLongClickListener { _, _, position, _ ->
         notesAdapter.getItem(position)?.also {
-            GlobalScope.launch(Dispatchers.IO) {
+            lifecycleScope.launch(Dispatchers.IO) {
                 // Pass the Note Object to remove it.
                 val removed = notesBox.remove(it)
                 // Can also remove by passing an Object ID:

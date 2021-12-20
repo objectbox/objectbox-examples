@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         val context = applicationContext
 
         // Create a store instance right away (and clear database).
-        GlobalScope.launch(Dispatchers.IO) {
+        (application as MultiProcessApp).applicationScope.launch(Dispatchers.IO) {
             ObjectBox.get(context).removeAllObjects()
         }
 

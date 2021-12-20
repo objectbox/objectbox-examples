@@ -51,7 +51,7 @@ class DbErrorActivity : AppCompatActivity() {
 
             // Add the exception message and some helpful device info to the email body.
             val message = "Error message: ${ObjectBox.dbExceptionMessage}\n" +
-                    "Device info: ${Build.MANUFACTURER.toUpperCase(Locale.US)} ${Build.MODEL}, " +
+                    "Device info: ${Build.MANUFACTURER.uppercase(Locale.US)} ${Build.MODEL}, " +
                     "Android ${Build.VERSION.RELEASE}\n\n"
 
             // Email with one attachment
