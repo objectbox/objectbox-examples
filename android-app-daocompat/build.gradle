@@ -29,5 +29,6 @@ android {
 }
 
 dependencies {
-    implementation "org.greenrobot:objectbox-daocompat:$objectboxVersion"
+    // Version 3.1.0 currently not available (has no changes, so fine to keep using 3.1.0).
+    implementation "org.greenrobot:objectbox-daocompat:3.0.1"
 }
