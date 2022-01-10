@@ -34,7 +34,7 @@
           "name": "parentId",
           "indexId": "1:3090295589691215635",
           "type": 11,
-          "flags": 1548,
+          "flags": 520,
           "relationTarget": "Note"
         }
       ],
