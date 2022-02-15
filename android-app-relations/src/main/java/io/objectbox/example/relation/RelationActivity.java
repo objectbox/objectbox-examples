@@ -75,7 +75,9 @@ public class RelationActivity extends Activity {
     }
 
     private void logOrders(Box<Order> orderBox, Customer customer) {
-        List<Order> ordersQueried = orderBox.query().equal(Order_.customerId, customer.id).build().find();
+        List<Order> ordersQueried = orderBox
+                .query(Order_.customerId.equal(customer.id))
+                .build().find();
         log("Customer " + customer.id + " has " + ordersQueried.size() + " orders");
         for (Order order : ordersQueried) {
             log("Order " + order.id + " related to customer " + order.customer.getTargetId());
@@ -108,8 +110,8 @@ public class RelationActivity extends Activity {
 
         // https://docs.objectbox.io/queries
         logTitle("Query for all students named \"Skywalker\" taught by \"Yoda\"");
-        QueryBuilder<Student> builder = studentBox.query().contains(Student_.name, "Skywalker", CASE_SENSITIVE);
-        builder.link(Student_.teachers).equal(Teacher_.name, yoda.name, CASE_SENSITIVE);
+        QueryBuilder<Student> builder = studentBox.query(Student_.name.contains("Skywalker"));
+        builder.link(Student_.teachers).apply(Teacher_.name.equal(yoda.name));
         List<Student> studentsTaughtByYoda = builder.build().find();
         log("There is " + studentsTaughtByYoda.size() + " student taught by Yoda: "
                 + studentsTaughtByYoda.get(0).name);
