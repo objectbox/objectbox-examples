@@ -1,0 +1,39 @@
+# Default image for linux builds
+image: objectboxio/buildenv:21.11.11-centos7
+
+variables:
+  # Disable the Gradle daemon for Continuous Integration servers as correctness
+  # is usually a priority over speed in CI environments. Using a fresh
+  # runtime for each build is more reliable since the runtime is completely
+  # isolated from any previous builds.
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+stages:
+  - test
+
+build-and-test:
+  stage: test
+  tags: [ docker, x64 ]
+  before_script:
+    # Print Gradle and JVM version info
+    - ./gradlew -version
+  script:
+    - ./gradlew clean build
+  artifacts:
+    when: always
+    paths:
+      - "**/build/reports/lint-results-debug.html"
+    reports:
+      junit: "**/build/test-results/**/TEST-*.xml"
+
+run-cli-app:
+  stage: test
+  tags: [ docker, x64 ]
+  needs: ["build-and-test"]
+  before_script:
+    # "|| true" for an OK exit code if path not found
+    - rm -r java-main/objectbox-notes-db || true
+  script:
+    - ./gradlew java-main:run
+    # Run again with existing database.
+    - ./gradlew java-main:run
