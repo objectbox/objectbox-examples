@@ -1,5 +1,5 @@
 # Default image for linux builds
-image: objectboxio/buildenv:21.11.11-centos7
+image: objectboxio/buildenv:22.3.22-centos7
 
 variables:
   # Disable the Gradle daemon for Continuous Integration servers as correctness
@@ -18,7 +18,15 @@ build-and-test:
     # Print Gradle and JVM version info
     - ./gradlew -version
   script:
-    - ./gradlew clean build
+    # https://docs.gitlab.com/ee/ci/jobs/#expand-and-collapse-job-log-sections
+    - echo -e "\e[0Ksection_start:`date +%s`:section_clean\r\e[0KCleaning"
+    # TODO what task can we add here to update Android SDK components (e.g. new versions of Android SDK Build-Tools?)
+    - ./gradlew clean
+    - echo -e "\e[0Ksection_end:`date +%s`:section_clean\r\e[0K"
+
+    - echo -e "\e[0Ksection_start:`date +%s`:section_build\r\e[0KBuilding"
+    - ./gradlew build
+    - echo -e "\e[0Ksection_end:`date +%s`:section_build\r\e[0K"
   artifacts:
     when: always
     paths:
