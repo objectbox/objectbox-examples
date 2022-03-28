@@ -20,7 +20,8 @@ build-and-test:
   script:
     # https://docs.gitlab.com/ee/ci/jobs/#expand-and-collapse-job-log-sections
     - echo -e "\e[0Ksection_start:`date +%s`:section_clean\r\e[0KCleaning"
-    # TODO what task can we add here to update Android SDK components (e.g. new versions of Android SDK Build-Tools?)
+    # TODO Need signal if Android SDK download slows build (and Docker image needs to be updated),
+    #  what Android Plugin task can we add here to install missing Android SDK components (e.g. new Build-Tools)?
     - ./gradlew clean
     - echo -e "\e[0Ksection_end:`date +%s`:section_clean\r\e[0K"
 
