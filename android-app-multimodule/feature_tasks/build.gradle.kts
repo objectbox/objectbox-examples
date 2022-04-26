@@ -1,14 +1,19 @@
+// See the root build.gradle file on how to add plugins and repositories.
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
 
+val _compileSdkVersion: Int by rootProject.extra
+val _targetSdkVersion: Int by rootProject.extra
+
 android {
-    compileSdk = 31
+    compileSdk = _compileSdkVersion
 
     defaultConfig {
         minSdk = 23
-        targetSdk = 31
+        targetSdk = _targetSdkVersion
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

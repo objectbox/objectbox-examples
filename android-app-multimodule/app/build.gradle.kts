@@ -1,15 +1,20 @@
+// See the root build.gradle file on how to add plugins and repositories.
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
 
+val _compileSdkVersion: Int by rootProject.extra
+val _targetSdkVersion: Int by rootProject.extra
+
 android {
-    compileSdk = 31
+    compileSdk = _compileSdkVersion
 
     defaultConfig {
         applicationId = "com.example.android_app_multimodule"
         minSdk = 23
-        targetSdk = 31
+        targetSdk = _targetSdkVersion
         versionCode = 1
         versionName = "1.0"
 
@@ -35,6 +40,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":android-app-multimodule:feature_notes"))
+    implementation(project(":android-app-multimodule:feature_tasks"))
+
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("com.google.android.material:material:1.5.0")
