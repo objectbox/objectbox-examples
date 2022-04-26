@@ -3,6 +3,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 val _compileSdkVersion: Int by rootProject.extra
@@ -46,3 +47,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 }
+
+// apply the plugin after the dependencies block so it does not automatically add objectbox-android
+// which would conflict with objectbox-android-objectbrowser on debug builds
+apply(plugin = "io.objectbox")
