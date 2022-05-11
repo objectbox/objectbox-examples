@@ -5,7 +5,7 @@ import android.util.Log;
 
 import io.objectbox.BoxStore;
 import io.objectbox.BoxStoreBuilder;
-import io.objectbox.android.AndroidObjectBrowser;
+import io.objectbox.android.Admin;
 import io.objectbox.exception.FileCorruptException;
 import io.objectbox.model.ValidateOnOpenMode;
 
@@ -30,9 +30,9 @@ public class ObjectBox {
         if (BuildConfig.DEBUG) {
             Log.d(App.TAG, String.format("Using ObjectBox %s (%s)",
                     BoxStore.getVersion(), BoxStore.getVersionNative()));
-            // Enable Data Browser on debug builds.
+            // Enable ObjectBox Admin on debug builds.
             // https://docs.objectbox.io/data-browser
-            new AndroidObjectBrowser(boxStore).start(context.getApplicationContext());
+            new Admin(boxStore).start(context.getApplicationContext());
         }
     }
 

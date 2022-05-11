@@ -4,11 +4,10 @@ import android.content.Context
 import android.util.Log
 import io.objectbox.BoxStore
 import io.objectbox.BoxStoreBuilder
-import io.objectbox.android.AndroidObjectBrowser
+import io.objectbox.android.Admin
 import io.objectbox.android.ObjectBoxLiveData
 import io.objectbox.exception.DbException
 import io.objectbox.exception.FileCorruptException
-import io.objectbox.exception.PagesCorruptException
 import io.objectbox.sync.Sync
 import java.io.File
 import java.util.*
@@ -54,9 +53,9 @@ object ObjectBox {
             var syncAvailable = if (Sync.isAvailable()) "available" else "unavailable"
             Log.d(App.TAG,
                     "Using ObjectBox ${BoxStore.getVersion()} (${BoxStore.getVersionNative()}, sync $syncAvailable)")
-            // Enable Data Browser on debug builds.
+            // Enable ObjectBox Admin on debug builds.
             // https://docs.objectbox.io/data-browser
-            AndroidObjectBrowser(boxStore).start(context.applicationContext)
+            Admin(boxStore).start(context.applicationContext)
         }
 
         // Prepare a Query for all notes, sorted by their date.

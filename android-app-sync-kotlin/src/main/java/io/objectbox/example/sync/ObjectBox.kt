@@ -5,22 +5,14 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.objectbox.BoxStore
-import io.objectbox.BoxStoreBuilder
-import io.objectbox.android.AndroidObjectBrowser
-import io.objectbox.android.ObjectBoxLiveData
-import io.objectbox.exception.DbException
+import io.objectbox.android.Admin
 import io.objectbox.exception.FileCorruptException
-import io.objectbox.exception.PagesCorruptException
 import io.objectbox.kotlin.boxFor
 import io.objectbox.model.ValidateOnOpenMode
 import io.objectbox.sync.Sync
 import io.objectbox.sync.SyncChange
 import io.objectbox.sync.SyncCredentials
-import io.objectbox.sync.listener.SyncChangeListener
 import io.objectbox.sync.listener.SyncLoginListener
-import java.io.File
-import java.util.*
-import java.util.zip.GZIPOutputStream
 
 /**
  * Singleton to keep BoxStore reference and provide current list of Notes Objects.
@@ -67,14 +59,14 @@ object ObjectBox {
             .loginListener(loginListener)
             .buildAndStart()
 
-        // Enable Data Browser on debug builds.
+        // Enable ObjectBox Admin on debug builds.
         // https://docs.objectbox.io/data-browser
         if (BuildConfig.DEBUG) {
             Log.i(
                 App.TAG,
                 "Using ObjectBox ${BoxStore.getVersion()} (${BoxStore.getVersionNative()})"
             )
-            AndroidObjectBrowser(boxStore).start(context.applicationContext)
+            Admin(boxStore).start(context.applicationContext)
         }
     }
 

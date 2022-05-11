@@ -4,25 +4,20 @@ import android.content.Context;
 import android.util.Log;
 
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import io.objectbox.BoxStore;
 import io.objectbox.BoxStoreBuilder;
-import io.objectbox.android.AndroidObjectBrowser;
-import io.objectbox.android.ObjectBoxLiveData;
+import io.objectbox.android.Admin;
 import io.objectbox.exception.FileCorruptException;
 import io.objectbox.model.ValidateOnOpenMode;
-import io.objectbox.query.Query;
 import io.objectbox.query.QueryBuilder;
 import io.objectbox.sync.Sync;
 import io.objectbox.sync.SyncChange;
 import io.objectbox.sync.SyncCredentials;
-import io.objectbox.sync.listener.SyncChangeListener;
 import io.objectbox.sync.listener.SyncLoginListener;
 
 /**
@@ -74,12 +69,12 @@ public class ObjectBox {
                 .loginListener(loginListener)
                 .buildAndStart();
 
-        // Enable Data Browser on debug builds.
+        // Enable ObjectBox Admin on debug builds.
         // https://docs.objectbox.io/data-browser
         if (BuildConfig.DEBUG) {
             Log.i(App.TAG, String.format("Using ObjectBox %s (%s)",
                     BoxStore.getVersion(), BoxStore.getVersionNative()));
-            new AndroidObjectBrowser(boxStore).start(context.getApplicationContext());
+            new Admin(boxStore).start(context.getApplicationContext());
         }
     }
 
