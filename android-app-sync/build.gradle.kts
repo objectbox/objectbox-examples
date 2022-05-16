@@ -9,6 +9,7 @@ val _targetSdkVersion: Int by rootProject.extra
 val objectboxVersion: String by rootProject.extra
 
 android {
+    namespace = "io.objectbox.example.sync"
     compileSdk = _compileSdkVersion
 
     buildFeatures {

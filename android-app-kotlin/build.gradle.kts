@@ -12,6 +12,7 @@ val _compileSdkVersion: Int by rootProject.extra
 val _targetSdkVersion: Int by rootProject.extra
 
 android {
+    namespace = "io.objectbox.example.kotlin"
     compileSdk = _compileSdkVersion
 
     compileOptions {

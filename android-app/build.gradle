@@ -5,6 +5,7 @@ plugins {
 }
 
 android {
+    namespace "io.objectbox.example"
     compileSdkVersion _compileSdkVersion
 
     compileOptions {

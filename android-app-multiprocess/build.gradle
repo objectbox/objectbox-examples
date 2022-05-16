@@ -8,6 +8,7 @@ plugins {
 }
 
 android {
+    namespace "io.objectbox.example.android_app_multiprocess"
     compileSdkVersion _compileSdkVersion
 
     buildFeatures {
