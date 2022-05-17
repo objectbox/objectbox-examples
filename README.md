@@ -1,32 +1,48 @@
-# ObjectBoxExamples
-Java and Kotlin examples for [ObjectBox](https://objectbox.io), the superfast object-oriented database.
-The basic example is a minimal note taking app.
+# ObjectBox Java and Kotlin examples
+Java and Kotlin examples for [ObjectBox](https://objectbox.io) ([GitHub](https://github.com/objectbox/objectbox-java)), the superfast object-oriented database.
 
-For **Android**, there are:
+**For examples in other languages, see the [GitHub repository for that language](https://github.com/objectbox).**
 
- * android-app: Java based note taking app
- * android-app-kotlin: Kotlin based note taking app
- * android-app-relations: Demonstrating relations (Java based app)
- * android-app-daocompat: DAO compat is a compatibility layer on top of ObjectBox emulating a greenDAO API
- * android-app-sync: a Java task list app integrated with ObjectBox Sync.
- * android-app-sync-kotlin: a Kotlin task list app integrated with ObjectBox Sync.
+## Basics
 
-For **plain Java**, you'll find those:
+* **[android-app-kotlin](android-app-kotlin)**: a note taking app that shows how to define the data 
+model, indexes and relations, create a store, put and get data, use Admin UI and create unit tests.
+* **[android-app](android-app)**: a more basic variant of the above written in Java.
+* **[java-main](java-main)**: a note taking command-line application that shows how to define the 
+data model, create a store and put and get data.
+* **[java-main-maven](java-main-maven)**: the above app but using a Maven project (we 
+recommend to use Gradle).
 
- * java-main: using ObjectBox in a Java application
- * java-main-maven: while the primary build system for ObjectBox is Gradle, you can also use Maven
- * java-performance: a command-line application that runs performance tests with ObjectBox.
+## Using [Sync](https://sync.objectbox.io/)
 
-MyObjectBox missing? Build the project!
----------------------------------------
+* **[android-app-sync-kotlin](android-app-sync-kotlin)**: a task list app that shows how to define a
+data model for Sync and configure a Sync client.
+* **[android-app-sync](android-app-sync)**: the above app written in Java.
+
+## Other
+
+* **[android-app-relations](android-app-relations)**: shows how to use all types of available relations.
+* **[android-app-arch](android-app-arch)**: shows how to use ObjectBoxLiveData with ViewModel and ObjectBoxDataSource with the Paging library.
+* **[android-app-multiprocess](android-app-multiprocess)**: shows how to use ObjectBox from a different process.
+* **[android-app-daocompat](android-app-daocompat)**: shows how to use the DAOcompat compatibility layer to help migrate from greenDAO.
+* **[java-performance](java-performance)**: a command-line application that runs performance tests with ObjectBox.
+
+## MyObjectBox missing? Build the project!
+
 When you open the project in an IDE like Android Studio for the first time, it will complain that it does not find the class `MyObjectBox`.
 This is expected because this class is generated during build time.
 Thus, once you build the project, everything should be fine.
 
-Links
------
+## Issues and feedback
+
+If you are looking for help with how to use ObjectBox [see our documentation](https://docs.objectbox.io).
+
+If you found an issue or have feedback about these examples feel free to submit an [issue for objectbox-java](https://github.com/objectbox/objectbox-java/issues).
+
+## Links
+
 [ObjectBox Documentation](https://docs.objectbox.io)
 
 [ObjectBox Features](https://objectbox.io/features/)
 
-[ObjectBox repo](https://github.com/objectbox/objectbox-java) (to report issues)
+[ObjectBox GitHub repository](https://github.com/objectbox/objectbox-java)

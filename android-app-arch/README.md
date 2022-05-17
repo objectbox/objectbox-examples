@@ -4,6 +4,6 @@ This example shows how to use ObjectBox with [Android Architecture Components](h
 * See the `NotePagedActivity`, `NotePagedViewModel` and so on on how to integrate with the Paging library.
 
 ### Docs links
-[Using ObjectBox with LiveData](https://docs.objectbox.io/android/livedata-arch.-comp.)
+[Using ObjectBox with LiveData](https://docs.objectbox.io/android/livedata-architecture-components)
 
-[Using ObjectBox with the Paging library](https://docs.objectbox.io/android/paging-arch.-comp.)
+[Using ObjectBox with the Paging library](https://docs.objectbox.io/android/paging-architecture-components)
