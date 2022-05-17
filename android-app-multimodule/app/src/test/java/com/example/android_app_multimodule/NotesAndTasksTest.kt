@@ -24,6 +24,10 @@ class NotesAndTasksTest {
 
     @Test
     fun putAndGet_works() {
+        // For this test to run, an ObjectBox library that matches the platform
+        // of your development machine must be added to test dependencies.
+        // See the build.gradle.kts file for how this looks like.
+
         val notesRepository = NotesRepository(context)
         val tasksRepository = TasksRepository(context)
 
