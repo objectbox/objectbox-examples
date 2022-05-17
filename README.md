@@ -23,6 +23,7 @@ data model for Sync and configure a Sync client.
 
 * **[android-app-relations](android-app-relations)**: shows how to use all types of available relations.
 * **[android-app-arch](android-app-arch)**: shows how to use ObjectBoxLiveData with ViewModel and ObjectBoxDataSource with the Paging library.
+* **[android-app-multimodule](android-app-multimodule)**: shows how to use a separate database in each feature module.
 * **[android-app-multiprocess](android-app-multiprocess)**: shows how to use ObjectBox from a different process.
 * **[android-app-daocompat](android-app-daocompat)**: shows how to use the DAOcompat compatibility layer to help migrate from greenDAO.
 * **[java-performance](java-performance)**: a command-line application that runs performance tests with ObjectBox.
