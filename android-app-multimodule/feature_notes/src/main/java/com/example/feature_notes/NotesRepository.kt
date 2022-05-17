@@ -3,18 +3,8 @@ package com.example.feature_notes
 import android.content.Context
 import io.objectbox.Box
 import io.objectbox.BoxStore
-import io.objectbox.annotation.Entity
-import io.objectbox.annotation.Id
 import io.objectbox.kotlin.boxFor
 import io.objectbox.query.Query
-import java.util.*
-
-@Entity
-data class Note(
-    @Id var id: Long = 0,
-    var text: String = "",
-    var createdAt: Date = Date()
-)
 
 class NotesRepository(context: Context) {
 
