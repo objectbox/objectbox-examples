@@ -23,6 +23,7 @@ class TasksRepository(context: Context) {
     private val tasksByDate: Query<Task>
 
     init {
+        // Set a name unique within the app, this is used to create the database directory.
         store = MyObjectBox.builder()
             .androidContext(context)
             .name("tasks")

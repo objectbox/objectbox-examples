@@ -23,6 +23,7 @@ class NotesRepository(context: Context) {
     private val notesByDate: Query<Note>
 
     init {
+        // Set a name unique within the app, this is used to create the database directory.
         store = MyObjectBox.builder()
             .androidContext(context)
             .name("notes")
