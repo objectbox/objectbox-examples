@@ -6,7 +6,8 @@ variables:
   # is usually a priority over speed in CI environments. Using a fresh
   # runtime for each build is more reliable since the runtime is completely
   # isolated from any previous builds.
-  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  # Use low priority processes to avoid Gradle builds consuming all build machine resources.
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.priority=low"
 
 stages:
   - test
