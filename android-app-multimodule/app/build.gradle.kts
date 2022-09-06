@@ -58,7 +58,7 @@ dependencies {
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("androidx.test:core:1.4.0")
-    testImplementation("org.robolectric:robolectric:4.8.1")
+    testImplementation("org.robolectric:robolectric:4.8.2")
     // Add the ObjectBox native library to run unit tests on this development machine.
     // A library for Linux (x86_64), Windows (x86 and x86_64) and macOS (x86 and M1) is available.
     testImplementation("io.objectbox:objectbox-linux:$objectboxVersion")
