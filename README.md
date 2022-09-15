@@ -8,7 +8,7 @@ Java and Kotlin examples for [ObjectBox](https://objectbox.io) ([GitHub](https:/
 * **[android-app-kotlin](android-app-kotlin)**: a note taking app that shows how to define the data 
 model, indexes and relations, create a store, put and get data, use Admin UI and create unit tests.
 * **[android-app](android-app)**: a more basic variant of the above written in Java.
-* **[java-main](java-main)**: a note taking command-line application that shows how to define the 
+* **[java-main](java-main) and [kotlin-main](kotlin-main)**: a note taking command-line application that shows how to define the 
 data model, create a store and put and get data.
 * **[java-main-maven](java-main-maven)**: the above app but using a Maven project (we 
 recommend to use Gradle).
