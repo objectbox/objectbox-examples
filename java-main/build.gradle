@@ -5,16 +5,20 @@ plugins {
     id("application")
 }
 
-targetCompatibility = '1.8'
-sourceCompatibility = '1.8'
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
 
-mainClassName = "io.objectbox.example.Main"
+application {
+    mainClass.set("io.objectbox.example.Main")
+}
 
 dependencies {
     implementation "io.objectbox:objectbox-java:$objectboxVersion"
 
     // Optional: include all native libraries for distribution
-    // (only the one for the current platform is added automatically)
+    // (only the one for the current platform is added by the plugin).
     implementation "io.objectbox:objectbox-linux:$objectboxVersion"
     implementation "io.objectbox:objectbox-macos:$objectboxVersion"
     implementation "io.objectbox:objectbox-windows:$objectboxVersion"
@@ -22,5 +26,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
 }
 
-// Apply plugin after dependencies block so they are not overwritten.
+// Apply the plugin after the dependencies block so it detects added
+// ObjectBox dependencies and does not replace them.
 apply plugin: 'io.objectbox'
