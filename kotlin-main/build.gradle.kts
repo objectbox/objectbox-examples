@@ -2,6 +2,7 @@
 
 plugins {
     id("org.jetbrains.kotlin.jvm")
+    id("kotlin-kapt")
     id("application")
 }
 
