@@ -21,8 +21,8 @@ import io.objectbox.BoxStore;
 import io.objectbox.sync.Sync;
 
 /**
- * Note: Android Studio does not run plain Java projects correctly.
- * Open in IntelliJ IDEA or run with Gradle from a terminal instead, e.g.:
+ * Note: use the run button in IntelliJ IDEA or Android Studio,
+ * or to run with Gradle from a terminal:
  * <p>
  * ./gradlew java-main:run --args="This is my note text."
  */

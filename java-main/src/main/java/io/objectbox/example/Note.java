@@ -15,21 +15,17 @@ public class Note {
     long id;
 
     String text;
-    String comment;
     Date date;
     ToOne<Note> parent;
 
     @Backlink
     ToMany<Note> children;
 
-    public Note(Long id) {
-        this.id = id;
-    }
-
-    public Note(long id, String text, String comment, Date date) {
+    // A (optional) constructor with all properties helps ObjectBox
+    // to construct objects faster.
+    public Note(long id, String text, Date date) {
         this.id = id;
         this.text = text;
-        this.comment = comment;
         this.date = date;
     }
 
@@ -51,14 +47,6 @@ public class Note {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public String getComment() {
-        return this.comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     public Date getDate() {

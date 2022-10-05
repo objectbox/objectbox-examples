@@ -43,7 +43,11 @@ run-cli-app:
   before_script:
     # "|| true" for an OK exit code if path not found
     - rm -r java-main/objectbox-notes-db || true
+    - rm -r kotlin-main/objectbox-notes-db || true
   script:
     - ./gradlew java-main:run
     # Run again with existing database.
     - ./gradlew java-main:run
+    - ./gradlew kotlin-main:run
+    # Run again with existing database.
+    - ./gradlew kotlin-main:run
