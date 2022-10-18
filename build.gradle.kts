@@ -9,7 +9,7 @@ buildscript {
     val kotlinVersion by extra("1.7.10")
 
     dependencies {
-        classpath("com.android.tools.build:gradle:7.2.2") // For Android projects
+        classpath("com.android.tools.build:gradle:7.3.1") // For Android projects
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion") // For Kotlin projects
         classpath("io.objectbox:objectbox-gradle-plugin:$objectboxVersion")
     }
