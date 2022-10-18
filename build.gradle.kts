@@ -6,7 +6,7 @@ buildscript {
     val _targetSdkVersion by extra(32) /* Android 12 (S V2) */
 
     // For Kotlin projects
-    val kotlinVersion by extra("1.7.10")
+    val kotlinVersion by extra("1.7.20")
 
     dependencies {
         classpath("com.android.tools.build:gradle:7.3.1") // For Android projects
