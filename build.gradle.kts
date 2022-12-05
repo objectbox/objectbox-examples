@@ -3,7 +3,7 @@ buildscript {
 
     // For Android projects
     val _compileSdkVersion by extra(33) /* Android 13 (T) */
-    val _targetSdkVersion by extra(33) /* Android 13 (T) */
+    val _targetSdkVersion by extra(32) /* Android 12 (S V2) */
 
     // For Kotlin projects
     val kotlinVersion by extra("1.7.22")
