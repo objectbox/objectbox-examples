@@ -12,6 +12,7 @@ val _targetSdkVersion: Int by rootProject.extra
 
 android {
     compileSdk = _compileSdkVersion
+    namespace = "com.example.feature_notes"
 
     defaultConfig {
         minSdk = 23

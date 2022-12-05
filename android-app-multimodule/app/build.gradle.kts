@@ -11,6 +11,7 @@ val objectboxVersion: String by rootProject.extra
 
 android {
     compileSdk = _compileSdkVersion
+    namespace = "com.example.android_app_multimodule"
 
     defaultConfig {
         applicationId = "com.example.android_app_multimodule"
