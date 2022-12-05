@@ -40,13 +40,8 @@ dependencies {
 
     // ObjectBox with Data Browser for debug builds, without for release builds.
     // https://docs.objectbox.io/data-browser
-    // Note: there is currently no 3.3.x release for Sync.
-    val objectboxSyncVersion = "3.2.1"
-    debugImplementation("io.objectbox:objectbox-sync-android-objectbrowser:$objectboxSyncVersion")
-    releaseImplementation("io.objectbox:objectbox-sync-android:$objectboxSyncVersion")
-
-    // Note: there is currently no 3.3.x release for Sync, so overriding dependency added by plugin.
-    testImplementation("io.objectbox:objectbox-sync-linux:$objectboxSyncVersion")
+    debugImplementation("io.objectbox:objectbox-sync-android-objectbrowser:$objectboxVersion")
+    releaseImplementation("io.objectbox:objectbox-sync-android:$objectboxVersion")
 }
 
 // apply the plugin after the dependencies block so it does not automatically add objectbox-android
