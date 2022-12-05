@@ -2,7 +2,7 @@
 
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    kotlin("android")
 }
 
 val _compileSdkVersion: Int by rootProject.extra

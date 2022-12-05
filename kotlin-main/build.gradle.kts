@@ -1,8 +1,8 @@
 // See the root build.gradle file on how to add plugins and repositories.
 
 plugins {
-    id("org.jetbrains.kotlin.jvm")
-    id("kotlin-kapt")
+    kotlin("jvm")
+    kotlin("kapt")
     id("application")
 }
 

@@ -2,8 +2,8 @@
 
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    kotlin("android")
+    kotlin("kapt")
     id("io.objectbox")
 }
 
