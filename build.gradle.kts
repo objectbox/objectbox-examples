@@ -1,3 +1,9 @@
+plugins {
+    // Plugin to help us find updated dependencies, not required to use ObjectBox
+    // https://github.com/ben-manes/gradle-versions-plugin/releases
+    id("com.github.ben-manes.versions") version "0.47.0"
+}
+
 buildscript {
     val objectboxVersion by extra("3.6.0")
 
@@ -45,4 +51,17 @@ tasks.register<Zip>("zipAll") {
 
 tasks.wrapper {
     distributionType = Wrapper.DistributionType.ALL
+}
+
+// Reject preview releases for dependencyUpdates task
+fun isNonStable(version: String): Boolean {
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    val isStable = stableKeyword || regex.matches(version)
+    return isStable.not()
+}
+tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
+    rejectVersionIf {
+        isNonStable(candidate.version)
+    }
 }
