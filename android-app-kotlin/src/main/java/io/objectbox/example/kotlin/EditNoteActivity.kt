@@ -2,15 +2,17 @@ package io.objectbox.example.kotlin
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import io.objectbox.example.kotlin.databinding.ActivityAddNoteBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.*
+import java.util.Date
 
 class EditNoteActivity : AppCompatActivity() {
 
@@ -23,23 +25,25 @@ class EditNoteActivity : AppCompatActivity() {
 
         val noteId = intent.getLongExtra(EXTRA_NOTE_ID, -1)
 
-        lifecycleScope.launchWhenCreated {
-            // Get list of Author Objects ordered by name.
-            val authors = withContext(Dispatchers.IO) {
-                ObjectBox.boxStore.boxFor(Author::class.java).query()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                // Get list of Author Objects ordered by name.
+                val authors = withContext(Dispatchers.IO) {
+                    ObjectBox.boxStore.boxFor(Author::class.java).query()
                         .order(Author_.name)
                         .build()
                         .find()
-            }
-            // If given the Object ID, get an existing Note Object to edit.
-            val existingNote = withContext(Dispatchers.IO) {
-                if (noteId != -1L) {
-                    ObjectBox.boxStore.boxFor(Note::class.java)[noteId]
-                } else {
-                    null
                 }
+                // If given the Object ID, get an existing Note Object to edit.
+                val existingNote = withContext(Dispatchers.IO) {
+                    if (noteId != -1L) {
+                        ObjectBox.boxStore.boxFor(Note::class.java)[noteId]
+                    } else {
+                        null
+                    }
+                }
+                setUpViews(existingNote, authors)
             }
-            setUpViews(existingNote, authors)
         }
     }
 
@@ -75,9 +79,9 @@ class EditNoteActivity : AppCompatActivity() {
     }
 
     private suspend fun putNote(
-            noteText: String,
-            selectedAuthor: Author,
-            existingNote: Note?
+        noteText: String,
+        selectedAuthor: Author,
+        existingNote: Note?
     ) = withContext(Dispatchers.IO) {
         val note = if (existingNote != null) {
             // Update existing Note Object.

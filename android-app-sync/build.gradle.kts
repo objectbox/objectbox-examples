@@ -32,12 +32,12 @@ android {
 }
 
 dependencies {
-    implementation("androidx.appcompat:appcompat:1.5.1")
-    implementation("com.google.android.material:material:1.7.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
-    implementation("androidx.lifecycle:lifecycle-livedata:2.5.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel:2.5.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.1")
+    implementation("androidx.lifecycle:lifecycle-livedata:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel:2.6.1")
 
     // ObjectBox with Data Browser for debug builds, without for release builds.
     // https://docs.objectbox.io/data-browser

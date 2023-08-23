@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.switchMap
 
 class TasksViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -13,7 +13,7 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         filter.value = TasksFilter.ALL
-        filteredTasks = Transformations.switchMap(filter) { filter: TasksFilter ->
+        filteredTasks = filter.switchMap { filter: TasksFilter ->
             ObjectBox.getTasksLiveData(filter)
         }
     }
