@@ -6,9 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.objectbox.BoxStore
 import io.objectbox.android.Admin
+import io.objectbox.config.ValidateOnOpenModePages
 import io.objectbox.exception.FileCorruptException
 import io.objectbox.kotlin.boxFor
-import io.objectbox.model.ValidateOnOpenMode
 import io.objectbox.sync.Sync
 import io.objectbox.sync.SyncChange
 import io.objectbox.sync.SyncCredentials
@@ -28,7 +28,7 @@ object ObjectBox {
     fun init(context: Context) {
         val storeBuilder = MyObjectBox.builder()
             .name("tasks-synced")
-            .validateOnOpen(ValidateOnOpenMode.WithLeaves) // Additional DB page validation
+            .validateOnOpen(ValidateOnOpenModePages.WithLeaves) // Additional DB page validation
             .validateOnOpenPageLimit(20)
             .androidContext(context.applicationContext)
         boxStore = try {

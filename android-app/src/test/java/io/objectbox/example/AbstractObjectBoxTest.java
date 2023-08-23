@@ -6,7 +6,7 @@ import org.junit.Before;
 import java.io.File;
 
 import io.objectbox.BoxStore;
-import io.objectbox.DebugFlags;
+import io.objectbox.config.DebugFlags;
 
 /**
  * Android Local Unit test example (https://docs.objectbox.io/android/android-local-unit-tests)

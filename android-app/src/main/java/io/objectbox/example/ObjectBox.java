@@ -6,8 +6,8 @@ import android.util.Log;
 import io.objectbox.BoxStore;
 import io.objectbox.BoxStoreBuilder;
 import io.objectbox.android.Admin;
+import io.objectbox.config.ValidateOnOpenModePages;
 import io.objectbox.exception.FileCorruptException;
-import io.objectbox.model.ValidateOnOpenMode;
 
 public class ObjectBox {
 
@@ -15,7 +15,7 @@ public class ObjectBox {
 
     static void init(Context context) {
         BoxStoreBuilder storeBuilder = MyObjectBox.builder()
-                .validateOnOpen(ValidateOnOpenMode.WithLeaves)  // Additional DB page validation
+                .validateOnOpen(ValidateOnOpenModePages.WithLeaves)  // Additional DB page validation
                 .validateOnOpenPageLimit(20)
                 .androidContext(context.getApplicationContext());
         try {
