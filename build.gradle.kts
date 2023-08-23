@@ -11,12 +11,9 @@ buildscript {
     val _compileSdkVersion by extra(33) /* Android 13 (T) */
     val _targetSdkVersion by extra(32) /* Android 12 (S V2) */
 
-    // For Kotlin projects
-    val kotlinVersion by extra("1.7.22")
-
     dependencies {
         classpath("com.android.tools.build:gradle:7.3.1") // For Android projects
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion") // For Kotlin projects
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22") // For Kotlin projects
         classpath("io.objectbox:objectbox-gradle-plugin:$objectboxVersion")
     }
 

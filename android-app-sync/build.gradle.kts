@@ -2,6 +2,7 @@
 
 plugins {
     id("com.android.application")
+    id("kotlin-android") // AndroidX libraries include Kotlin, use plugin to unify versions.
 }
 
 val _compileSdkVersion: Int by rootProject.extra

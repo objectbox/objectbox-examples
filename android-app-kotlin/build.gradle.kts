@@ -7,7 +7,6 @@ plugins {
 }
 
 val objectboxVersion: String by rootProject.extra
-val kotlinVersion: String by rootProject.extra
 val _compileSdkVersion: Int by rootProject.extra
 val _targetSdkVersion: Int by rootProject.extra
 
