@@ -10,8 +10,10 @@ val _targetSdkVersion: Int by rootProject.extra
 val objectboxVersion: String by rootProject.extra
 
 kotlin {
-    // Use JDK 8 to build and use Java 8 compatible code https://developer.android.com/build/jdks
-    jvmToolchain(8)
+    // Robolectric requires JDK 9+ to test Android SDK 32+, so pick next JDK LTS version which is 11.
+    // Still compile at Java 8 level (see compileOptions below).
+    // https://developer.android.com/build/jdks
+    jvmToolchain(11)
 }
 
 android {
@@ -36,6 +38,17 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+
+    compileOptions {
+        // Use and build Java 8 compatible code
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        // Build Java 8 compatible code
+        jvmTarget = "1.8"
     }
 
     testOptions {
