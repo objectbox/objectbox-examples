@@ -1,3 +1,9 @@
+ plugins {
+    // Projects use the Gradle toolchain feature to use specific JDKs for compilation.
+    // This plugin helps auto-download them if not installed locally.
+    id("org.gradle.toolchains.foojay-resolver-convention") version("0.7.0")
+}
+
 include("android-app")
 include("android-app-arch")
 include("android-app-daocompat")

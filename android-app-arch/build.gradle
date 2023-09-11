@@ -6,14 +6,16 @@ plugins {
     id("io.objectbox")
 }
 
+java {
+    toolchain {
+        // Use JDK 8 to build and use Java 8 compatible code https://developer.android.com/build/jdks
+        languageVersion.set(JavaLanguageVersion.of(8))
+    }
+}
+
 android {
     namespace "io.objectbox.example.arch"
     compileSdkVersion _compileSdkVersion
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 
     defaultConfig {
         applicationId "io.objectbox.example.arch"

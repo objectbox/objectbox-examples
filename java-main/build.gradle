@@ -6,8 +6,10 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    toolchain {
+        // Use JDK 8 to build and use Java 8 compatible code
+        languageVersion.set(JavaLanguageVersion.of(8))
+    }
 }
 
 application {
