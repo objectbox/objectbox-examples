@@ -16,7 +16,7 @@ data class Task(
 ) {
 
     /**
-     * Create note with given text at current time.
+     * Create a task with the given text at the current time.
      */
     constructor(text: String?) : this(
         text = text,

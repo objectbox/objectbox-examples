@@ -25,7 +25,7 @@ public class Task {
     }
 
     /**
-     * Create note with given text at current time.
+     * Create a task with the given text at the current time.
      */
     public Task(String text) {
         this.text = text;
