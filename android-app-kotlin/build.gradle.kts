@@ -10,14 +10,18 @@ val objectboxVersion: String by rootProject.extra
 val _compileSdkVersion: Int by rootProject.extra
 val _targetSdkVersion: Int by rootProject.extra
 
-kotlin {
-    // Use JDK 8 to build and use Java 8 compatible code https://developer.android.com/build/jdks
-    jvmToolchain(8)
-}
-
 android {
     namespace = "io.objectbox.example.kotlin"
     compileSdk = _compileSdkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 
     defaultConfig {
         applicationId = "io.objectbox.example.kotlin"

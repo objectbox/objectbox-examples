@@ -9,19 +9,17 @@ val _compileSdkVersion: Int by rootProject.extra
 val _targetSdkVersion: Int by rootProject.extra
 val objectboxVersion: String by rootProject.extra
 
-java {
-    toolchain {
-        // Use JDK 8 to build and use Java 8 compatible code https://developer.android.com/build/jdks
-        languageVersion.set(JavaLanguageVersion.of(8))
-    }
-}
-
 android {
     namespace = "io.objectbox.example.sync"
     compileSdk = _compileSdkVersion
 
     buildFeatures {
         viewBinding = true
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     defaultConfig {

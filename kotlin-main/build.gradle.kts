@@ -6,9 +6,9 @@ plugins {
     id("application")
 }
 
-kotlin {
-    // Use JDK 8 to build and use Java 8 compatible code https://developer.android.com/build/jdks
-    jvmToolchain(8)
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 application {

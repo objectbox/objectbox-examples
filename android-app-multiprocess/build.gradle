@@ -7,11 +7,6 @@ plugins {
     id("io.objectbox")
 }
 
-kotlin {
-    // Use JDK 8 to build and use Java 8 compatible code https://developer.android.com/build/jdks
-    jvmToolchain(8)
-}
-
 android {
     namespace "io.objectbox.example.android_app_multiprocess"
     compileSdkVersion _compileSdkVersion
@@ -26,6 +21,15 @@ android {
         targetSdkVersion _targetSdkVersion
         versionCode 1
         versionName "1.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
 
