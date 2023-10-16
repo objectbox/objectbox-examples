@@ -12,7 +12,7 @@ buildscript {
     val _targetSdkVersion by extra(32) /* Android 12 (S V2) */
 
     dependencies {
-        classpath("com.android.tools.build:gradle:7.3.1") // For Android projects
+        classpath("com.android.tools.build:gradle:8.1.1") // For Android projects
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22") // For Kotlin projects
         classpath("io.objectbox:objectbox-gradle-plugin:$objectboxVersion")
     }
@@ -52,7 +52,7 @@ tasks.wrapper {
 
 // Reject preview releases for dependencyUpdates task
 fun isNonStable(version: String): Boolean {
-    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
     val regex = "^[0-9,.v-]+(-r)?$".toRegex()
     val isStable = stableKeyword || regex.matches(version)
     return isStable.not()
