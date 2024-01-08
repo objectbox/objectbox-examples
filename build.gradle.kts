@@ -13,6 +13,7 @@ buildscript {
 
     dependencies {
         classpath("com.android.tools.build:gradle:8.1.1") // For Android projects
+        // Note: when updating make sure to update coroutines dependency to match.
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22") // For Kotlin projects
         classpath("io.objectbox:objectbox-gradle-plugin:$objectboxVersion")
     }
