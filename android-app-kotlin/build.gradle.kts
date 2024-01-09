@@ -16,7 +16,7 @@ android {
 
     defaultConfig {
         applicationId = "io.objectbox.example.kotlin"
-        minSdk = 16
+        minSdk = 19
         targetSdk = _targetSdkVersion
         versionCode = 1
         versionName = "1.0"
