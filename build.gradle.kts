@@ -8,8 +8,8 @@ buildscript {
     val objectboxVersion by extra("3.7.1")
 
     // For Android projects
-    val _compileSdkVersion by extra(33) /* Android 13 (T) */
-    val _targetSdkVersion by extra(32) /* Android 12 (S V2) */
+    val _compileSdkVersion by extra(33) /* Android 13 (TIRAMISU) */
+    val _targetSdkVersion by extra(33) /* Android 13 (TIRAMISU) */
 
     dependencies {
         classpath("com.android.tools.build:gradle:8.1.1") // For Android projects
