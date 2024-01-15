@@ -1,5 +1,5 @@
 # Default image for linux builds
-image: objectboxio/buildenv-android:2023-07-28
+image: objectboxio/buildenv-android:2023-08-29
 
 variables:
   # Disable the Gradle daemon for Continuous Integration servers as correctness
