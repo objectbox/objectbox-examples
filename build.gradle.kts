@@ -5,7 +5,7 @@ plugins {
 }
 
 buildscript {
-    val objectboxVersion by extra("3.7.1")
+    val objectboxVersion by extra("3.8.0")
 
     // For Android projects
     val _compileSdkVersion by extra(33) /* Android 13 (TIRAMISU) */
