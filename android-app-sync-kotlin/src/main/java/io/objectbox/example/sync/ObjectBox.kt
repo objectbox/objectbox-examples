@@ -87,19 +87,18 @@ object ObjectBox {
     }
 
     fun getTasksLiveData(filter: TasksFilter): LiveData<List<Task?>> {
-        val builder = boxStore.boxFor(Task::class).query()
-        when (filter) {
+        val box = boxStore.boxFor(Task::class)
+        return when (filter) {
             TasksFilter.OPEN -> {
-                builder.apply(Task_.dateFinished.equal(0))
-                builder.orderDesc(Task_.dateCreated)
+                box.query(Task_.dateFinished.equal(0)).orderDesc(Task_.dateCreated)
             }
+
             TasksFilter.DONE -> {
-                builder.apply(Task_.dateFinished.notEqual(0))
-                builder.orderDesc(Task_.dateFinished)
+                box.query(Task_.dateFinished.notEqual(0)).orderDesc(Task_.dateFinished)
             }
-            else -> builder.orderDesc(Task_.dateCreated)
-        }
-        return ObjectBoxSyncLiveData(builder.build(), syncChangesLiveData)
+
+            else -> box.query().orderDesc(Task_.dateCreated)
+        }.let { ObjectBoxSyncLiveData(it.build(), syncChangesLiveData) }
     }
 
     fun addTask(text: String) {
