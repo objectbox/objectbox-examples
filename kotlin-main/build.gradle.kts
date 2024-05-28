@@ -1,4 +1,4 @@
-// See the root build.gradle file on how to add plugins and repositories.
+// See the root build script on how to add plugins and repositories.
 
 plugins {
     kotlin("jvm")
