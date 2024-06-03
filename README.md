@@ -13,6 +13,11 @@ data model, create a store and put and get data.
 * **[java-main-maven](java-main-maven)**: the above app but using a Maven project (we 
 recommend to use Gradle).
 
+## [Vector Search](https://docs.objectbox.io/on-device-vector-search)
+
+* **[java-main-vector-search](java-main-vector-search)**: a cities and coordinates command-line
+  application that shows how to do on-device ANN vector search.
+
 ## Using [Sync](https://sync.objectbox.io/)
 
 * **[android-app-sync-kotlin](android-app-sync-kotlin)**: a task list app that shows how to define a
