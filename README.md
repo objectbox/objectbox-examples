@@ -23,6 +23,7 @@ recommend to use Gradle).
 * **[android-app-sync-kotlin](android-app-sync-kotlin)**: a task list app that shows how to define a
 data model for Sync and configure a Sync client.
 * **[android-app-sync](android-app-sync)**: the above app written in Java.
+* **[java-main-sync](java-main-sync)**: A console-based Java application demonstrating Sync features.
 
 ## Other
 
