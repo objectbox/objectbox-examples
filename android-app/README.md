@@ -1,8 +1,8 @@
 This example shows how to use and test ObjectBox in an Android app written in Java.
 
-- See `Note` on how to define a simple entity.
-- See `NoteActivity` for basic box operations.
-- See `NoteTestExample` on how to write local unit tests.
+- See [`Note`](src/main/java/io/objectbox/example/Note.java) on how to define a simple entity.
+- See [`NoteActivity`](src/main/java/io/objectbox/example/NoteActivity.java) for basic box operations.
+- See [`NoteTestExample`](src/test/java/io/objectbox/example/NoteTestExample.java) on how to write local unit tests.
 
 ### Docs links
 [Walkthrough of this example](https://docs.objectbox.io/tutorial-demo-project)
