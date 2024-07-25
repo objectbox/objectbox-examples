@@ -35,11 +35,10 @@ public class Task {
     public Task() {
     }
 
-    public Task(long id, String text, Date dateCreated, Date dateFinished) {
-        this.id = id;
+    public Task(String text) {
         this.text = text;
-        this.dateCreated = dateCreated;
-        this.dateFinished = dateFinished;
+        this.dateCreated = new Date();
+        this.dateFinished = new Date(0);
     }
 
     public long getId() {

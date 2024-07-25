@@ -69,9 +69,7 @@ public class TasksSyncDB {
     };
 
     public long addTask(String text) {
-        Task task = new Task();
-        task.setText(text);
-        task.setDateCreated(new Date());
+        Task task = new Task(text);
         return tasksBox.put(task);
     }
 
