@@ -1,7 +1,7 @@
 plugins {
     // Plugin to help us find updated dependencies, not required to use ObjectBox
     // https://github.com/ben-manes/gradle-versions-plugin/releases
-    id("com.github.ben-manes.versions") version "0.47.0"
+    id("com.github.ben-manes.versions") version "0.51.0"
 }
 
 buildscript {
