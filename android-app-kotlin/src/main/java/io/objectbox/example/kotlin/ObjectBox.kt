@@ -26,7 +26,7 @@ import io.objectbox.exception.DbException
 import io.objectbox.exception.FileCorruptException
 import io.objectbox.sync.Sync
 import java.io.File
-import java.util.*
+import java.util.Date
 import java.util.zip.GZIPOutputStream
 
 /**

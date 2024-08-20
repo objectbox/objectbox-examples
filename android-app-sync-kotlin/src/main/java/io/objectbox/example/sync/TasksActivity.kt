@@ -17,11 +17,8 @@
 package io.objectbox.example.sync
 
 import android.os.Bundle
-import android.text.Editable
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import io.objectbox.example.sync.databinding.ActivityTasksBinding

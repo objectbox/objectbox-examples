@@ -22,7 +22,6 @@ import java.util.List;
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
 import io.objectbox.query.Query;
-import io.objectbox.query.QueryBuilder;
 
 import static io.objectbox.query.QueryBuilder.StringOrder.CASE_SENSITIVE;
 

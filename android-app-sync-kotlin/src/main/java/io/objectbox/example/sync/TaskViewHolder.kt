@@ -16,7 +16,6 @@
 
 package io.objectbox.example.sync
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import io.objectbox.example.sync.databinding.ItemTaskBinding
 

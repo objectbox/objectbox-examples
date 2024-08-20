@@ -18,7 +18,7 @@ package com.example.feature_notes
 
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
-import java.util.*
+import java.util.Date
 
 @Entity
 data class Note(

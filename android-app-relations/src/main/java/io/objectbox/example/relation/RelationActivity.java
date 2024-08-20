@@ -32,8 +32,6 @@ import io.objectbox.query.Query;
 import io.objectbox.query.QueryBuilder;
 import io.objectbox.relation.ToMany;
 
-import static io.objectbox.query.QueryBuilder.StringOrder.CASE_SENSITIVE;
-
 /**
  * ObjectBox <a href="https://docs.objectbox.io/relations">Relations</a> example
  */

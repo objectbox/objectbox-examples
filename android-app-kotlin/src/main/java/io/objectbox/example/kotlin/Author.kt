@@ -20,8 +20,6 @@ import io.objectbox.annotation.Backlink
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
 import io.objectbox.relation.ToMany
-import java.text.DateFormat
-import java.util.*
 
 @Entity
 data class Author(

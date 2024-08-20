@@ -18,7 +18,7 @@ package io.objectbox.example.kotlin
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.util.*
+import java.util.Date
 
 class NoteTestExample : AbstractObjectBoxTest() {
 

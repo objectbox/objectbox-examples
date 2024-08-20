@@ -16,14 +16,11 @@
 
 package io.objectbox.example.java.vectorsearch;
 
-import java.io.Console;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
-
-import javax.annotation.Nullable;
 
 import io.objectbox.BoxStore;
 import io.objectbox.query.ObjectWithScore;

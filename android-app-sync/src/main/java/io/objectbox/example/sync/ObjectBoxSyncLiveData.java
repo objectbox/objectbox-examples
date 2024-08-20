@@ -17,16 +17,12 @@
 package io.objectbox.example.sync;
 
 import java.util.List;
-import java.util.logging.ConsoleHandler;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import io.objectbox.android.ObjectBoxLiveData;
 import io.objectbox.query.Query;
 import io.objectbox.sync.SyncChange;
-import io.objectbox.sync.listener.SyncChangeListener;
 
 /**
  * Like {@link ObjectBoxLiveData} but also publishes new results if sync changes are received.
