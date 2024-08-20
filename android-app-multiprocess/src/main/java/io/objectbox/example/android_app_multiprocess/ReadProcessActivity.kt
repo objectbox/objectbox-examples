@@ -41,7 +41,7 @@ class ReadProcessActivity : AppCompatActivity() {
 
         lifecycleScope.launch(Dispatchers.IO) {
             val textEntity = if (textEntityId > 0) {
-                val box = ObjectBox.get(applicationContext).boxFor(TextEntity::class.java)
+                val box = ObjectBoxReadOnly.get(applicationContext).boxFor(TextEntity::class.java)
                 box.get(textEntityId)
             } else null
             withContext(Dispatchers.Main) {
