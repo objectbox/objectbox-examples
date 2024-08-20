@@ -28,7 +28,6 @@ import io.objectbox.Box
 import io.objectbox.example.kotlin.databinding.ActivityNoteListBinding
 import io.objectbox.kotlin.boxFor
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class NoteListActivity : AppCompatActivity() {

@@ -25,6 +25,7 @@
         android:layout_toLeftOf="@id/buttonAdd"
         android:hint="@string/enter_new_note"
         android:imeOptions="actionDone"
+        android:importantForAutofill="no"
         android:inputType="text"/>
 
     <TextView

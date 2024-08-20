@@ -17,7 +17,6 @@
 package io.objectbox.example.sync
 
 import androidx.annotation.StringRes
-import io.objectbox.example.sync.R
 
 enum class TasksFilter(
     val id: Int,

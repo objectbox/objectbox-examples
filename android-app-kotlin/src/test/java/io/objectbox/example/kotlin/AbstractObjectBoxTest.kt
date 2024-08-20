@@ -18,11 +18,9 @@ package io.objectbox.example.kotlin
 
 import io.objectbox.BoxStore
 import io.objectbox.config.DebugFlags
-import org.junit.Before
-import kotlin.Throws
 import org.junit.After
+import org.junit.Before
 import java.io.File
-import java.lang.Exception
 
 /**
  * Android Local Unit test example (https://docs.objectbox.io/android/android-local-unit-tests)

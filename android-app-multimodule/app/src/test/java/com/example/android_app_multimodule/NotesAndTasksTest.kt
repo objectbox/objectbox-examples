@@ -22,9 +22,8 @@ import com.example.feature_notes.Note
 import com.example.feature_notes.NotesRepository
 import com.example.feature_tasks.Task
 import com.example.feature_tasks.TasksRepository
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 

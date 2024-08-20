@@ -18,7 +18,6 @@ package com.example.android_app_multimodule
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.feature_notes.Note
 import com.example.feature_notes.NotesRepository

@@ -16,8 +16,8 @@
 
 package io.objectbox.example.kotlin
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import io.objectbox.example.kotlin.databinding.ActivityCreateAuthorBinding
 import kotlinx.coroutines.Dispatchers

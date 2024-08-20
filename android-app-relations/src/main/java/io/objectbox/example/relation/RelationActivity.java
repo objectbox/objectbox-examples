@@ -28,12 +28,13 @@ import android.widget.TextView;
 import java.util.List;
 
 import io.objectbox.Box;
+import io.objectbox.query.Query;
 import io.objectbox.query.QueryBuilder;
 import io.objectbox.relation.ToMany;
 
-import static io.objectbox.query.QueryBuilder.StringOrder.CASE_SENSITIVE;
-
-/** ObjectBox relations example (https://docs.objectbox.io/relations) */
+/**
+ * ObjectBox <a href="https://docs.objectbox.io/relations">Relations</a> example
+ */
 public class RelationActivity extends Activity {
 
     private TextView textViewLog;
@@ -91,14 +92,16 @@ public class RelationActivity extends Activity {
     }
 
     private void logOrders(Box<Order> orderBox, Customer customer) {
-        List<Order> ordersQueried = orderBox
+        try (Query<Order> orderQuery = orderBox
                 .query(Order_.customerId.equal(customer.id))
-                .build().find();
-        log("Customer " + customer.id + " has " + ordersQueried.size() + " orders");
-        for (Order order : ordersQueried) {
-            log("Order " + order.id + " related to customer " + order.customer.getTargetId());
+                .build()) {
+            List<Order> ordersQueried = orderQuery.find();
+            log("Customer " + customer.id + " has " + ordersQueried.size() + " orders");
+            for (Order order : ordersQueried) {
+                log("Order " + order.id + " related to customer " + order.customer.getTargetId());
+            }
+            log("");
         }
-        log("");
     }
 
     /**
@@ -128,10 +131,12 @@ public class RelationActivity extends Activity {
         logTitle("Query for all students named \"Skywalker\" taught by \"Yoda\"");
         QueryBuilder<Student> builder = studentBox.query(Student_.name.contains("Skywalker"));
         builder.link(Student_.teachers).apply(Teacher_.name.equal(yoda.name));
-        List<Student> studentsTaughtByYoda = builder.build().find();
-        log("There is " + studentsTaughtByYoda.size() + " student taught by Yoda: "
-                + studentsTaughtByYoda.get(0).name);
-        log("");
+        try (Query<Student> studentQuery = builder.build()) {
+            List<Student> studentsTaughtByYoda = studentQuery.find();
+            log("There is " + studentsTaughtByYoda.size() + " student taught by Yoda: "
+                    + studentsTaughtByYoda.get(0).name);
+            log("");
+        }
 
         logTitle("Remove first teacher from first student");
         luke.teachers.remove(obiWan);

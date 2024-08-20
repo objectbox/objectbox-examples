@@ -16,9 +16,6 @@
 
 package io.objectbox.example.sync;
 
-import android.view.View;
-import android.widget.CompoundButton;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;

@@ -1,14 +1,14 @@
 plugins {
     // Plugin to help us find updated dependencies, not required to use ObjectBox
     // https://github.com/ben-manes/gradle-versions-plugin/releases
-    id("com.github.ben-manes.versions") version "0.47.0"
+    id("com.github.ben-manes.versions") version "0.51.0"
 }
 
 buildscript {
     val objectboxVersion by extra("4.0.1")
 
     // For Android projects
-    val _compileSdkVersion by extra(33) /* Android 13 (TIRAMISU) */
+    val _compileSdkVersion by extra(34) /* Android 14 (UPSIDE_DOWN_CAKE) */
     val _targetSdkVersion by extra(33) /* Android 13 (TIRAMISU) */
 
     dependencies {

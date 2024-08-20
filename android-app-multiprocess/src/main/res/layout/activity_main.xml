@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:ignore="HardcodedText">
 
     <TextView
         android:id="@+id/textView"
@@ -26,6 +27,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:hint="Type something"
+        android:importantForAutofill="no"
+        android:inputType="text"
         app:layout_constraintEnd_toStartOf="@+id/buttonPut"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread"

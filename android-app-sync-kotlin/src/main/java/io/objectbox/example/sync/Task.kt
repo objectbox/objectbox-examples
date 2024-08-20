@@ -19,7 +19,7 @@ package io.objectbox.example.sync
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
 import io.objectbox.annotation.Sync
-import java.util.*
+import java.util.Date
 
 @Entity
 @Sync

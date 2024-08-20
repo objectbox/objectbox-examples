@@ -20,7 +20,7 @@ import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
 import io.objectbox.annotation.Index
 import io.objectbox.relation.ToOne
-import java.util.*
+import java.util.Date
 
 @Entity // Signals ObjectBox to create a Box for this class.
 data class Note(
