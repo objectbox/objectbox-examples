@@ -16,6 +16,7 @@
 
 package io.objectbox.example.android_app_multiprocess
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -32,6 +33,7 @@ import kotlinx.coroutines.withContext
  */
 class ReadProcessActivity : AppCompatActivity() {
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityReadProcessBinding.inflate(layoutInflater)

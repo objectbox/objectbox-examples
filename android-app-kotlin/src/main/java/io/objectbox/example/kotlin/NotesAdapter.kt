@@ -16,6 +16,7 @@
 
 package io.objectbox.example.kotlin
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,6 +43,7 @@ class NotesAdapter : BaseAdapter() {
         notifyDataSetChanged()
     }
 
+    @SuppressLint("SetTextI18n")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view = convertView ?: LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_note, parent, false).also {
