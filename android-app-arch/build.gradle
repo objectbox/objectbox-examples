@@ -35,9 +35,9 @@ tasks.withType(org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask).confi
 }
 
 dependencies {
-    implementation 'androidx.fragment:fragment:1.8.2'
+    implementation 'androidx.fragment:fragment-ktx:1.8.2'
     implementation 'androidx.recyclerview:recyclerview:1.3.2'
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.8.4"
-    implementation "androidx.lifecycle:lifecycle-livedata:2.8.4"
-    implementation 'androidx.paging:paging-runtime:3.3.2'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.4"
+    implementation 'androidx.paging:paging-runtime-ktx:3.3.2'
 }
