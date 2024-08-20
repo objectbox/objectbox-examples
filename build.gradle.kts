@@ -8,7 +8,7 @@ buildscript {
     val objectboxVersion by extra("4.0.1")
 
     // For Android projects
-    val _compileSdkVersion by extra(33) /* Android 13 (TIRAMISU) */
+    val _compileSdkVersion by extra(34) /* Android 14 (UPSIDE_DOWN_CAKE) */
     val _targetSdkVersion by extra(33) /* Android 13 (TIRAMISU) */
 
     dependencies {
