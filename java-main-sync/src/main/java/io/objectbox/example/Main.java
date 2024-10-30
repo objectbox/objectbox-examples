@@ -58,7 +58,7 @@ public class Main {
                     if (task == null) {
                         System.out.println("Task with ID " + taskID + " does not exist. Please try again with a valid ID.");
                     } else {
-                        if (task.getDateFinished() == null) {
+                        if (task.getDateFinished() == null || task.getDateFinished().getTime() == 0L) {
                             tasksSyncDB.completeTask(taskID);
                             System.out.println("Task with ID " + taskID + " set as completed");
                         } else {
