@@ -25,6 +25,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import io.objectbox.Box;
 import io.objectbox.BoxStore;
 import io.objectbox.BoxStoreBuilder;
 import io.objectbox.android.Admin;
@@ -46,6 +47,8 @@ public class ObjectBox {
     private static ObjectBox instance;
 
     private BoxStore boxStore;
+    private Box<Task> taskBox;
+
     private final MutableLiveData<List<SyncChange>> syncChangesLiveData = new MutableLiveData<>();
 
     void init(Context context) {
@@ -92,10 +95,12 @@ public class ObjectBox {
                     BoxStore.getVersion(), BoxStore.getVersionNative()));
             new Admin(boxStore).start(context.getApplicationContext());
         }
+
+        taskBox = boxStore.boxFor(Task.class);
     }
 
     public LiveData<List<Task>> getTasksLiveData(TasksFilter filter) {
-        QueryBuilder<Task> builder = boxStore.boxFor(Task.class).query();
+        QueryBuilder<Task> builder = taskBox.query();
         switch (filter) {
             case OPEN:
                 builder.apply(Task_.dateFinished.equal(0));
@@ -114,16 +119,16 @@ public class ObjectBox {
     }
 
     public void addTask(String text) {
-        boxStore.boxFor(Task.class).put(new Task(text));
+        taskBox.put(new Task(text));
     }
 
     public void removeTask(long id) {
-        boxStore.boxFor(Task.class).remove(id);
+        taskBox.remove(id);
     }
 
     public void changeTaskDone(@NonNull Task task, boolean isDone) {
         task.setDone(isDone);
-        boxStore.boxFor(Task.class).put(task);
+        taskBox.put(task);
     }
 
     public static synchronized ObjectBox get() {
