@@ -16,7 +16,7 @@ android {
 
     defaultConfig {
         applicationId "io.objectbox.example.relation"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion _targetSdkVersion
         versionCode 1
         versionName "1.0"
