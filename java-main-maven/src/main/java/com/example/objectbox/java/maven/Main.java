@@ -21,6 +21,8 @@ import io.objectbox.BoxStore;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println(String.format("Using ObjectBox %s (%s)",
+                BoxStore.getVersion(), BoxStore.getVersionNative()));
         BoxStore store = MyObjectBox.builder().name("objectbox-notes-db").build();
         Box<Note> box = store.boxFor(Note.class);
 
