@@ -14,17 +14,25 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
+        <!--
+        Specify the version of ObjectBox dependencies.
+        Note: the Maven plugin version is different, see below.
+        -->
         <objectboxVersion>4.2.0</objectboxVersion>
     </properties>
 
     <dependencies>
+        <!-- ObjectBox Java APIs -->
         <dependency>
             <groupId>io.objectbox</groupId>
             <artifactId>objectbox-java</artifactId>
             <version>${objectboxVersion}</version>
         </dependency>
 
-        <!-- Native libraries, you can remove the ones for systems you do not support -->
+        <!--
+        ObjectBox platform-specific libraries.
+        Add or remove them as needed to match what your application supports.
+        -->
         <dependency>
             <groupId>io.objectbox</groupId>
             <artifactId>objectbox-linux</artifactId>
@@ -45,18 +53,19 @@
     <build>
         <plugins>
 
+            <!-- Optional, helps check for dependency and plugin updates -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>2.7</version>
             </plugin>
 
-            <!-- Adds the ObjectBox annotation processor to enable code generation -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
                 <configuration>
+                    <!-- Adds the ObjectBox annotation processor to generate code and model JSON -->
                     <annotationProcessorPaths>
                         <path>
                             <groupId>io.objectbox</groupId>
@@ -67,13 +76,18 @@
                     <annotationProcessors>
                         <annotationProcessor>io.objectbox.processor.ObjectBoxProcessorShim</annotationProcessor>
                     </annotationProcessors>
+                    <!-- Configures the path for the ObjectBox model JSON -->
                     <compilerArgs>
                         <arg>-Aobjectbox.modelPath=${project.basedir}/objectbox-models/default.json</arg>
                     </compilerArgs>
                 </configuration>
             </plugin>
 
-            <!-- Runs the ObjectBox byte-code transformer after Maven finishes compiling -->
+            <!--
+            The ObjectBox Maven plugin: adds a objectbox:transform goal which transforms class files
+            (byte-code) as part of the compile lifecycle phase.
+            This is required to make relations easier to use (see README).
+            -->
             <plugin>
                 <groupId>io.objectbox</groupId>
                 <artifactId>objectbox-maven-plugin</artifactId>
@@ -85,11 +99,13 @@
                         </goals>
                     </execution>
                 </executions>
+                <!-- Optional: turn on log output to diagnose issues with the byte-code transformer -->
                 <configuration>
                     <debug>true</debug>
                 </configuration>
             </plugin>
 
+            <!-- Enables running the Main class using the exec:java goal -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
