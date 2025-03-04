@@ -5,7 +5,7 @@ plugins {
 }
 
 buildscript {
-    val objectboxVersion by extra("4.1.0")
+    val objectboxVersion by extra("4.2.0")
 
     // For Android projects
     val _compileSdkVersion by extra(34) /* Android 14 (UPSIDE_DOWN_CAKE) */
