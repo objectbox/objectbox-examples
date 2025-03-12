@@ -21,6 +21,7 @@ import javax.annotation.Nullable;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.HnswIndex;
 import io.objectbox.annotation.Id;
+import io.objectbox.annotation.VectorDistanceType;
 
 @Entity
 public class City {
@@ -30,7 +31,7 @@ public class City {
     @Nullable
     private String name;
 
-    @HnswIndex(dimensions = 2)
+    @HnswIndex(dimensions = 2, distanceType = VectorDistanceType.GEO)
     private float[] location;
 
     // For ObjectBox
