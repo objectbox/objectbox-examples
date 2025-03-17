@@ -3,7 +3,8 @@
 This example shows how to use ObjectBox in a simple note-taking Java console application running on
 the JVM. The project is built with Maven.
 
-If you have been using the ObjectBox Gradle plugin, note that there are some differences in how a
+> [!NOTE]
+> If you have been using the ObjectBox Gradle plugin, note that there are some differences in how a
 Maven project is set up (see below).
 
 This example is separate from the other examples. For example to use it in your IDE, you can just 
@@ -46,40 +47,25 @@ We recommend to add a property to specify the ObjectBox version:
 
 ### Add dependencies
 
-Next, add the ObjectBox Java library to the `<dependencies>` block:
+Add the ObjectBox Java library and a runtime library for each platform that your application should
+run on to the `<dependencies>` block:
 
 ```xml
+<!-- ObjectBox Java APIs -->
 <dependency>
     <groupId>io.objectbox</groupId>
     <artifactId>objectbox-java</artifactId>
     <version>${objectboxVersion}</version>
 </dependency>
-```
 
-For Kotlin projects, you can optionally add `objectbox-kotlin` which provides some extension
-functions.
-
-Additionally, add a library for each platform that your application should run on:
-
-```xml
+<!--
+ObjectBox platform-specific runtime libraries.
+Add or remove them as needed to match what your application supports.
+-->
 <!-- Linux (x64) -->
 <dependency>
     <groupId>io.objectbox</groupId>
     <artifactId>objectbox-linux</artifactId>
-    <version>${objectboxVersion}</version>
-</dependency>
-
-<!-- Linux (32-bit ARM) -->
-<dependency>
-    <groupId>io.objectbox</groupId>
-    <artifactId>objectbox-linux-armv7</artifactId>
-    <version>${objectboxVersion}</version>
-</dependency>
-
-<!-- Linux (64-bit ARM) -->
-<dependency>
-    <groupId>io.objectbox</groupId>
-    <artifactId>objectbox-linux-arm64</artifactId>
     <version>${objectboxVersion}</version>
 </dependency>
 
@@ -98,12 +84,48 @@ Additionally, add a library for each platform that your application should run o
 </dependency>
 ```
 
+<details>
+
+<summary><b>Additional ObjectBox runtime libraries</b></summary>
+
+```xml
+<!-- Linux (32-bit ARM) -->
+<dependency>
+    <groupId>io.objectbox</groupId>
+    <artifactId>objectbox-linux-armv7</artifactId>
+    <version>${objectboxVersion}</version>
+</dependency>
+
+<!-- Linux (64-bit ARM) -->
+<dependency>
+    <groupId>io.objectbox</groupId>
+    <artifactId>objectbox-linux-arm64</artifactId>
+    <version>${objectboxVersion}</version>
+</dependency>
+```
+
+</details>
+
+<details>
+
+<summary><b>Optional Kotlin extensions library</b></summary>
+
+```xml
+<dependency>
+    <groupId>io.objectbox</groupId>
+    <artifactId>objectbox-kotlin</artifactId>
+    <version>${objectboxVersion}</version>
+</dependency>
+```
+
+</details>
+
 Or to use [ObjectBox Sync](https://objectbox.io/sync/) (requires access to the Sync feature) add the
 Sync variants instead:
 
 <details>
 
-<summary>ObjectBox platform libraries for Sync</summary>
+<summary><b>Available ObjectBox runtime libraries for Sync</b></summary>
 
 ```xml
 <!-- Linux (x64) -->
@@ -144,9 +166,13 @@ Sync variants instead:
 
 </details>
 
-### Configure the annotation processor
+### Add the annotation processor and Maven plugin
 
-Next, add and configure the ObjectBox annotation processor within the Maven Compiler plugin:
+> [!NOTE]
+> The ObjectBox Maven Plugin is available from [Maven Central](https://central.sonatype.com/artifact/io.objectbox/objectbox-maven-plugin).
+
+Add and configure the ObjectBox annotation processor within the Maven Compiler plugin, and add the
+ObjectBox Maven Plugin to the build plugins block:
 
 ```xml
 <build>
@@ -173,19 +199,12 @@ Next, add and configure the ObjectBox annotation processor within the Maven Comp
                 </compilerArgs>
             </configuration>
         </plugin>
-    </plugins>
-</build>
-```
 
-### Add the ObjectBox Maven plugin
-
-The ObjectBox Maven Plugin is available from [Maven Central](https://central.sonatype.com/artifact/io.objectbox/objectbox-maven-plugin).
-
-Add it to your `pom.xml`:
-
-```xml
-<build>
-    <plugins>
+        <!--
+        The ObjectBox Maven plugin: adds a objectbox:transform goal which transforms class files
+        (byte-code) as part of the compile lifecycle phase.
+        This is required to make relations easier to use.
+        -->
         <plugin>
             <groupId>io.objectbox</groupId>
             <artifactId>objectbox-maven-plugin</artifactId>
@@ -198,15 +217,15 @@ Add it to your `pom.xml`:
                 </execution>
             </executions>
         </plugin>
+      
     </plugins>
 </build>
 ```
 
-Source files will now be transformed as part of the `compile` lifecycle step to make [relations 
-easier to use](https://docs.objectbox.io/relations#initialization-magic).
+> [!NOTE]
+> The Maven plugin transforms source files as part of the `compile` lifecycle step to make
+> [relations easier to use](https://docs.objectbox.io/relations#initialization-magic).
 
-🎉 Done! See the [pom.xml of this example](pom.xml) for a working configuration or continue with the
-Getting Started page linked below.
+🎉 Done! See the [pom.xml of this example](pom.xml) for a working configuration or:
 
-## Links
-- [Getting Started with ObjectBox](https://docs.objectbox.io/getting-started)
+➡️ Continue with [Getting Started with ObjectBox](https://docs.objectbox.io/getting-started).
