@@ -7,11 +7,17 @@ variables:
   # Gradle daemons may get killed, preventing proper clean-up of lock files in GRADLE_USER_HOME.
   # Use low priority processes to avoid Gradle builds consuming all build machine resources.
   GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.priority=low"
+  # Apache Maven related side notes:
+  # --batch-mode: recommended in CI, run in non-interactive mode (disables output color)
+  # --show-version: strongly recommended in CI, will display the JDK and Maven versions in use.
+  #      Very useful to be quickly sure the selected versions were the ones you think.
+  # --errors: Produce execution error messages, useful for plugin developers (like us).
+  MVN_ARGS: "--batch-mode --show-version --errors"
 
 stages:
   - test
 
-build-and-test:
+build-gradle:
   stage: test
   tags: [ docker, x64 ]
   before_script:
@@ -26,18 +32,29 @@ build-and-test:
     reports:
       junit: "**/build/test-results/**/TEST-*.xml"
 
-run-cli-app:
+run-console-gradle:
   stage: test
   tags: [ docker, x64 ]
-  needs: ["build-and-test"]
+  needs: ["build-gradle"]
   before_script:
     # "|| true" for an OK exit code if path not found
     - rm -r java-main/objectbox-notes-db || true
     - rm -r kotlin-main/objectbox-notes-db || true
   script:
     - ./gradlew java-main:run
-    # Run again with existing database.
-    - ./gradlew java-main:run
+    - ./gradlew java-main:run # Run again with existing database.
     - ./gradlew kotlin-main:run
-    # Run again with existing database.
-    - ./gradlew kotlin-main:run
+    - ./gradlew kotlin-main:run # Run again with existing database
+
+build-and-run-console-maven:
+  stage: test
+  tags: [ docker, x64 ]
+  before_script:
+    # "|| true" for an OK exit code if path not found
+    - rm -r java-main-maven/objectbox-notes-db || true
+  script:
+    - cd java-main-maven
+    - ./mvnw $MVN_ARGS compile exec:java
+    - ./mvnw $MVN_ARGS exec:java # Run again with existing database
+    - cd ../java-main-sync
+    - ./mvnw $MVN_ARGS compile

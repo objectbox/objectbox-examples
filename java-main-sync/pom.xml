@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>objectbox-java-main-maven</artifactId>
+    <artifactId>objectbox-java-main-sync</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <properties>
@@ -18,7 +18,7 @@
         Specify the version of ObjectBox dependencies.
         Note: the Maven plugin version is different, see below.
         -->
-        <objectboxVersion>4.2.0</objectboxVersion>
+        <objectboxVersion>4.1.0</objectboxVersion>
     </properties>
 
     <dependencies>
@@ -35,17 +35,17 @@
         -->
         <dependency>
             <groupId>io.objectbox</groupId>
-            <artifactId>objectbox-linux</artifactId>
+            <artifactId>objectbox-sync-linux</artifactId>
             <version>${objectboxVersion}</version>
         </dependency>
         <dependency>
             <groupId>io.objectbox</groupId>
-            <artifactId>objectbox-macos</artifactId>
+            <artifactId>objectbox-sync-macos</artifactId>
             <version>${objectboxVersion}</version>
         </dependency>
         <dependency>
             <groupId>io.objectbox</groupId>
-            <artifactId>objectbox-windows</artifactId>
+            <artifactId>objectbox-sync-windows</artifactId>
             <version>${objectboxVersion}</version>
         </dependency>
     </dependencies>
@@ -63,7 +63,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.8.0</version>
                 <configuration>
                     <!-- Adds the ObjectBox annotation processor to generate code and model JSON -->
                     <annotationProcessorPaths>
