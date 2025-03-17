@@ -41,7 +41,7 @@ We recommend to add a property to specify the ObjectBox version:
 
 ```xml
 <properties>
-    <objectboxVersion>4.1.0</objectboxVersion>
+    <objectboxVersion>4.2.0</objectboxVersion>
 </properties>
 ```
 
