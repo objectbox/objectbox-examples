@@ -1,5 +1,7 @@
-# ObjectBox Java and Kotlin examples
-Java and Kotlin examples for [ObjectBox](https://objectbox.io) ([GitHub](https://github.com/objectbox/objectbox-java)), the superfast object-oriented database.
+# ObjectBox Java SDK examples
+
+Examples of JVM and Android applications written in Java and Kotlin using the [Java SDK](https://github.com/objectbox/objectbox-java)
+for [ObjectBox](https://objectbox.io), the superfast object-oriented database.
 
 **For examples in other languages, see the [GitHub repository for that language](https://github.com/objectbox).**
 
@@ -33,15 +35,14 @@ See the dedicated [Sync examples repository](https://github.com/objectbox/object
 
 ## MyObjectBox missing? Build the project!
 
-When you open the project in an IDE like Android Studio for the first time, it will complain that it does not find the class `MyObjectBox`.
-This is expected because this class is generated during build time.
-Thus, once you build the project, everything should be fine.
+If the `MyObjectBox` class can not be found, make sure to build the project first.
+This and other ObjectBox related classes are generated when building the project.
 
 ## Issues and feedback
 
 If you are looking for help with how to use ObjectBox [see our documentation](https://docs.objectbox.io).
 
-If you found an issue or have feedback about these examples feel free to submit an [issue for objectbox-java](https://github.com/objectbox/objectbox-java/issues).
+If you found an issue or have feedback about these examples feel free to submit an [issue in the Java SDK repository](https://github.com/objectbox/objectbox-java/issues).
 
 ## Links
 
@@ -49,7 +50,7 @@ If you found an issue or have feedback about these examples feel free to submit 
 
 [ObjectBox Features](https://objectbox.io/features/)
 
-[ObjectBox GitHub repository](https://github.com/objectbox/objectbox-java)
+[ObjectBox Java SDK repository](https://github.com/objectbox/objectbox-java)
 
 ## License
 
