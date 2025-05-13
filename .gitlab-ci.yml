@@ -56,5 +56,3 @@ build-and-run-console-maven:
     - cd java-main-maven
     - ./mvnw $MVN_ARGS compile exec:java
     - ./mvnw $MVN_ARGS exec:java # Run again with existing database
-    - cd ../java-main-sync
-    - ./mvnw $MVN_ARGS compile
