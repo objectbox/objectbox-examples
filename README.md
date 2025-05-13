@@ -5,31 +5,34 @@ for [ObjectBox](https://objectbox.io), the superfast object-oriented database.
 
 **For examples in other languages, see the [GitHub repository for that language](https://github.com/objectbox).**
 
-## Basics
+## JVM
+
+* **[java-main](java-main)**: a note taking command-line application that shows how to define the
+  data model, create a store and put and get data.
+* **[java-main-maven](java-main-maven)**: the same app, but using a Maven project.
+* **[kotlin-main](kotlin-main)**: the same app, but written in Kotlin.
+
+## Android
 
 * **[android-app-kotlin](android-app-kotlin)**: a note taking app that shows how to define the data 
 model, indexes and relations, create a store, put and get data, use Admin UI and create unit tests.
 * **[android-app](android-app)**: a more basic variant of the above written in Java.
-* **[java-main](java-main) and [kotlin-main](kotlin-main)**: a note taking command-line application that shows how to define the 
-data model, create a store and put and get data.
-* **[java-main-maven](java-main-maven)**: the above app but using a Maven project (we 
-recommend to use Gradle).
+* **[android-app-relations](android-app-relations)**: shows how to use all types of available relations.
+* **[android-app-arch](android-app-arch)**: shows how to use ObjectBoxLiveData with ViewModel and ObjectBoxDataSource with the Paging library.
+* **[android-app-multimodule](android-app-multimodule)**: shows how to use a separate database in each feature module.
+* **[android-app-multiprocess](android-app-multiprocess)**: shows how to use ObjectBox from a different process.
 
 ## [Vector Search](https://docs.objectbox.io/on-device-vector-search)
 
 * **[java-main-vector-search](java-main-vector-search)**: a cities and coordinates command-line
   application that shows how to do on-device ANN vector search.
 
-## Using [Sync](https://sync.objectbox.io/)
+## [Sync](https://sync.objectbox.io/)
 
 See the dedicated [Sync examples repository](https://github.com/objectbox/objectbox-sync-examples).
 
-## Other
+## Other examples
 
-* **[android-app-relations](android-app-relations)**: shows how to use all types of available relations.
-* **[android-app-arch](android-app-arch)**: shows how to use ObjectBoxLiveData with ViewModel and ObjectBoxDataSource with the Paging library.
-* **[android-app-multimodule](android-app-multimodule)**: shows how to use a separate database in each feature module.
-* **[android-app-multiprocess](android-app-multiprocess)**: shows how to use ObjectBox from a different process.
 * **[android-app-daocompat](android-app-daocompat)**: shows how to use the DAOcompat compatibility layer to help migrate from greenDAO.
 * **[java-performance](java-performance)**: a command-line application that runs performance tests with ObjectBox.
 
