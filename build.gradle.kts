@@ -12,9 +12,10 @@ buildscript {
     val _targetSdkVersion by extra(33) /* Android 13 (TIRAMISU) */
 
     dependencies {
-        classpath("com.android.tools.build:gradle:8.1.1") // For Android projects
+        // Find compatible versions at https://kotlinlang.org/docs/gradle-configure-project.html#apply-the-plugin
+        classpath("com.android.tools.build:gradle:8.10.1") // For Android projects
         // Note: when updating make sure to update coroutines dependency to match.
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22") // For Kotlin projects
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.0") // For Kotlin projects
         classpath("io.objectbox:objectbox-gradle-plugin:$objectboxVersion")
     }
 
@@ -44,7 +45,7 @@ tasks.register<Zip>("zipAll") {
         exclude("**/local.properties")
     }
 
-    destinationDirectory.set(buildDir)
+    destinationDirectory.set(layout.buildDirectory)
 }
 
 tasks.wrapper {

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 // See the root build script on how to add plugins and repositories.
 
 plugins {
@@ -31,19 +33,17 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_1_8
     }
 }
 
-// Since Kotlin 1.8 kapt not longer inherits the JVM target version from the Kotlin compile tasks
-// https://youtrack.jetbrains.com/issue/KT-55947/Unable-to-set-kapt-jvm-target-version
-tasks.withType<org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask>().configureEach {
-    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
-}
-
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3") // For Kotlin 1.8.20
+    // https://github.com/Kotlin/kotlinx.coroutines/releases
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2") // For Kotlin 2.0
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
