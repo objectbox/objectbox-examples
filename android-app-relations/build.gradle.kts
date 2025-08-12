@@ -5,20 +5,23 @@ plugins {
     id("io.objectbox")
 }
 
+val _compileSdkVersion: Int by rootProject.extra
+val _targetSdkVersion: Int by rootProject.extra
+
 android {
-    namespace "io.objectbox.example.relation"
-    compileSdkVersion _compileSdkVersion
+    namespace = "io.objectbox.example.relation"
+    compileSdk = _compileSdkVersion
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     defaultConfig {
-        applicationId "io.objectbox.example.relation"
-        minSdkVersion 21
-        targetSdkVersion _targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        applicationId = "io.objectbox.example.relation"
+        minSdk = 21
+        targetSdk = _targetSdkVersion
+        versionCode = 1
+        versionName = "1.0"
     }
 }

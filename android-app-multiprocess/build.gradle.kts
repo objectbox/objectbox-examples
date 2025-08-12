@@ -7,25 +7,28 @@ plugins {
     id("io.objectbox")
 }
 
+val _compileSdkVersion: Int by rootProject.extra
+val _targetSdkVersion: Int by rootProject.extra
+
 android {
-    namespace "io.objectbox.example.android_app_multiprocess"
-    compileSdkVersion _compileSdkVersion
+    namespace = "io.objectbox.example.android_app_multiprocess"
+    compileSdk = _compileSdkVersion
 
     buildFeatures {
-        viewBinding true
+        viewBinding = true
     }
 
     defaultConfig {
-        applicationId "io.objectbox.example.android_app_multiprocess"
-        minSdkVersion 21
-        targetSdkVersion _targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        applicationId = "io.objectbox.example.android_app_multiprocess"
+        minSdk = 21
+        targetSdk = _targetSdkVersion
+        versionCode = 1
+        versionName = "1.0"
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
@@ -35,14 +38,14 @@ android {
 
 // Since Kotlin 1.8 kapt not longer inherits the JVM target version from the Kotlin compile tasks
 // https://youtrack.jetbrains.com/issue/KT-55947/Unable-to-set-kapt-jvm-target-version
-tasks.withType(org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask).configureEach {
+tasks.withType<org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask>().configureEach {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 }
 
 dependencies {
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3' // For Kotlin 1.8.20
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'com.google.android.material:material:1.12.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.8.4"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3") // For Kotlin 1.8.20
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
 }

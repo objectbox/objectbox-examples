@@ -5,20 +5,26 @@ plugins {
     id("application")
 }
 
-targetCompatibility = '1.8'
-sourceCompatibility = '1.8'
+val objectboxVersion: String by rootProject.extra
 
-mainClassName = "io.objectbox.example.Main"
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+application {
+    mainClass.set("io.objectbox.example.Main")
+}
 
 dependencies {
-    implementation "io.objectbox:objectbox-java:$objectboxVersion"
-    implementation "org.greenrobot:essentials:3.1.0"
-    implementation "com.beust:jcommander:1.82"
+    implementation("io.objectbox:objectbox-java:$objectboxVersion")
+    implementation("org.greenrobot:essentials:3.1.0")
+    implementation("com.beust:jcommander:1.82")
 
     // To run on ARM-based Linux need to manually include libraries.
-    implementation "io.objectbox:objectbox-linux-arm64:$objectboxVersion"
-    implementation "io.objectbox:objectbox-linux-armv7:$objectboxVersion"
+    implementation("io.objectbox:objectbox-linux-arm64:$objectboxVersion")
+    implementation("io.objectbox:objectbox-linux-armv7:$objectboxVersion")
 }
 
 // Apply plugin after dependencies block so they are not overwritten.
-apply plugin: 'io.objectbox'
+apply(plugin = "io.objectbox")
