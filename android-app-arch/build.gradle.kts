@@ -15,6 +15,10 @@ android {
     namespace = "io.objectbox.example.arch"
     compileSdk = _compileSdkVersion
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     defaultConfig {
         applicationId = "io.objectbox.example.arch"
         minSdk = 21

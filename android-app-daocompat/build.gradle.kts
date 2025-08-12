@@ -12,6 +12,10 @@ android {
     namespace = "io.objectbox.example.daocompat"
     compileSdk = _compileSdkVersion
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     defaultConfig {
         applicationId = "io.objectbox.example.daocompat"
         minSdk = 21
