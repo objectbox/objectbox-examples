@@ -1,6 +1,3 @@
-# Default image for linux builds
-image: objectboxio/buildenv-android:2023-08-29
-
 variables:
   # Disable the Gradle daemon. Gradle may run in a Docker container with a shared
   # Docker volume containing GRADLE_USER_HOME. If the container is stopped after a job
@@ -17,9 +14,14 @@ variables:
 stages:
   - test
 
+# Note: All Gradle projects use the root build script which depends on the Android plugin
+.gradle-build:
+  tags: [ docker, linux, x64 ]
+  image: objectboxio/buildenv-android:2024-12-09 # Includes JDK 21, Android build-tools/35.0.0 and platforms/android-35
+
 build-gradle:
+  extends: .gradle-build
   stage: test
-  tags: [ docker, x64 ]
   before_script:
     # Print Gradle and JVM version info
     - ./gradlew -version
@@ -33,8 +35,8 @@ build-gradle:
       junit: "**/build/test-results/**/TEST-*.xml"
 
 run-console-gradle:
+  extends: .gradle-build
   stage: test
-  tags: [ docker, x64 ]
   needs: ["build-gradle"]
   before_script:
     # "|| true" for an OK exit code if path not found
@@ -48,7 +50,8 @@ run-console-gradle:
 
 build-and-run-console-maven:
   stage: test
-  tags: [ docker, x64 ]
+  tags: [ docker, linux, x64 ]
+  image: objectboxio/buildenv-core:2025-07-03 # Includes JDK
   before_script:
     # "|| true" for an OK exit code if path not found
     - rm -r java-main-maven/objectbox-notes-db || true
