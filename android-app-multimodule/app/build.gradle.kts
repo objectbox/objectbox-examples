@@ -59,14 +59,14 @@ dependencies {
     implementation(project(":android-app-multimodule:feature_notes"))
     implementation(project(":android-app-multimodule:feature_tasks"))
 
-    implementation("androidx.activity:activity-ktx:1.9.1")
-    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("androidx.activity:activity-ktx:1.10.1")
+    implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.4")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.2")
 
     testImplementation("junit:junit:4.13.2")
-    testImplementation("androidx.test:core:1.6.1")
+    testImplementation("androidx.test:core:1.7.0")
     // https://github.com/robolectric/robolectric/releases
     testImplementation("org.robolectric:robolectric:4.15.1")
     // Add the ObjectBox native library to run unit tests on this development machine.

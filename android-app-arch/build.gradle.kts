@@ -41,9 +41,9 @@ kotlin {
 }
 
 dependencies {
-    implementation("androidx.fragment:fragment-ktx:1.8.2")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.4")
-    implementation("androidx.paging:paging-runtime-ktx:3.3.2")
+    implementation("androidx.fragment:fragment-ktx:1.8.9")
+    implementation("androidx.recyclerview:recyclerview:1.4.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.2")
+    implementation("androidx.paging:paging-runtime-ktx:3.3.6")
 }
