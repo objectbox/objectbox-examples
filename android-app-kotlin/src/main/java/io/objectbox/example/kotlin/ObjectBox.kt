@@ -22,9 +22,12 @@ import io.objectbox.BoxStore
 import io.objectbox.BoxStoreBuilder
 import io.objectbox.android.Admin
 import io.objectbox.android.ObjectBoxLiveData
+import io.objectbox.example.kotlin.ObjectBox.boxStore
 import io.objectbox.exception.DbException
 import io.objectbox.exception.FileCorruptException
+import io.objectbox.kotlin.newFixedThreadPoolDispatcher
 import io.objectbox.sync.Sync
+import kotlinx.coroutines.CoroutineDispatcher
 import java.io.File
 import java.util.Date
 import java.util.zip.GZIPOutputStream
@@ -46,6 +49,14 @@ object ObjectBox {
 
     lateinit var notesLiveData: ObjectBoxLiveData<Note>
         private set
+
+    /**
+     * Custom coroutine dispatcher for database operations.
+     * It makes sure ObjectBox resources are properly cleaned up.
+     */
+    val dispatcher: CoroutineDispatcher by lazy {
+        boxStore.newFixedThreadPoolDispatcher(4)
+    }
 
     fun init(context: Context) {
         // On Android make sure to pass a Context when building the Store.

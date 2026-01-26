@@ -20,7 +20,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import io.objectbox.example.kotlin.databinding.ActivityCreateAuthorBinding
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -51,7 +50,7 @@ class CreateAuthorActivity : AppCompatActivity() {
         }
     }
 
-    private suspend fun putAuthor(name: String) = withContext(Dispatchers.IO) {
+    private suspend fun putAuthor(name: String) = withContext(ObjectBox.dispatcher) {
         val newAuthor = Author(name = name)
         ObjectBox.boxStore.boxFor(Author::class.java).put(newAuthor)
     }

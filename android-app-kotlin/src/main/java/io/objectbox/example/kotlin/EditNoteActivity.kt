@@ -25,7 +25,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import io.objectbox.example.kotlin.databinding.ActivityAddNoteBinding
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Date
@@ -44,14 +43,14 @@ class EditNoteActivity : AppCompatActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
                 // Get list of Author Objects ordered by name.
-                val authors = withContext(Dispatchers.IO) {
+                val authors = withContext(ObjectBox.dispatcher) {
                     ObjectBox.boxStore.boxFor(Author::class.java).query()
                         .order(Author_.name)
                         .build()
                         .find()
                 }
                 // If given the Object ID, get an existing Note Object to edit.
-                val existingNote = withContext(Dispatchers.IO) {
+                val existingNote = withContext(ObjectBox.dispatcher) {
                     if (noteId != -1L) {
                         ObjectBox.boxStore.boxFor(Note::class.java)[noteId]
                     } else {
@@ -98,7 +97,7 @@ class EditNoteActivity : AppCompatActivity() {
         noteText: String,
         selectedAuthor: Author,
         existingNote: Note?
-    ) = withContext(Dispatchers.IO) {
+    ) = withContext(ObjectBox.dispatcher) {
         val note = if (existingNote != null) {
             // Update existing Note Object.
             existingNote.apply {

@@ -27,7 +27,6 @@ import androidx.lifecycle.lifecycleScope
 import io.objectbox.Box
 import io.objectbox.example.kotlin.databinding.ActivityNoteListBinding
 import io.objectbox.kotlin.boxFor
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class NoteListActivity : AppCompatActivity() {
@@ -81,7 +80,7 @@ class NoteListActivity : AppCompatActivity() {
 
     private val noteRemoveListener = AdapterView.OnItemLongClickListener { _, _, position, _ ->
         notesAdapter.getItem(position)?.also {
-            lifecycleScope.launch(Dispatchers.IO) {
+            lifecycleScope.launch(ObjectBox.dispatcher) {
                 // Pass the Note Object to remove it.
                 val removed = notesBox.remove(it)
                 // Can also remove by passing an Object ID:
