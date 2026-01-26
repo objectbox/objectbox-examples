@@ -5,7 +5,7 @@ plugins {
 }
 
 buildscript {
-    val objectboxVersion by extra("5.0.1")
+    val objectboxVersion by extra("5.1.0")
 
     // For Android projects
     val _compileSdkVersion by extra(35) /* Android 15 */
