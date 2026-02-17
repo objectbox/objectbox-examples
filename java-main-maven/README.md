@@ -5,7 +5,7 @@ the JVM. The project is built with Maven.
 
 > [!NOTE]
 > If you have been using the ObjectBox Gradle plugin, note that there are some differences in how a
-Maven project is set up (see below).
+> Maven project is set up (see below).
 
 This example is separate from the other examples. For example to use it in your IDE, you can just 
 import the `pom.xml` file.
@@ -171,8 +171,9 @@ Sync variants instead:
 > [!NOTE]
 > The ObjectBox Maven Plugin is available from [Maven Central](https://central.sonatype.com/artifact/io.objectbox/objectbox-maven-plugin).
 
-Add and configure the ObjectBox annotation processor within the Maven Compiler plugin, and add the
-ObjectBox Maven Plugin to the build plugins block:
+Add and configure the
+ObjectBox [annotation processor within the Maven Compiler plugin](https://maven.apache.org/plugins/maven-compiler-plugin-4.x/examples/annotation-processor.html),
+and add the ObjectBox Maven Plugin to the build plugins block:
 
 ```xml
 <build>
@@ -190,9 +191,6 @@ ObjectBox Maven Plugin to the build plugins block:
                         <version>${objectboxVersion}</version>
                     </path>
                 </annotationProcessorPaths>
-                <annotationProcessors>
-                    <annotationProcessor>io.objectbox.processor.ObjectBoxProcessorShim</annotationProcessor>
-                </annotationProcessors>
                 <!-- Configures the path for the ObjectBox model JSON -->
                 <compilerArgs>
                     <arg>-Aobjectbox.modelPath=${project.basedir}/objectbox-models/default.json</arg>

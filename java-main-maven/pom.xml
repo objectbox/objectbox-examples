@@ -73,9 +73,6 @@
                             <version>${objectboxVersion}</version>
                         </path>
                     </annotationProcessorPaths>
-                    <annotationProcessors>
-                        <annotationProcessor>io.objectbox.processor.ObjectBoxProcessorShim</annotationProcessor>
-                    </annotationProcessors>
                     <!-- Configures the path for the ObjectBox model JSON -->
                     <compilerArgs>
                         <arg>-Aobjectbox.modelPath=${project.basedir}/objectbox-models/default.json</arg>
