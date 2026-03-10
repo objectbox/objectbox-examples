@@ -1,7 +1,6 @@
 // See the root build script on how to add plugins and repositories.
 
 plugins {
-    id("java")
     id("application")
 }
 

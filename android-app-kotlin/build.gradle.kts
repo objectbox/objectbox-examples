@@ -3,9 +3,10 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 // See the root build script on how to add plugins and repositories.
 
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    kotlin("kapt")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    // For ObjectBox: apply the kapt and ObjectBox plugin
+    alias(libs.plugins.kotlin.kapt)
 }
 
 val objectboxVersion: String by rootProject.extra

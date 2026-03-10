@@ -3,9 +3,9 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 // See the root build script on how to add plugins and repositories.
 
 plugins {
-    id("com.android.application")
-    id("kotlin-android") // AndroidX libraries include Kotlin, use plugin to unify versions.
-    id("io.objectbox")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.objectbox)
 }
 
 val _compileSdkVersion: Int by rootProject.extra

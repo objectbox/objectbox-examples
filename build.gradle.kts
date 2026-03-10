@@ -1,7 +1,11 @@
 plugins {
     // Plugin to help us find updated dependencies, not required to use ObjectBox
-    // https://github.com/ben-manes/gradle-versions-plugin/releases
-    id("com.github.ben-manes.versions") version "0.52.0"
+    alias(libs.plugins.versions)
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    // For ObjectBox: add the kapt and ObjectBox plugin
+    alias(libs.plugins.kotlin.kapt) apply false
+    alias(libs.plugins.objectbox) apply false
 }
 
 buildscript {
@@ -10,14 +14,6 @@ buildscript {
     // For Android projects
     val _compileSdkVersion by extra(35) /* Android 15 */
     val _targetSdkVersion by extra(33) /* Android 13 (TIRAMISU) */
-
-    dependencies {
-        // Find compatible versions at https://kotlinlang.org/docs/gradle-configure-project.html#apply-the-plugin
-        classpath("com.android.tools.build:gradle:8.10.1") // For Android projects
-        // Note: when updating make sure to update coroutines dependency to match.
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.0") // For Kotlin projects
-        classpath("io.objectbox:objectbox-gradle-plugin:$objectboxVersion")
-    }
 }
 
 // Helper task for us to quickly compress the example files into a ZIP file.

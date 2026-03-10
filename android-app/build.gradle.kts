@@ -1,7 +1,7 @@
 // See the root build script on how to add plugins and repositories.
 
 plugins {
-    id("com.android.application")
+    alias(libs.plugins.android.application)
 }
 
 val objectboxVersion: String by rootProject.extra

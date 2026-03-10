@@ -1,0 +1,16 @@
+[versions]
+# Find compatible versions at https://kotlinlang.org/docs/gradle-configure-project.html#apply-the-plugin
+agp = "8.10.1"
+# Note: when updating make sure to update coroutines dependency to be compatible
+kotlin = "2.2.0"
+objectbox = "5.4.1"
+versions = "0.52.0" # https://github.com/ben-manes/gradle-versions-plugin/releases
+
+[libraries]
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+objectbox = { id = "io.objectbox", version.ref = "objectbox" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
