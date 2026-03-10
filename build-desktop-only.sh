@@ -1,1 +1,1 @@
-./gradlew --stacktrace --settings-file settings-desktop.gradle.kts clean build
+./gradlew --stacktrace clean :java-main:build
