@@ -1,11 +1,8 @@
-// See the root build script on how to add plugins and repositories.
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.objectbox)
 }
 
-val objectboxVersion: String by rootProject.extra
 val _compileSdkVersion: Int by rootProject.extra
 val _targetSdkVersion: Int by rootProject.extra
 
@@ -32,10 +29,10 @@ android {
 }
 
 dependencies {
-    // ObjectBox with Data Browser for debug builds, without for release builds.
+    // For ObjectBox: optionally add Android database library with Admin (for debug builds only)
     // https://docs.objectbox.io/data-browser
-    debugImplementation("io.objectbox:objectbox-android-objectbrowser:$objectboxVersion")
-    releaseImplementation("io.objectbox:objectbox-android:$objectboxVersion")
+    debugImplementation(libs.objectbox.android.admin)
+    releaseImplementation(libs.objectbox.android)
 
-    testImplementation("junit:junit:4.13.2")
+    testImplementation(libs.junit)
 }

@@ -30,19 +30,34 @@
         </dependency>
 
         <!--
-        ObjectBox platform-specific libraries.
+        ObjectBox platform-specific database libraries.
         Add or remove them as needed to match what your application supports.
         -->
+        <!-- Linux (x64) -->
         <dependency>
             <groupId>io.objectbox</groupId>
             <artifactId>objectbox-linux</artifactId>
             <version>${objectboxVersion}</version>
         </dependency>
+        <!-- Linux (32-bit ARM) -->
+        <dependency>
+            <groupId>io.objectbox</groupId>
+            <artifactId>objectbox-linux-armv7</artifactId>
+            <version>${objectboxVersion}</version>
+        </dependency>
+        <!-- Linux (64-bit ARM) -->
+        <dependency>
+            <groupId>io.objectbox</groupId>
+            <artifactId>objectbox-linux-arm64</artifactId>
+            <version>${objectboxVersion}</version>
+        </dependency>
+        <!-- macOS (Intel and Apple Silicon) -->
         <dependency>
             <groupId>io.objectbox</groupId>
             <artifactId>objectbox-macos</artifactId>
             <version>${objectboxVersion}</version>
         </dependency>
+        <!-- Windows (x64) -->
         <dependency>
             <groupId>io.objectbox</groupId>
             <artifactId>objectbox-windows</artifactId>

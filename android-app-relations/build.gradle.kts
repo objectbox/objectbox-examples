@@ -1,5 +1,3 @@
-// See the root build script on how to add plugins and repositories.
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.objectbox)

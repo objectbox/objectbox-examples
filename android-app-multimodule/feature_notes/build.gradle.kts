@@ -1,7 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
-// See the root build script on how to add plugins and repositories.
-
 plugins {
     id("com.android.library")
     alias(libs.plugins.kotlin.android)

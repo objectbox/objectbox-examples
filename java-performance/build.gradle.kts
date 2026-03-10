@@ -1,11 +1,7 @@
-// See the root build script on how to add plugins and repositories.
-
 plugins {
     id("application")
     alias(libs.plugins.objectbox)
 }
-
-val objectboxVersion: String by rootProject.extra
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
@@ -17,11 +13,10 @@ application {
 }
 
 dependencies {
-    implementation("io.objectbox:objectbox-java:$objectboxVersion")
-    implementation("org.greenrobot:essentials:3.1.0")
-    implementation("com.beust:jcommander:1.82")
+    implementation(libs.essentials)
+    implementation(libs.jcommander)
 
-    // To run on ARM-based Linux need to manually include libraries.
-    implementation("io.objectbox:objectbox-linux-arm64:$objectboxVersion")
-    implementation("io.objectbox:objectbox-linux-armv7:$objectboxVersion")
+    // To run on ARM-based Linux need to manually include additional database libraries
+    implementation(libs.objectbox.linux.arm64)
+    implementation(libs.objectbox.linux.armv7)
 }

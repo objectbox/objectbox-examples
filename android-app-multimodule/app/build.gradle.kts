@@ -1,7 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
-// See the root build script on how to add plugins and repositories.
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -9,7 +7,6 @@ plugins {
 
 val _compileSdkVersion: Int by rootProject.extra
 val _targetSdkVersion: Int by rootProject.extra
-val objectboxVersion: String by rootProject.extra
 
 android {
     compileSdk = _compileSdkVersion
@@ -59,23 +56,26 @@ dependencies {
     implementation(project(":android-app-multimodule:feature_notes"))
     implementation(project(":android-app-multimodule:feature_tasks"))
 
-    implementation("androidx.activity:activity-ktx:1.10.1")
-    implementation("androidx.appcompat:appcompat:1.7.1")
-    implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.2")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.2")
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("androidx.test:core:1.7.0")
-    // https://github.com/robolectric/robolectric/releases
-    testImplementation("org.robolectric:robolectric:4.15.1")
-    // Add the ObjectBox native library to run unit tests on this development machine.
-    // A library for Linux (x86_64), Windows (x86 and x86_64) and macOS (x86 and M1) is available.
-    testImplementation("io.objectbox:objectbox-linux:$objectboxVersion")
-    testImplementation("io.objectbox:objectbox-macos:$objectboxVersion")
-    testImplementation("io.objectbox:objectbox-windows:$objectboxVersion")
-    // There are also ARM versions available for Linux,
-    // but these are typically not architectures used on development machines.
-    // testImplementation("io.objectbox:objectbox-linux-arm64:$objectboxVersion")
-    // testImplementation("io.objectbox:objectbox-linux-armv7:$objectboxVersion")
+    testImplementation(libs.junit)
+    testImplementation(libs.androidx.test.core)
+    testImplementation(libs.robolectric)
+
+    // As the ObjectBox plugin is not applied, which would automatically add a database library for
+    // local unit tests that matches the current platform, need to add one manually.
+    // As we run unit tests on various platforms, we are adding all of them.
+    // Libraries for Linux (x86_64, 64-bit ARM), Windows (x86 and x86_64) and macOS (x86 and M1) are
+    // available.
+    testImplementation(libs.objectbox.linux)
+    testImplementation(libs.objectbox.linux.arm64)
+    testImplementation(libs.objectbox.macos)
+    testImplementation(libs.objectbox.windows)
+    // There is also a 32-bit ARM version available for Linux,
+    // but this is typically not a platform used to run unit tests on.
+    // testImplementation(libs.objectbox.linux.armv7)
 }

@@ -1,5 +1,3 @@
-// See the root build script on how to add plugins and repositories.
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.objectbox)
@@ -37,5 +35,5 @@ android {
 }
 
 dependencies {
-    implementation("org.greenrobot:objectbox-daocompat:4.2.0")
+    implementation(libs.objectbox.daocompat)
 }

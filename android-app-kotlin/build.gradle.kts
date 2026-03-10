@@ -1,7 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
-// See the root build script on how to add plugins and repositories.
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -10,7 +8,6 @@ plugins {
     alias(libs.plugins.objectbox)
 }
 
-val objectboxVersion: String by rootProject.extra
 val _compileSdkVersion: Int by rootProject.extra
 val _targetSdkVersion: Int by rootProject.extra
 
@@ -58,17 +55,18 @@ kotlin {
 }
 
 dependencies {
-    implementation("androidx.activity:activity-ktx:1.10.1")
-    implementation("androidx.appcompat:appcompat:1.7.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.2")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.2")
-    implementation("com.google.android.material:material:1.12.0")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.material)
 
-    // ObjectBox with Data Browser for debug builds, without for release builds.
+    // For ObjectBox: optionally add Android database library with Admin (for debug builds only)
     // https://docs.objectbox.io/data-browser
-    debugImplementation("io.objectbox:objectbox-android-objectbrowser:$objectboxVersion")
-    releaseImplementation("io.objectbox:objectbox-android:$objectboxVersion")
+    debugImplementation(libs.objectbox.android.admin)
+    releaseImplementation(libs.objectbox.android)
 
-    testImplementation("junit:junit:4.13.2")
+    testImplementation(libs.junit)
 }
