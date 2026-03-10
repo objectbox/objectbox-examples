@@ -18,18 +18,6 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.0") // For Kotlin projects
         classpath("io.objectbox:objectbox-gradle-plugin:$objectboxVersion")
     }
-
-    repositories {
-        mavenCentral() // ObjectBox artifacts are available on Maven Central.
-        google() // For Android projects
-    }
-}
-
-allprojects {
-    repositories {
-        mavenCentral() // ObjectBox artifacts are available on Maven Central.
-        google() // For Android projects
-    }
 }
 
 // Helper task for us to quickly compress the example files into a ZIP file.
