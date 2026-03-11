@@ -2,6 +2,7 @@
 
 plugins {
     id("application")
+    alias(libs.plugins.objectbox)
 }
 
 val objectboxVersion: String by rootProject.extra
@@ -26,7 +27,3 @@ dependencies {
 
     testImplementation("junit:junit:4.13.2")
 }
-
-// Apply the plugin after the dependencies block so it detects added
-// ObjectBox dependencies and does not replace them.
-apply(plugin = "io.objectbox")

@@ -2,6 +2,7 @@
 
 plugins {
     id("application")
+    alias(libs.plugins.objectbox)
 }
 
 val objectboxVersion: String by rootProject.extra
@@ -24,6 +25,3 @@ dependencies {
     implementation("io.objectbox:objectbox-linux-arm64:$objectboxVersion")
     implementation("io.objectbox:objectbox-linux-armv7:$objectboxVersion")
 }
-
-// Apply plugin after dependencies block so they are not overwritten.
-apply(plugin = "io.objectbox")

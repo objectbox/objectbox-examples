@@ -2,6 +2,7 @@
 
 plugins {
     id("application")
+    alias(libs.plugins.objectbox)
 }
 
 java {
@@ -34,7 +35,3 @@ dependencies {
     implementation("io.objectbox:objectbox-macos:$objectboxVersion")
     implementation("io.objectbox:objectbox-windows:$objectboxVersion")
 }
-
-// Apply the plugin after the dependencies block so it detects added
-// ObjectBox dependencies and does not replace them.
-apply(plugin = "io.objectbox")

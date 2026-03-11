@@ -2,6 +2,7 @@
 
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.objectbox)
 }
 
 val objectboxVersion: String by rootProject.extra
@@ -38,7 +39,3 @@ dependencies {
 
     testImplementation("junit:junit:4.13.2")
 }
-
-// apply the plugin after the dependencies block so it does not automatically add objectbox-android
-// which would conflict with objectbox-android-objectbrowser on debug builds
-apply(plugin = "io.objectbox")
