@@ -26,15 +26,19 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        // While ObjectBox only requires Java 8, this is deprecated and
+        // new Android projects should use 11.
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
 }
 
 kotlin {
     compilerOptions {
-        jvmTarget = JvmTarget.JVM_1_8
+        // While ObjectBox only requires Java 8, this is deprecated and
+        // new Android projects should use 11.
+        jvmTarget = JvmTarget.JVM_11
     }
 }
 
