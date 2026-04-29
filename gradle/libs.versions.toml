@@ -1,5 +1,5 @@
 [versions]
-objectbox = "5.4.1"
+objectbox = "5.4.2-preview1"
 
 # Find compatible versions at https://kotlinlang.org/docs/gradle-configure-project.html#apply-the-plugin
 agp = "8.10.1"
