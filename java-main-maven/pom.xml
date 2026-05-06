@@ -18,7 +18,7 @@
         Specify the version of ObjectBox dependencies.
         Note: the Maven plugin version is different, see below.
         -->
-        <objectboxVersion>5.4.2-preview1</objectboxVersion>
+        <objectboxVersion>5.4.2</objectboxVersion>
     </properties>
 
     <dependencies>
