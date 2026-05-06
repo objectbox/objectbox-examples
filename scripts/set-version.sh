@@ -30,12 +30,16 @@ scriptDir="$(dirname "$0")"
 rootProjectDir="$scriptDir/.."
 
 gradleVersionCatalog="$rootProjectDir/gradle/libs.versions.toml"
+echo "Updating $gradleVersionCatalog"
 $sed --in-place "s/objectbox = \".*\"/objectbox = \"$versionNew\"/g" "$gradleVersionCatalog"
 
 mavenPom="$rootProjectDir/java-main-maven/pom.xml"
+echo "Updating $mavenPom"
 $sed --in-place "s/<objectboxVersion>.*<\/objectboxVersion>/<objectboxVersion>$versionNew<\/objectboxVersion>/g" "$mavenPom"
 
 mavenReadme="$rootProjectDir/java-main-maven/README.md"
+echo "Updating $mavenReadme"
 $sed --in-place "s/<objectboxVersion>.*<\/objectboxVersion>/<objectboxVersion>$versionNew<\/objectboxVersion>/g" "$mavenReadme"
 
+echo "Committing changes"
 git commit --all --message="Update ObjectBox to $versionNew"
