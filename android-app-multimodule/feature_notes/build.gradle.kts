@@ -2,8 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.android.kapt)
     alias(libs.plugins.objectbox)
 }
 
@@ -49,4 +48,7 @@ kotlin {
 
 dependencies {
     // ObjectBox dependencies are added automatically by the ObjectBox plugin.
+    // For ObjectBox: manually add Kotlin extension functions until the ObjectBox plugin can detect
+    // built-in Kotlin.
+    implementation(libs.objectbox.kotlin)
 }

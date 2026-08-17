@@ -3,8 +3,9 @@ plugins {
     alias(libs.plugins.versions)
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
-    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
     // For ObjectBox: add the kapt and ObjectBox plugin
+    alias(libs.plugins.android.kapt) apply false
     alias(libs.plugins.kotlin.kapt) apply false
     alias(libs.plugins.objectbox) apply false
 }
