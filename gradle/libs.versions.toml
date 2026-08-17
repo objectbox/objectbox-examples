@@ -1,10 +1,11 @@
 [versions]
 objectbox = "5.4.2"
 
-# Find compatible versions at https://kotlinlang.org/docs/gradle-configure-project.html#apply-the-plugin
-agp = "8.10.1"
+# Android plugin 9 includes Kotlin 2.2.10
+# https://developer.android.com/build/releases/agp-9-0-0-release-notes#runtime-dependency-on-kotlin-gradle-plugin
+agp = "9.3.0" # https://developer.android.com/build/releases/gradle-plugin
 # Note: when updating make sure to update coroutines dependency to be compatible
-kotlin = "2.2.0"
+kotlin = "2.2.10" # https://kotlinlang.org/docs/gradle-configure-project.html#apply-the-plugin
 # Coroutines 1.10.2 is compatible with Kotlin 2.0.0
 coroutines = "1.10.2" # https://github.com/Kotlin/kotlinx.coroutines/releases
 
@@ -27,6 +28,7 @@ versions = "0.52.0" # https://github.com/ben-manes/gradle-versions-plugin/releas
 
 [libraries]
 objectbox-android = { module = "io.objectbox:objectbox-android", version.ref = "objectbox" }
+objectbox-kotlin = { module = "io.objectbox:objectbox-kotlin", version.ref = "objectbox" }
 # ObjectBox with Admin web app for debugging
 # https://docs.objectbox.io/data-browser
 objectbox-android-admin = { module = "io.objectbox:objectbox-android-objectbrowser", version.ref = "objectbox" }
@@ -42,7 +44,7 @@ objectbox-daocompat = { module = "org.greenrobot:objectbox-daocompat", version.r
 
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
 androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleKtx" }
@@ -55,13 +57,14 @@ essentials = { module = "org.greenrobot:essentials", version.ref = "essentials" 
 jcommander = { module = "com.beust:jcommander", version.ref = "jcommander" }
 junit = { module = "junit:junit", version.ref = "junit" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+android-kapt = { id = "com.android.legacy-kapt", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 objectbox = { id = "io.objectbox", version.ref = "objectbox" }
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
