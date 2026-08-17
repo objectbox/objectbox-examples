@@ -15,8 +15,8 @@ buildscript {
     val _targetSdkVersion by extra(33) /* Android 13 (TIRAMISU) */
 }
 
-// Helper task for us to quickly compress the example files into a ZIP file.
 tasks.register<Zip>("zipAll") {
+    description = "Helper task to quickly compress the example files into a ZIP file"
     archiveBaseName.set("objectbox-examples")
     from(rootDir) {
         exclude("**/.idea/**")
