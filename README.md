@@ -7,14 +7,14 @@ for [ObjectBox](https://objectbox.io), the superfast object-oriented database.
 
 ## JVM
 
-* **[java-main](java-main)**: a note taking command-line application that shows how to define the
+* **[java-main](java-main)**: a note-taking command-line application that shows how to define the
   data model, create a store and put and get data.
 * **[java-main-maven](java-main-maven)**: the same app, but using a Maven project.
 * **[kotlin-main](kotlin-main)**: the same app, but written in Kotlin.
 
 ## Android
 
-* **[android-app-kotlin](android-app-kotlin)**: a note taking app that shows how to define the data 
+* **[android-app-kotlin](android-app-kotlin)**: a note-taking app that shows how to define the data 
 model, indexes and relations, create a store, put and get data, use Admin UI and create unit tests.
 * **[android-app](android-app)**: a more basic variant of the above written in Java.
 * **[android-app-relations](android-app-relations)**: shows how to use all types of available relations.
@@ -58,7 +58,7 @@ If you found an issue or have feedback about these examples feel free to submit 
 ## License
 
 ```
-Copyright 2017-2025 ObjectBox Ltd. All rights reserved.
+Copyright 2017-2026 ObjectBox Ltd. All rights reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
